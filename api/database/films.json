@@ -1,0 +1,107 @@
+[
+    {
+        "id": 1,
+        "title": "The Godfather",
+        "year": 1972,
+        "genre": ["Action", "Drama", "Crime"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BYTJkNGQyZDgtZDQ0NC00MDM0LWEzZWQtYzUzZDEwMDljZWNjXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "id": 2,
+        "title": "Titanic",
+        "year": 1997,
+        "genre": ["Romance", "Drama"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BYzYyN2FiZmUtYWYzMy00MzViLWJkZTMtOGY1ZjgzNWMwN2YxXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "id": 3,
+        "title": "The Shawshank Redemption",
+        "year": 1994,
+        "genre": ["Drama"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMDAyY2FhYjctNDc5OS00MDNlLThiMGUtY2UxYWVkNGY2ZjljXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "id": 4,
+        "title": "Star Wars: Episode IV - A New Hope",
+        "year": 1977,
+        "genre": ["Sci-Fi", "Action"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BOGUwMDk0Y2MtNjBlNi00NmRiLTk2MWYtMGMyMDlhYmI4ZDBjXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "id": 5,
+        "title": "The Dark Knight",
+        "year": 2008,
+        "genre": ["Action", "Crime", "Drama", "Thriller"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "id": 6,
+        "title": "Avatar",
+        "year": 2009,
+        "genre": ["Action", "Adventure", "Fantasy", "Sci-Fi"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMDEzMmQwZjctZWU2My00MWNlLWE0NjItMDJlYTRlNGJiZjcyXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "id": 7,
+        "title": "Avengers: Endgame",
+        "year": 2019,
+        "genre": ["Action", "Adventure", "Sci-Fi", "Drama"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "id": 8,
+        "title": "Dune",
+        "year": 2021,
+        "genre": ["Action", "Adventure", "Sci-Fi", "Drama"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BNWIyNmU5MGYtZDZmNi00ZjAwLWJlYjgtZTc0ZGIxMDE4ZGYwXkEyXkFqcGc@._V1_.jpg"
+    },
+    {
+        "id": 9,
+        "title": "Everything Everywhere All At Once",
+        "year": 2022,
+        "genre": ["Action", "Adventure", "Sci-Fi", "Drama", "Comedy"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BOWNmMzAzZmQtNDQ1NC00Nzk5LTkyMmUtNGI2N2NkOWM4MzEyXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "id": 10,
+        "title": "Oppenheimer",
+        "year": 2023,
+        "genre": ["Biography", "Drama", "History"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BN2JkMDc5MGQtZjg3YS00NmFiLWIyZmQtZTJmNTM5MjVmYTQ4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    },
+    {
+        "id": 11,
+        "title": "Inception",
+        "year": 2010,
+        "genre": ["Action", "Adventure", "Sci-Fi", "Thriller"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_FMjpg_UX700_.jpg"
+    },
+    {
+        "id": 12,
+        "title": "Jurassic Park",
+        "year": 1993,
+        "genre": ["Action", "Adventure", "Sci-Fi", "Thriller"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMjM2MDgxMDg0Nl5BMl5BanBnXkFtZTgwNTM2OTM5NDE@._V1_FMjpg_UX667_.jpg"
+    },
+    {
+        "id": 13,
+        "title": "Gladiator",
+        "year": 2000,
+        "genre": ["Action", "Adventure", "Drama"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BYWQ4YmNjYjEtOWE1Zi00Y2U4LWI4NTAtMTU0MjkxNWQ1ZmJiXkEyXkFqcGc@._V1_FMjpg_UY2599_.jpg"
+    },
+    {
+        "id": 14,
+        "title": "Forrest Gump",
+        "year": 1994,
+        "genre": ["Romance", "Drama"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BNDYwNzVjMTItZmU5YS00YjQ5LTljYjgtMjY2NDVmYWMyNWFmXkEyXkFqcGc@._V1_FMjpg_UX558_.jpg"
+    },
+    {
+        "id": 15,
+        "title": "The Matrix",
+        "year": 1999,
+        "genre": ["Action", "Sci-Fi"],
+        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BN2NmN2VhMTQtMDNiOS00NDlhLTliMjgtODE2ZTY0ODQyNDRhXkEyXkFqcGc@._V1_FMjpg_UY3156_.jpg"
+    }
+]
