@@ -30,7 +30,7 @@ function render_login (parent){
     </div> `
 
     document.querySelector("#create_acc").addEventListener("click", () => {
-        render_create_acc(document.querySelector("#wrapper"));
+        renderLandingpageContainer("wrapper");
     });
 
 }
@@ -66,7 +66,7 @@ function render_create_acc(parent) {
 
             <div id="login_create_acc">
                 <p id="create_acc">Sign Up</p>
-                <p>Already have an account? <span> Sign In</span> </p>
+                <p>Already have an account? <span id="log_in_here"> Sign In</span> </p>
             </div>
         </div>
         
@@ -76,3 +76,4 @@ function render_create_acc(parent) {
         render_login(document.querySelector("#wrapper"));
     });
 }
+render_create_acc(document.querySelector("#wrapper"))
