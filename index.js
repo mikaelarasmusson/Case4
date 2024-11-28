@@ -1,0 +1,1 @@
+render_create_acc(document.querySelector("#wrapper"))
