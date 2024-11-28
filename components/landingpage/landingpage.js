@@ -1,27 +1,37 @@
 "use strict"
 
-function renderLandingpageContainer (parentId) {
-    const parent = document.getElementById(parentId);
-    parent.innerHTML = null;
-    const selfId = "landingpageContainer";
-    let dom = document.createElement("div");
-    dom.id = selfId;
+function renderLandingpageContainer(parentId) {
+  // Get the parent element
+  const parent = document.getElementById(parentId);
 
-    parent.append(dom);
-    renderLandingpageContent(selfId);
+  // Clear the parent element's content
+  parent.innerHTML = '';
+
+  // Create a new container element
+  const container = document.createElement('div');
+  container.id = 'landingpageContainer';
+
+  // Render the landing page content inside the container
+  renderLandingpageContent(container.id);
+
+  // Append the container to the parent element
+  parent.append(container);
 }
 
-function renderLandingpageContent (parentId) {
-    const parent = document.getElementsById(parentId);
-    const selfId = "landingpageContent";
-    let dom = document.createElement("div");
-    dom.id = selfId;
-    dom.classList.add("landingpage");
+function renderLandingpageContent(parentId) {
+  // Get the parent element
+  const parent = document.getElementById(parentId);
 
-    let userPoints = "";
-    let username = "";
+  // Create a new content element
+  const contentElement = document.createElement('div');
+  contentElement.id = 'landingpageContent';
+  contentElement.classList.add('landingpage');
 
-    dom.innerHTML = `
+  // Set up the content element's HTML
+  const userPoints = '';
+  const username = '';
+  
+  contentElement.innerHTML = `
     <img id="starPoints" src="" alt="Star Points">
     <p id="userPoints">${userPoints}</p>
     <img id="profilePic" src="" alt="Profile Picture">
@@ -30,7 +40,8 @@ function renderLandingpageContent (parentId) {
     <button id="buttonSinglePlayer" class="landingpageButton">Single Player</button>
     <button id="buttonMultiPlayer" class="landingpageButton">Multi Player</button>
     <button id="buttonJoinParty" class="landingpageButton">Join Party</button>
-    `;
+  `;
 
-    parent.append(dom);
+  // Append the content element to the parent element
+  parent.append(contentElement);
 }
