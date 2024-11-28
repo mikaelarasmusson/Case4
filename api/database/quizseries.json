@@ -1,0 +1,392 @@
+[
+    {
+        "id": 1,
+        "title": "Breaking Bad",
+        "questions": [
+            {
+                "question": "Who is the main protagonist in Breaking Bad?",
+                "options": ["Walter White", "Jesse Pinkman", "Hank Schrader", "Gustavo Fring"],
+                "answer": "Walter White"
+            },
+            {
+                "question": "What is Walter White's profession before he turns to crime?",
+                "options": ["Police Officer", "High School Teacher", "Chemist", "Lawyer"],
+                "answer": "High School Teacher"
+            },
+            {
+                "question": "What is the name of Walter White's partner in crime?",
+                "options": ["Skyler White", "Jesse Pinkman", "Saul Goodman", "Hank Schrader"],
+                "answer": "Jesse Pinkman"
+            },
+            {
+                "question": "What is the street name of the drug Walter produces?",
+                "options": ["Blue Magic", "Blue Sky", "Heisenberg's Mist", "Crystal Clear"],
+                "answer": "Blue Sky"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Game of Thrones",
+        "questions": [
+            {
+                "question": "Who is the ruler of the Seven Kingdoms at the start of Game of Thrones?",
+                "options": ["Ned Stark", "Robert Baratheon", "Joffrey Baratheon", "Stannis Baratheon"],
+                "answer": "Robert Baratheon"
+            },
+            {
+                "question": "Which house has the motto 'Winter is Coming'?",
+                "options": ["House Stark", "House Lannister", "House Targaryen", "House Baratheon"],
+                "answer": "House Stark"
+            },
+            {
+                "question": "Who is the Mother of Dragons?",
+                "options": ["Cersei Lannister", "Arya Stark", "Daenerys Targaryen", "Sansa Stark"],
+                "answer": "Daenerys Targaryen"
+            },
+            {
+                "question": "What is the name of Jon Snow's direwolf?",
+                "options": ["Ghost", "Nymeria", "Summer", "Shaggydog"],
+                "answer": "Ghost"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "The Sopranos",
+        "questions": [
+            {
+                "question": "Who is the main character in The Sopranos?",
+                "options": ["Tony Soprano", "Christopher Moltisanti", "Paulie Walnuts", "Carmela Soprano"],
+                "answer": "Tony Soprano"
+            },
+            {
+                "question": "What is the profession of Tony Soprano?",
+                "options": ["Lawyer", "Businessman", "Chef", "Mob Boss"],
+                "answer": "Mob Boss"
+            },
+            {
+                "question": "Who is Tony Soprano's wife?",
+                "options": ["Adriana La Cerva", "Carmela Soprano", "Dr. Melfi", "Meadow Soprano"],
+                "answer": "Carmela Soprano"
+            },
+            {
+                "question": "Who is Tony Soprano's therapist?",
+                "options": ["Dr. Melfi", "Dr. Freud", "Dr. Carmine", "Dr. Silvia"],
+                "answer": "Dr. Melfi"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "The Crown",
+        "questions": [
+            {
+                "question": "Who plays Queen Elizabeth II in The Crown?",
+                "options": ["Claire Foy", "Olivia Colman", "Imelda Staunton", "Helena Bonham Carter"],
+                "answer": "Claire Foy"
+            },
+            {
+                "question": "Which historical event does Season 1 of The Crown cover?",
+                "options": ["World War I", "The Suez Crisis", "World War II", "The Cold War"],
+                "answer": "The Suez Crisis"
+            },
+            {
+                "question": "Who was the first Prime Minister of the United Kingdom in The Crown?",
+                "options": ["Winston Churchill", "Harold Macmillan", "Edward Heath", "Anthony Eden"],
+                "answer": "Winston Churchill"
+            },
+            {
+                "question": "Who is Queen Elizabeth II's sister in The Crown?",
+                "options": ["Princess Diana", "Princess Anne", "Princess Margaret", "Camilla Parker Bowles"],
+                "answer": "Princess Margaret"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "Ozark",
+        "questions": [
+            {
+                "question": "What is the main business that the Byrde family is involved in?",
+                "options": ["Drug Cartel Money Laundering", "Real Estate", "Financial Consulting", "Legal Services"],
+                "answer": "Drug Cartel Money Laundering"
+            },
+            {
+                "question": "What is the name of the Byrde family's business in Ozark?",
+                "options": ["Ozark Financial", "The Blue Cat Lodge", "Byrde Enterprises", "Langmore Group"],
+                "answer": "The Blue Cat Lodge"
+            },
+            {
+                "question": "Who is the head of the Navarro cartel?",
+                "options": ["Del Rio", "Omar Navarro", "Camila Navarro", "Carlos"],
+                "answer": "Omar Navarro"
+            },
+            {
+                "question": "Which character is the FBI agent investigating the Byrde family?",
+                "options": ["Maya Miller", "Wendy Byrde", "Jason Bateman", "Ruth Langmore"],
+                "answer": "Maya Miller"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Friends",
+        "questions": [
+            {
+                "question": "Which character was a paleontologist?",
+                "options": ["Monica Geller", "Rachel Green", "Phoebe Buffay", "Ross Geller"],
+                "answer": "Ross Geller"
+            },
+            {
+                "question": "What is Joey's most famous catchphrase?",
+                "options": ["How you doin'?", "Could I BE any more...?", "Smelly Cat", "That's what she said"],
+                "answer": "How you doin'?"
+            },
+            {
+                "question": "What is the name of Ross and Monica's parents?",
+                "options": ["Jack and Judy", "Henry and Doris", "Frank and Alice", "George and Carol"],
+                "answer": "Jack and Judy"
+            },
+            {
+                "question": "What is Phoebe's famous song?",
+                "options": ["Smelly Cat", "New York City", "Sticky Shoes", "Love in the Rain"],
+                "answer": "Smelly Cat"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "The Office",
+        "questions": [
+            {
+                "question": "Who is the regional manager at Dunder Mifflin Scranton?",
+                "options": ["Michael Scott", "Dwight Schrute", "Jim Halpert", "Ryan Howard"],
+                "answer": "Michael Scott"
+            },
+            {
+                "question": "What is the name of the paper company in The Office?",
+                "options": ["Scranton Paper Co.", "Dunder Mifflin", "Wernham Hogg", "Vance Refrigeration"],
+                "answer": "Dunder Mifflin"
+            },
+            {
+                "question": "Who becomes the Assistant Regional Manager after Michael Scott?",
+                "options": ["Jim Halpert", "Dwight Schrute", "Ryan Howard", "Andy Bernard"],
+                "answer": "Dwight Schrute"
+            },
+            {
+                "question": "What is the name of Jim and Pam's daughter?",
+                "options": ["Megan", "Cece", "Phyllis", "Diana"],
+                "answer": "Cece"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Brooklyn Nine-Nine",
+        "questions": [
+            {
+                "question": "Who is the captain of the 99th precinct?",
+                "options": ["Ray Holt", "Terry Jeffords", "Amy Santiago", "Jake Peralta"],
+                "answer": "Ray Holt"
+            },
+            {
+                "question": "Which character is known for saying 'Cool, cool, cool, cool, cool, cool, cool, cool, cool.'?",
+                "options": ["Jake Peralta", "Charles Boyle", "Terry Jeffords", "Rosa Diaz"],
+                "answer": "Jake Peralta"
+            },
+            {
+                "question": "What is Amy's last name?",
+                "options": ["Santiago", "Diaz", "Boyle", "Holt"],
+                "answer": "Santiago"
+            },
+            {
+                "question": "Which character becomes the first female captain of the precinct?",
+                "options": ["Rosa Diaz", "Amy Santiago", "Terry Jeffords", "Jake Peralta"],
+                "answer": "Amy Santiago"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Parks and Recreation",
+        "questions": [
+            {
+                "question": "Who is the director of the Parks and Recreation department in Pawnee?",
+                "options": ["Leslie Knope", "Ron Swanson", "Ben Wyatt", "April Ludgate"],
+                "answer": "Leslie Knope"
+            },
+            {
+                "question": "What is Ron Swanson's favorite food?",
+                "options": ["Steak", "Pizza", "Bacon", "Salmon"],
+                "answer": "Bacon"
+            },
+            {
+                "question": "Which character is known for saying 'I have a dream that one day, I will be the biggest name in human resources.'?",
+                "options": ["Leslie Knope", "Ben Wyatt", "Tom Haverford", "April Ludgate"],
+                "answer": "Tom Haverford"
+            },
+            {
+                "question": "What is the name of Leslie Knope's best friend?",
+                "options": ["Ann Perkins", "April Ludgate", "Mona-Lisa", "Joan Callamezzo"],
+                "answer": "Ann Perkins"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Ted Lasso",
+        "questions": [
+            {
+                "question": "Who is the coach of AFC Richmond?",
+                "options": ["Ted Lasso", "Roy Kent", "Beard", "Jamie Tartt"],
+                "answer": "Ted Lasso"
+            },
+            {
+                "question": "What is Ted Lasso's favorite snack?",
+                "options": ["Pizza", "Biscuits", "Chips", "Pretzels"],
+                "answer": "Biscuits"
+            },
+            {
+                "question": "Who is the star player for AFC Richmond?",
+                "options": ["Jamie Tartt", "Roy Kent", "Isaac McAdoo", "Dani Rojas"],
+                "answer": "Jamie Tartt"
+            },
+            {
+                "question": "What is the name of Ted Lasso's wife?",
+                "options": ["Rebecca Welton", "Michelle Lasso", "Juno", "Keely Jones"],
+                "answer": "Michelle Lasso"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Stranger Things",
+        "questions": [
+            {
+                "question": "What is the name of the parallel dimension in Stranger Things?",
+                "options": ["The Upside Down", "The Underworld", "The Void", "The Shadow Realm"],
+                "answer": "The Upside Down"
+            },
+            {
+                "question": "Who has psychokinetic abilities in Stranger Things?",
+                "options": ["Mike Wheeler", "Will Byers", "Eleven", "Jim Hopper"],
+                "answer": "Eleven"
+            },
+            {
+                "question": "Which character is known for saying 'Mornings are for coffee and contemplation.'?",
+                "options": ["Jim Hopper", "Steve Harrington", "Lucas Sinclair", "Mike Wheeler"],
+                "answer": "Jim Hopper"
+            },
+            {
+                "question": "What is the name of Will Byers' best friend?",
+                "options": ["Dustin Henderson", "Lucas Sinclair", "Mike Wheeler", "Steve Harrington"],
+                "answer": "Mike Wheeler"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "title": "The Mandalorian",
+        "questions": [
+            {
+                "question": "What is the name of the main character in The Mandalorian?",
+                "options": ["Boba Fett", "Din Djarin", "Jango Fett", "Mace Windu"],
+                "answer": "Din Djarin"
+            },
+            {
+                "question": "What is the name of the alien creature known as 'Baby Yoda'?",
+                "options": ["Grogu", "Yaddle", "Yoda Jr.", "Mando"],
+                "answer": "Grogu"
+            },
+            {
+                "question": "What is the Mandalorian's primary goal in the series?",
+                "options": ["Find Grogu's parents", "Find the dark saber", "Take down the Empire", "Protect Grogu"],
+                "answer": "Protect Grogu"
+            },
+            {
+                "question": "Which planet does Din Djarin visit to meet 'The Child'?",
+                "options": ["Tatooine", "Naboo", "Coruscant", "Sorgan"],
+                "answer": "Sorgan"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Black Mirror",
+        "questions": [
+            {
+                "question": "What is the main theme of Black Mirror?",
+                "options": ["Space Travel", "Social Media and Technology", "Supernatural", "Historical Fiction"],
+                "answer": "Social Media and Technology"
+            },
+            {
+                "question": "What is the name of the episode where people vote for punishments on a reality show?",
+                "options": ["USS Callister", "Fifteen Million Merits", "Nosedive", "White Bear"],
+                "answer": "White Bear"
+            },
+            {
+                "question": "In which episode does a character upload their consciousness to a digital world?",
+                "options": ["Hang the DJ", "Black Museum", "San Junipero", "The Entire History of You"],
+                "answer": "San Junipero"
+            },
+            {
+                "question": "Which episode features a story about a dystopian world where people can rate each other?",
+                "options": ["Nosedive", "Be Right Back", "White Christmas", "Shut Up and Dance"],
+                "answer": "Nosedive"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "title": "The Witcher",
+        "questions": [
+            {
+                "question": "Who is the main character in The Witcher?",
+                "options": ["Geralt of Rivia", "Yennefer of Vengerberg", "Ciri", "Jaskier"],
+                "answer": "Geralt of Rivia"
+            },
+            {
+                "question": "Which character is a sorceress who has a complicated relationship with Geralt?",
+                "options": ["Ciri", "Yennefer of Vengerberg", "Triss Merigold", "Tissaia de Vries"],
+                "answer": "Yennefer of Vengerberg"
+            },
+            {
+                "question": "What is the name of the monster hunting profession that Geralt belongs to?",
+                "options": ["Witcher", "Sorcerer", "Vampire Hunter", "Assassin"],
+                "answer": "Witcher"
+            },
+            {
+                "question": "Which book series is The Witcher based on?",
+                "options": ["The Witcher Saga", "The Stormlight Archive", "A Song of Ice and Fire", "The Broken Earth"],
+                "answer": "The Witcher Saga"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "title": "Doctor Who",
+        "questions": [
+            {
+                "question": "Who is the main character in Doctor Who?",
+                "options": ["The Doctor", "The Master", "Rose Tyler", "Sarah Jane Smith"],
+                "answer": "The Doctor"
+            },
+            {
+                "question": "What is the name of the Doctor's time machine?",
+                "options": ["Time Machine", "The TARDIS", "The Time Capsule", "The Sonic Screwdriver"],
+                "answer": "The TARDIS"
+            },
+            {
+                "question": "Who played the Eleventh Doctor?",
+                "options": ["David Tennant", "Matt Smith", "Peter Capaldi", "Jodie Whittaker"],
+                "answer": "Matt Smith"
+            },
+            {
+                "question": "What is the Doctor's main enemy group?",
+                "options": ["Cybermen", "Daleks", "Weeping Angels", "Silence"],
+                "answer": "Daleks"
+            }
+        ]
+    }    
+]
