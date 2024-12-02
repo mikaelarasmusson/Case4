@@ -16,3 +16,14 @@ export async function checkBody(body) {
     return Object.keys(body).length === 0;
 }
 
+export async function deleteKey(object, key) {
+    delete object[key];
+    return object;
+}
+
+export async function checkKey (object, key) {
+    if (!object[key]) {
+        return 1;
+    }
+}
+

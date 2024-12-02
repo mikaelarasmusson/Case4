@@ -2,8 +2,14 @@
 
 import * as func from "./functions.js";
 
-async function handler(req){
+export async function loginHandler(req){
 
+    // let pathname = new URL(req.url).pathname;
+
+    // console.log("pathname is " + pathname);
+    // if (pathname === "/api/login") {
+    //     return new Response("success!", {status: 200});
+    // }
     const allowedMethod = "POST";
     const requestMethod = req.method;
 
@@ -11,7 +17,6 @@ async function handler(req){
     //skicka tillbaka användaren
     
     if (requestMethod === allowedMethod) {
-        console.log(allowedMethod);
         
         const contentType = req.headers.get("Content-Type");
         const isValidMethod = await func.checkContentType(contentType, "application/json");
@@ -21,14 +26,13 @@ async function handler(req){
         }
 
         const currentUser = await req.json();
-        console.log(currentUser);
         const currentUserEmpty = await func.checkBody(currentUser);
-        console.log(currentUserEmpty);
 
         if (currentUserEmpty) {
             return await func.sendResponse("Body can't be empty", 400);
         }
 
+        //Göra om till funktion oskäker på hur dock
         if (!currentUser.username) {
             return new Response("Body must include a username", {status: 400});
         }
@@ -42,8 +46,8 @@ async function handler(req){
         
         const allUsers = await func.getFile("./database/users.json");
 
+        let foundUser;
         for (const user of allUsers) {
-            console.log(user);
 
             if (username !== user.username && (password !== user.password)) {
                 return await func.sendResponse("User not found", 400);
@@ -53,26 +57,30 @@ async function handler(req){
 
             } else if (username !== user.username && (password === user.password)) {
                 return await func.sendResponse("Incorrect username", 400);
+            } else {
+                foundUser = user;
             }
         }
 
-        return new Response("Logged in", { status: 200});
+        const correctUser = func.deleteKey(foundUser, "password");
+
+        for (variable in correctUser) {
+            console.log(`${variable}`);
+        }
+        
+        return new Response(JSON.stringify(correctUser), {status: 200});
     } else {
         return new Response ("Only POST is allowed", {status: 405});
     }
-
 }
 
 // fetch("http://localhost:8000", {
 //   method: "POST",
 //   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ username: "mikkan", password: "hejhej" })
+//   body: JSON.stringify({ username: "mikkan", password: "lol123" })
 // })
 //   .then(response => response.text())
 //   .then(console.log)
 //   .catch(console.error);
 
-
-
-
-Deno.serve(handler);
+// Deno.serve(handler);
