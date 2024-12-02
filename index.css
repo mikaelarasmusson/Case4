@@ -1,0 +1,39 @@
+@font-face {
+    font-family: OpensansRegular;
+    src: url(fonts/OpenSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: OpensansSemiBold;
+    src: url(fonts/OpenSans-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: OpensansBold;
+    src: url(fonts/OpenSans-Bold.ttf);
+}
+
+@font-face {
+    font-family: WittgensteinRegular;
+    src: url(fonts/Wittgenstein-Regular.ttf);
+}
+
+@font-face {
+    font-family: WittgensteinMedium;
+    src: url(fonts/Wittgenstein-Medium.ttf);
+}
+
+@font-face {
+    font-family: WittgensteinSemiBold;
+    src: url(fonts/Wittgenstein-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: WittgensteinBold;
+    src: url(fonts/Wittgenstein-Bold.ttf);
+}
+
+@font-face {
+    font-family: WittgensteinExtraBold;
+    src: url(fonts/Wittgenstein-ExtraBold.ttf);
+}

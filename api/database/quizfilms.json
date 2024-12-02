@@ -1,0 +1,392 @@
+[
+    {
+        "id": 1,
+        "title": "The Godfather",
+        "questions": [
+            {
+                "question": "In which year was 'The Godfather' released?",
+                "options": ["1972", "1980", "1965", "1990"],
+                "answer": "1972"
+            },
+            {
+                "question": "Who directed 'The Godfather'?",
+                "options": ["Martin Scorsese", "Francis Ford Coppola", "Steven Spielberg", "Quentin Tarantino"],
+                "answer": "Francis Ford Coppola"
+            },
+            {
+                "question": "What is the primary genre of 'The Godfather'?",
+                "options": ["Action", "Drama", "Crime", "Comedy"],
+                "answer": "Crime"
+            },
+            {
+                "question": "Which actor played the role of Michael Corleone?",
+                "options": ["Al Pacino", "Robert De Niro", "Marlon Brando", "Joe Pesci"],
+                "answer": "Al Pacino"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "title": "Titanic",
+        "questions": [
+            {
+                "question": "What is the name of the ship in 'Titanic'?",
+                "options": ["Lusitania", "Titanic", "Olympic", "Britannic"],
+                "answer": "Titanic"
+            },
+            {
+                "question": "Who directed 'Titanic'?",
+                "options": ["James Cameron", "Christopher Nolan", "Steven Spielberg", "George Lucas"],
+                "answer": "James Cameron"
+            },
+            {
+                "question": "In what year was 'Titanic' released?",
+                "options": ["1995", "1997", "2000", "1999"],
+                "answer": "1997"
+            },
+            {
+                "question": "What genre does 'Titanic' primarily belong to?",
+                "options": ["Romance", "Action", "Sci-Fi", "Horror"],
+                "answer": "Romance"
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "title": "The Shawshank Redemption",
+        "questions": [
+            {
+                "question": "Which year was 'The Shawshank Redemption' released?",
+                "options": ["1994", "1995", "1993", "2000"],
+                "answer": "1994"
+            },
+            {
+                "question": "Who played the role of Andy Dufresne?",
+                "options": ["Tim Robbins", "Morgan Freeman", "Tom Hanks", "Kevin Spacey"],
+                "answer": "Tim Robbins"
+            },
+            {
+                "question": "What is the genre of 'The Shawshank Redemption'?",
+                "options": ["Drama", "Thriller", "Action", "Comedy"],
+                "answer": "Drama"
+            },
+            {
+                "question": "What is the name of the prison in the movie?",
+                "options": ["Shawshank", "Alcatraz", "Sing Sing", "Rikers"],
+                "answer": "Shawshank"
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "title": "Star Wars: Episode IV - A New Hope",
+        "questions": [
+            {
+                "question": "In which year was 'Star Wars: Episode IV - A New Hope' released?",
+                "options": ["1977", "1980", "1975", "1973"],
+                "answer": "1977"
+            },
+            {
+                "question": "Who directed 'Star Wars: Episode IV - A New Hope'?",
+                "options": ["George Lucas", "Steven Spielberg", "J.J. Abrams", "Francis Ford Coppola"],
+                "answer": "George Lucas"
+            },
+            {
+                "question": "What is the primary genre of 'Star Wars: Episode IV - A New Hope'?",
+                "options": ["Sci-Fi", "Fantasy", "Action", "Adventure"],
+                "answer": "Sci-Fi"
+            },
+            {
+                "question": "Who played the role of Luke Skywalker?",
+                "options": ["Mark Hamill", "Harrison Ford", "Carrie Fisher", "Alec Guinness"],
+                "answer": "Mark Hamill"
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "title": "The Dark Knight",
+        "questions": [
+            {
+                "question": "In which year was 'The Dark Knight' released?",
+                "options": ["2008", "2009", "2007", "2010"],
+                "answer": "2008"
+            },
+            {
+                "question": "Who directed 'The Dark Knight'?",
+                "options": ["Christopher Nolan", "Steven Spielberg", "Martin Scorsese", "James Cameron"],
+                "answer": "Christopher Nolan"
+            },
+            {
+                "question": "Who played the role of The Joker in 'The Dark Knight'?",
+                "options": ["Heath Ledger", "Jack Nicholson", "Jared Leto", "Tom Hardy"],
+                "answer": "Heath Ledger"
+            },
+            {
+                "question": "What is the primary genre of 'The Dark Knight'?",
+                "options": ["Action", "Drama", "Crime", "Thriller"],
+                "answer": "Action"
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "title": "Avatar",
+        "questions": [
+            {
+                "question": "In what year was 'Avatar' released?",
+                "options": ["2009", "2008", "2010", "2007"],
+                "answer": "2009"
+            },
+            {
+                "question": "Who directed 'Avatar'?",
+                "options": ["James Cameron", "Ridley Scott", "Peter Jackson", "Francis Ford Coppola"],
+                "answer": "James Cameron"
+            },
+            {
+                "question": "What is the primary genre of 'Avatar'?",
+                "options": ["Sci-Fi", "Fantasy", "Action", "Adventure"],
+                "answer": "Sci-Fi"
+            },
+            {
+                "question": "What planet does the movie 'Avatar' take place on?",
+                "options": ["Pandora", "Mars", "Earth", "Titan"],
+                "answer": "Pandora"
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "title": "Avengers: Endgame",
+        "questions": [
+            {
+                "question": "What year was 'Avengers: Endgame' released?",
+                "options": ["2019", "2020", "2018", "2021"],
+                "answer": "2019"
+            },
+            {
+                "question": "Who directed 'Avengers: Endgame'?",
+                "options": ["Anthony Russo", "Joe Russo", "Joss Whedon", "Ryan Coogler"],
+                "answer": "Anthony Russo"
+            },
+            {
+                "question": "Which superhero is known as the 'Iron Man'?",
+                "options": ["Robert Downey Jr.", "Chris Hemsworth", "Chris Evans", "Mark Ruffalo"],
+                "answer": "Robert Downey Jr."
+            },
+            {
+                "question": "Who is the villain in 'Avengers: Endgame'?",
+                "options": ["Thanos", "Loki", "Ultron", "Hela"],
+                "answer": "Thanos"
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "title": "Dune",
+        "questions": [
+            {
+                "question": "In which year was 'Dune' released?",
+                "options": ["2021", "2020", "2019", "2022"],
+                "answer": "2021"
+            },
+            {
+                "question": "Who directed 'Dune'?",
+                "options": ["Denis Villeneuve", "Christopher Nolan", "Ridley Scott", "David Lynch"],
+                "answer": "Denis Villeneuve"
+            },
+            {
+                "question": "What is the primary genre of 'Dune'?",
+                "options": ["Sci-Fi", "Drama", "Fantasy", "Action"],
+                "answer": "Sci-Fi"
+            },
+            {
+                "question": "Who plays the role of Paul Atreides?",
+                "options": ["Timothée Chalamet", "Oscar Isaac", "Zendaya", "Jason Momoa"],
+                "answer": "Timothée Chalamet"
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "title": "Everything Everywhere All At Once",
+        "questions": [
+            {
+                "question": "In which year was 'Everything Everywhere All At Once' released?",
+                "options": ["2022", "2021", "2020", "2019"],
+                "answer": "2022"
+            },
+            {
+                "question": "Who directed 'Everything Everywhere All At Once'?",
+                "options": ["Daniel Kwan", "Daniel Scheinert", "The Daniels", "A24"],
+                "answer": "The Daniels"
+            },
+            {
+                "question": "What genre does 'Everything Everywhere All At Once' belong to?",
+                "options": ["Sci-Fi", "Action", "Comedy", "Drama"],
+                "answer": "Sci-Fi"
+            },
+            {
+                "question": "Who plays the role of Evelyn Quan Wang?",
+                "options": ["Michelle Yeoh", "Jamie Lee Curtis", "Stephanie Hsu", "Ke Huy Quan"],
+                "answer": "Michelle Yeoh"
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "title": "Oppenheimer",
+        "questions": [
+            {
+                "question": "In which year was 'Oppenheimer' released?",
+                "options": ["2023", "2022", "2021", "2020"],
+                "answer": "2023"
+            },
+            {
+                "question": "Who directed 'Oppenheimer'?",
+                "options": ["Christopher Nolan", "Steven Spielberg", "Quentin Tarantino", "Martin Scorsese"],
+                "answer": "Christopher Nolan"
+            },
+            {
+                "question": "What is the primary genre of 'Oppenheimer'?",
+                "options": ["Biography", "Drama", "History", "Sci-Fi"],
+                "answer": "Biography"
+            },
+            {
+                "question": "Who plays the role of J. Robert Oppenheimer?",
+                "options": ["Cillian Murphy", "Matthew McConaughey", "Leonardo DiCaprio", "Brad Pitt"],
+                "answer": "Cillian Murphy"
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "title": "Inception",
+        "questions": [
+            {
+                "question": "In which year was 'Inception' released?",
+                "options": ["2010", "2009", "2011", "2008"],
+                "answer": "2010"
+            },
+            {
+                "question": "Who directed 'Inception'?",
+                "options": ["Christopher Nolan", "James Cameron", "Ridley Scott", "Steven Spielberg"],
+                "answer": "Christopher Nolan"
+            },
+            {
+                "question": "What is the primary genre of 'Inception'?",
+                "options": ["Action", "Adventure", "Sci-Fi", "Thriller"],
+                "answer": "Sci-Fi"
+            },
+            {
+                "question": "Who plays the role of Dom Cobb?",
+                "options": ["Leonardo DiCaprio", "Tom Hardy", "Joseph Gordon-Levitt", "Cillian Murphy"],
+                "answer": "Leonardo DiCaprio"
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "title": "Jurassic Park",
+        "questions": [
+            {
+                "question": "In which year was 'Jurassic Park' released?",
+                "options": ["1993", "1990", "1995", "2000"],
+                "answer": "1993"
+            },
+            {
+                "question": "Who directed 'Jurassic Park'?",
+                "options": ["Steven Spielberg", "George Lucas", "James Cameron", "Ridley Scott"],
+                "answer": "Steven Spielberg"
+            },
+            {
+                "question": "What is the primary genre of 'Jurassic Park'?",
+                "options": ["Action", "Adventure", "Sci-Fi", "Thriller"],
+                "answer": "Sci-Fi"
+            },
+            {
+                "question": "Which actor played the role of Dr. Alan Grant?",
+                "options": ["Sam Neill", "Jeff Goldblum", "Richard Attenborough", "Chris Pratt"],
+                "answer": "Sam Neill"
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "title": "Gladiator",
+        "questions": [
+            {
+                "question": "In which year was 'Gladiator' released?",
+                "options": ["2000", "2001", "1999", "2002"],
+                "answer": "2000"
+            },
+            {
+                "question": "Who directed 'Gladiator'?",
+                "options": ["Ridley Scott", "Steven Spielberg", "James Cameron", "George Lucas"],
+                "answer": "Ridley Scott"
+            },
+            {
+                "question": "What is the primary genre of 'Gladiator'?",
+                "options": ["Action", "Adventure", "Drama", "Fantasy"],
+                "answer": "Action"
+            },
+            {
+                "question": "Who plays the role of Maximus?",
+                "options": ["Russell Crowe", "Brad Pitt", "Tom Cruise", "Matt Damon"],
+                "answer": "Russell Crowe"
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "title": "Forrest Gump",
+        "questions": [
+            {
+                "question": "In which year was 'Forrest Gump' released?",
+                "options": ["1994", "1995", "1996", "1993"],
+                "answer": "1994"
+            },
+            {
+                "question": "Who directed 'Forrest Gump'?",
+                "options": ["Robert Zemeckis", "Steven Spielberg", "James Cameron", "Ron Howard"],
+                "answer": "Robert Zemeckis"
+            },
+            {
+                "question": "What is the primary genre of 'Forrest Gump'?",
+                "options": ["Romance", "Drama", "Comedy", "Action"],
+                "answer": "Drama"
+            },
+            {
+                "question": "Who plays the role of Forrest Gump?",
+                "options": ["Tom Hanks", "Matt Damon", "Robin Williams", "Brad Pitt"],
+                "answer": "Tom Hanks"
+            }
+        ]
+    },
+    {
+        "id": 15,
+        "title": "The Matrix",
+        "questions": [
+            {
+                "question": "In which year was 'The Matrix' released?",
+                "options": ["1999", "1998", "2000", "2001"],
+                "answer": "1999"
+            },
+            {
+                "question": "Who directed 'The Matrix'?",
+                "options": ["The Wachowskis", "Ridley Scott", "James Cameron", "Steven Spielberg"],
+                "answer": "The Wachowskis"
+            },
+            {
+                "question": "What is the primary genre of 'The Matrix'?",
+                "options": ["Action", "Sci-Fi", "Drama", "Fantasy"],
+                "answer": "Sci-Fi"
+            },
+            {
+                "question": "Who plays the role of Neo?",
+                "options": ["Keanu Reeves", "Laurence Fishburne", "Hugo Weaving", "Carrie-Anne Moss"],
+                "answer": "Keanu Reeves"
+            }
+        ]
+    }
+]
