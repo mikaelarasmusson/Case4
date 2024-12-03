@@ -1,0 +1,119 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-image: url(../../images/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (min-width: 430px) and (max-width: 1024px) {
+    #wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 430px;
+        height: 932px;
+        background-color: rgba(0, 0, 0, 0.70);
+        color: #FFFFFF;
+    }
+
+    #landingpageContent {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #profileContainer {
+        margin: 52px 20px 179px 293px;
+    }
+
+    #profileContent {
+        display: inline-flex;
+        padding: 0px;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #starIcon {
+        width: 19px;
+        height: 20px;
+        fill: #FFD07A;
+    }
+
+    #userPoints {
+        font-family: var(--paragraph_font);
+        font-size: var(--paragraph_size);
+    }
+
+    #profilePic {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 50px;
+        border: 1px solid #FFF;
+        background: url(../../images/profilepic.png) lightgray 50% / cover no-repeat;
+    }
+
+    #welcomeContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 24px;
+        margin: 0px 59px 0px 59px;
+    }
+
+    .landingpageTitle {
+        margin: 0px;
+        font-size: var(--main_title_size);
+        color: var(--main_title_color);
+        font-family: var(--main_title_font);
+
+        line-height: 150%; /* 60px */
+        letter-spacing: 0.048px;
+    }
+
+    .playText {
+        margin: 0px 0px 64px 0px;
+        font-size: var(--paragraph_size);
+        color: var(--paragraph_color);
+        font-family: var(--paragraph_font);
+        text-align: center;
+        
+        line-height: 150%; /* 24px */
+        letter-spacing: 0.019px;
+    }
+
+    #buttonContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 32px;
+        align-self: stretch;
+        margin: 0px 59px 0px 59px;
+    }
+
+    .landingpageButton {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 312px;
+        height: 47px;
+        padding: 0px;
+        border-radius: 5px;
+        border-color: transparent;
+        background: var(--main_title_color);
+
+        font-family: var(--paragraph_font);
+        font-size: var(--paragraph_size);
+        color: var(--paragraph_color);
+    }
+
+    .landingpageButton:hover {
+        cursor: pointer;
+    }
+}

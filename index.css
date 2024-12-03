@@ -37,3 +37,12 @@
     font-family: WittgensteinExtraBold;
     src: url(fonts/Wittgenstein-ExtraBold.ttf);
 }
+
+:root {
+    --main_title_size: 40px;
+    --paragraph_size: 16px;
+    --main_title_color: #E50913;
+    --paragraph_color: #FFFFFF;
+    --main_title_font: OpensansSemiBold;
+    --paragraph_font: OpensansRegular;
+}
