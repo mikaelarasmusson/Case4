@@ -2,7 +2,11 @@
 
 import * as func from "./functions.js";
 
+//fetch with a request to "/api/login"
 export async function loginHandler(req){
+    const options = {
+        headers: {"Content-Type": "application/json"}
+    };
 
     // let pathname = new URL(req.url).pathname;
 
@@ -68,7 +72,7 @@ export async function loginHandler(req){
             console.log(`${variable}`);
         }
         
-        return new Response(JSON.stringify(correctUser), {status: 200});
+        return new Response(JSON.stringify(correctUser), options);
     } else {
         return new Response ("Only POST is allowed", {status: 405});
     }

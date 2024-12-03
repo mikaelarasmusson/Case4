@@ -1,6 +1,7 @@
 import { serveDir, serveFile } from "jsr:@std/http/file-server";
 import { loginHandler } from "./login.js";
 import { movieHandler } from "./movies.js";
+import { seriesHandler } from "./series.js";
 import * as func from "./functions.js";
 
 async function handler (req) {
@@ -12,10 +13,16 @@ async function handler (req) {
         if (pathname === "/api/movies") {
             return movieHandler(req);
         }
+
+        if (pathname === "/api/series") {
+            return seriesHandler(req);
+        }
     }
 
     if (req.method === "POST") {
-        //do something
+        if (pathname === "/api/login") {
+            return loginHandler(req);
+        }
     }
 
     if (req.method === "PATCH") {
@@ -25,6 +32,7 @@ async function handler (req) {
     if (req.method === "DELETE") {
         //do something
     }
+
     if (pathname.startsWith("/")) {
         return await serveDir(req, {
             fsRoot: "../",
