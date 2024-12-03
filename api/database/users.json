@@ -1,9 +1,23 @@
 [
-    {
-        "id": 1,
-        "username": "mikkan",
-        "password": "lol123",
-        "profileImg": "",
-        "score": 17
-    }
+  {
+    "id": 1,
+    "username": "mikkan",
+    "password": "lol123",
+    "profileImg": "",
+    "score": 17
+  },
+  {
+    "id": 2,
+    "username": "Hampus",
+    "password": "test",
+    "profileImg": "",
+    "score": 18
+  },
+  {
+    "id": 3,
+    "username": "newuser",
+    "password": "testlösen",
+    "profileImg": "",
+    "score": 0
+  }
 ]

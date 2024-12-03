@@ -1,5 +1,6 @@
 import { serveDir, serveFile } from "jsr:@std/http/file-server";
 import { loginHandler } from "./login.js";
+import { registerHandler } from "./register.js";
 import { movieHandler } from "./movies.js";
 import { seriesHandler } from "./series.js";
 import * as func from "./functions.js";
@@ -22,6 +23,10 @@ async function handler (req) {
     if (req.method === "POST") {
         if (pathname === "/api/login") {
             return loginHandler(req);
+        }
+
+        if (pathname === "/api/register") {
+            return registerHandler(req);
         }
     }
 

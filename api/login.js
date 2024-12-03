@@ -8,17 +8,8 @@ export async function loginHandler(req){
         headers: {"Content-Type": "application/json"}
     };
 
-    // let pathname = new URL(req.url).pathname;
-
-    // console.log("pathname is " + pathname);
-    // if (pathname === "/api/login") {
-    //     return new Response("success!", {status: 200});
-    // }
     const allowedMethod = "POST";
     const requestMethod = req.method;
-
-    //kolla så bodyn inte är tom
-    //skicka tillbaka användaren
     
     if (requestMethod === allowedMethod) {
         
@@ -36,7 +27,6 @@ export async function loginHandler(req){
             return await func.sendResponse("Body can't be empty", 400);
         }
 
-        //Göra om till funktion oskäker på hur dock
         if (!currentUser.username) {
             return new Response("Body must include a username", {status: 400});
         }
@@ -53,25 +43,23 @@ export async function loginHandler(req){
         let foundUser;
         for (const user of allUsers) {
 
-            if (username !== user.username && (password !== user.password)) {
-                return await func.sendResponse("User not found", 400);
+            if (username === user.username && password === user.password) {
+                foundUser = user;
 
             } else if (username === user.username && (password !== user.password)) {
                 return await func.sendResponse("Incorrect password,", 400);
 
             } else if (username !== user.username && (password === user.password)) {
                 return await func.sendResponse("Incorrect username", 400);
-            } else {
-                foundUser = user;
             }
+        }
+
+        if (!foundUser) {
+            return func.sendResponse("User not found", 404);
         }
 
         const correctUser = func.deleteKey(foundUser, "password");
 
-        for (variable in correctUser) {
-            console.log(`${variable}`);
-        }
-        
         return new Response(JSON.stringify(correctUser), options);
     } else {
         return new Response ("Only POST is allowed", {status: 405});

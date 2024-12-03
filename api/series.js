@@ -2,6 +2,7 @@
 
 import * as func from "./functions.js";
 
+//fetch with a request to "/api/series"
 export async function seriesHandler(req) {
 
     const options = {
