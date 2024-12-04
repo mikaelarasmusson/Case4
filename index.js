@@ -5,11 +5,14 @@
 // console.log(data);
 // let json = JSON.stringify(data);
 // console.log(json);
+
 const request = new Request("/api/register", {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify({username: "newuser", password: "testlösen"})
 });
+
+// const request = new Request("/api/series");
 
 async function test () {
     let response = await fetch(request);

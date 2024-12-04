@@ -1,22 +1,29 @@
 import { serveDir, serveFile } from "jsr:@std/http/file-server";
 import { loginHandler } from "./login.js";
 import { registerHandler } from "./register.js";
-import { movieHandler } from "./movies.js";
-import { seriesHandler } from "./series.js";
+import { mediaHandler } from "./media.js";
 import * as func from "./functions.js";
 
 async function handler (req) {
 
-    let pathname = new URL(req.url).pathname;
+    const pathname = new URL(req.url).pathname;
     console.log("pathname is" + pathname);
 
     if (req.method === "GET") {
         if (pathname === "/api/movies") {
-            return movieHandler(req);
+            return mediaHandler(req, pathname);
         }
 
         if (pathname === "/api/series") {
-            return seriesHandler(req);
+            return mediaHandler(req, pathname);
+        }
+
+        if (pathname === "/api/quizfilms") {
+            return mediaHandler(req, pathname);
+        }
+
+        if (pathname === "/api/quizseries") {
+            return mediaHandler(req, pathname);
         }
     }
 

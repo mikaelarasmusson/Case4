@@ -22,7 +22,6 @@ export async function registerHandler(req) {
     }
 
     const createdUser = await req.json();
-    console.log(createdUser);
     const createdUserEmpty = func.checkBody(createdUser);
 
     if (createdUserEmpty) {
@@ -71,7 +70,6 @@ export async function registerHandler(req) {
 
     allUsers.push(newUser);
     func.writeToFile(usersFilePath, allUsers);
-    console.log(JSON.stringify(newUser));
 
     let correctUser = func.deleteKey(newUser, "password"); 
 

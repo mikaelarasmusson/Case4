@@ -7,8 +7,6 @@ export async function getFile(file) {
 export async function writeToFile(file, data) {
     console.log(data);
     const json = JSON.stringify(data, null, 2);
-    console.log("inne i funktionen writeToFile loggar json");
-    console.log(json);
     await Deno.writeTextFile(file, json);
 }
 
