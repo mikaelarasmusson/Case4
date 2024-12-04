@@ -1,0 +1,78 @@
+body{
+    margin: 0;
+}
+
+@media screen and (min-width: 430px) and (max-width: 1024px) {
+    #wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 430px;
+        height: 932px;
+        background-color: rgba(0, 0, 0, 0.70);
+        color: #FFFFFF;
+    }
+
+
+    #profileContainer {
+        margin: 48px 0px;
+        text-align: end;
+  
+    }
+
+    #profileContent {
+        display: inline-flex;
+        padding: 0px;
+        justify-content: center;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #starIcon {
+        width: 19px;
+        height: 20px;
+        fill: #FFD07A;
+    }
+
+    #userPoints {
+        font-family: var(--paragraph_font);
+        font-size: var(--paragraph_size);
+    }
+
+    #profilePic {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 50px;
+        border: 1px solid #FFF;
+        background: url(../../images/profilepic.png) lightgray 50% / cover no-repeat;
+    }
+
+    #movie_img{
+    width: 390px;
+    height: 238px;
+    border-radius: 5px;
+    }
+
+    
+    #timer{
+    background-color: #E50913;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    border-radius: 50%;
+    margin: auto;
+    position: relative;
+    top: -23px;
+  
+    }
+    
+    #question_counter{
+    margin: auto;
+    width: 91px;
+    }
+
+
+
+}
