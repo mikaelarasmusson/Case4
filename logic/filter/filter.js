@@ -16,7 +16,7 @@ function filterGenre (array, chosenGenre) {
             }
         }
     }
-    console.log(filteredArray);
     return filteredArray;
 }
+
 

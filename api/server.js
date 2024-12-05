@@ -42,7 +42,6 @@ async function handler (req) {
         if (pathname === "/api/edit") {
             return editProfileHandler(req);
         }
-        //do something
     }
 
     if (req.method === "DELETE") {
