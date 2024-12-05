@@ -4,104 +4,104 @@
         "title": "Breaking Bad",
         "year": 2008,
         "genre": ["Drama", "Thriller", "Crime"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMzU5ZGYzNmQtMTdhYy00OGRiLTg0NmQtYjVjNzliZTg1ZGE4XkEyXkFqcGc@._V1_FMjpg_UY3000_.jpg"
+        "image": ""
     },
     {
         "id": 2,
         "title": "Game of Thrones",
         "year": 2011,
         "genre": ["Action", "Adventure", "Drama", "Fantasy"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMTNhMDJmNmYtNDQ5OS00ODdlLWE0ZDAtZTgyYTIwNDY3OTU3XkEyXkFqcGc@._V1_FMjpg_UX550_.jpg"
+        "image": ""
     },
     {
         "id": 3,
         "title": "The Sopranos",
         "year": 1999,
         "genre": ["Drama", "Crime"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMjRmMTNiMTQtMDg1ZS00MGM1LWE1MGUtYjEzMGFjNWUzOWRkXkEyXkFqcGc@._V1_FMjpg_UY2048_.jpg"
+        "image": ""
     },
     {
         "id": 4,
         "title": "The Crown",
         "year": 2016,
         "genre": ["Drama", "Biography", "History"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BODcyODZlZDMtZGE0Ni00NjBhLWJlYTAtZDdlNWY3MzkwMGVhXkEyXkFqcGc@._V1_FMjpg_UY2222_.jpg"
+        "image": ""
     },
     {
         "id": 5,
         "title": "Ozark",
         "year": 2017,
         "genre": ["Drama", "Thriller", "Crime"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BZDk1ZTdjOWItNTJmYS00MGIzLThmY2ItZWNiOGY5MzJlNTA5XkEyXkFqcGc@._V1_FMjpg_UX1013_.jpg"
+        "image": ""
     },
     {
         "id": 6,
         "title": "Friends",
         "year": 1994,
         "genre": ["Comedy", "Romance"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BOTU2YmM5ZjctOGVlMC00YTczLTljM2MtYjhlNGI5YWMyZjFkXkEyXkFqcGc@._V1_FMjpg_UX680_.jpg"
+        "image": ""
     },
     {
         "id": 7,
         "title": "The Office",
         "year": 2005,
         "genre": ["Comedy"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BZjQwYzBlYzUtZjhhOS00ZDQ0LWE0NzAtYTk4MjgzZTNkZWEzXkEyXkFqcGc@._V1_FMjpg_UY1922_.jpg"
+        "image": ""
     },
     {
         "id": 8,
         "title": "Brooklyn Nine-Nine",
         "year": 2013,
         "genre": ["Comedy", "Crime"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BNzBiODQxZTUtNjc0MC00Yzc1LThmYTMtN2YwYTU3NjgxMmI4XkEyXkFqcGc@._V1_FMjpg_UX675_.jpg"
+        "image": ""
     },
     {
         "id": 9,
         "title": "Parks and Recreation",
         "year": 2009,
         "genre": ["Comedy"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BNDlhMzAwNTAtNTk2NS00MTdkLWE3ZWYtMDU0MTFiYmU2ZTc0XkEyXkFqcGc@._V1_FMjpg_UX680_.jpg"
+        "image": ""
     },
     {
         "id": 10,
         "title": "Ted Lasso",
         "year": 2020,
         "genre": ["Drama", "Comedy", "Sport"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BZmI3YWVhM2UtNDZjMC00YTIzLWI2NGUtZWIxODZkZjVmYTg1XkEyXkFqcGc@._V1_FMjpg_UY3000_.jpg"
+        "image": ""
     },
     {
         "id": 11,
         "title": "Stranger Things",
         "year": 2016,
         "genre": ["Drama", "Fantasy", "Horror", "Sci-Fi", "Thriller", "Mystery"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMjE2N2MyMzEtNmU5NS00OTI0LTlkNTMtMWM1YWYyNmU4NmY0XkEyXkFqcGc@._V1_FMjpg_UX1080_.jpg"
+        "image": ""
     },
     {
         "id": 12,
         "title": "The Mandalorian",
         "year": 2019,
         "genre": ["Action", "Adventure", "Fantasy", "Sci-Fi"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BNjgxZGM0OWUtZGY1MS00MWRmLTk2N2ItYjQyZTI1OThlZDliXkEyXkFqcGc@._V1_FMjpg_UY2500_.jpg"
+        "image": ""
     },
     {
         "id": 13,
         "title": "Black Mirror",
         "year": 2011,
         "genre": ["Drama", "Thriller", "Crime", "Mystery", "Sci-Fi"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMWY3ZjgwMTctZTZmMS00ZTMwLTkwYWEtNTVkMDgwNjA5ODBiXkEyXkFqcGc@._V1_FMjpg_UX1080_.jpg"
+        "image": ""
     },
     {
         "id": 14,
         "title": "The Witcher",
         "year": 2019,
         "genre": ["Drama", "Action", "Adventure", "Fantasy", "Mystery"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BMTQ5MDU5MTktMDZkMy00NDU1LWIxM2UtODg5OGFiNmRhNDBjXkEyXkFqcGc@._V1_FMjpg_UY2222_.jpg"
+        "image": ""
     },
     {
         "id": 15,
         "title": "Doctor Who",
         "year": 1963,
         "genre": ["Drama", "Adventure", "Sci-Fi"],
-        "image": "file:///C:/Users/rasmu/Skrivbord/Case%204%20-%20Film/Case4/images/MV5BZGVmY2RkZjAtZDAwMC00MmZhLThhMGItZmVlNzE4MTgyMWRkXkEyXkFqcGc@._V1_FMjpg_UX608_.jpg"
+        "image": ""
     }
 ]

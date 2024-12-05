@@ -16,8 +16,14 @@ function renderFilterpageContainer(parentId) {
     parent.append(container);
         
     // Render the landing page content inside the container
+    renderBackArrow(container.id);
     renderProfile(container.id);
+    renderSearchbar(container.id);
+    renderFilterContainer(container.id);
+    renderFilterDropDown(container.id);
 }
+
+//Lägg till eventlyssnare på alla knappar som skapats nedan
 
 function renderBackArrow(parentId) {
     const parent = document.getElementById(parentId);
@@ -83,6 +89,7 @@ function renderFilterContainer (parentId) {
     container.id = "filterContainer";
 
     parent.append(container);
+    renderFilterContents(container.id);
 }
 
 function renderFilterContents (parentId) {
@@ -100,9 +107,84 @@ function renderFilterContents (parentId) {
     buttonSeries.id = "buttonSeries";    
     buttonSeries.classList.add("filterpageButton");
     buttonSeries.textContent = "Series";
-    buttonContainer.append(buttonSeries);   
-
+    buttonContainer.append(buttonSeries);  
+    
+    const buttonCategories = document.createElement("button");
+    buttonCategories.id = "buttonCategories";
+    buttonCategories.innerHTML = `
+        <p>Categories</p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
+            <path d="M0 1.6465L1.16788 0.5L8 7.26434L14.8321 0.5L16 1.6465L8 9.5L0 1.6465Z" fill="white"/>
+        </svg>
+    `;
+    buttonContainer.append(buttonCategories);
+    
     parent.append(buttonContainer);
 }
 
+// Lägg till en toggle för när dropdown ska visas och inte
+function renderFilterDropDown(parentId) {
+    const parent = document.getElementById(parentId);
 
+    const categoriesDropdown = document.createElement("div");
+    categoriesDropdown.id = "categoriesDropdown";
+    categoriesDropdown.innerHTML = `
+        <button id="exitDropdown">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M11.1732 9.49899L18.649 2.03423C18.8724 1.81075 18.998 1.50766 18.998 1.19162C18.998 0.875585 18.8724 0.572491 18.649 0.349018C18.4255 0.125546 18.1225 0 17.8065 0C17.4905 0 17.1874 0.125546 16.964 0.349018L9.5 7.82565L2.03603 0.349018C1.81259 0.125546 1.50952 2.80593e-07 1.19352 2.82947e-07C0.877516 2.85302e-07 0.574455 0.125546 0.351006 0.349018C0.127557 0.572491 0.00202541 0.875585 0.0020254 1.19162C0.0020254 1.50766 0.127557 1.81075 0.351006 2.03423L7.82684 9.49899L0.351006 16.9637C0.239784 17.0741 0.151505 17.2053 0.0912611 17.35C0.031017 17.4946 0 17.6497 0 17.8064C0 17.963 0.031017 18.1181 0.0912611 18.2628C0.151505 18.4074 0.239784 18.5386 0.351006 18.649C0.46132 18.7602 0.592563 18.8485 0.737166 18.9087C0.881769 18.969 1.03687 19 1.19352 19C1.35017 19 1.50527 18.969 1.64987 18.9087C1.79448 18.8485 1.92572 18.7602 2.03603 18.649L9.5 11.1723L16.964 18.649C17.0743 18.7602 17.2055 18.8485 17.3501 18.9087C17.4947 18.969 17.6498 19 17.8065 19C17.9631 19 18.1182 18.969 18.2628 18.9087C18.4074 18.8485 18.5387 18.7602 18.649 18.649C18.7602 18.5386 18.8485 18.4074 18.9087 18.2628C18.969 18.1181 19 17.963 19 17.8064C19 17.6497 18.969 17.4946 18.9087 17.35C18.8485 17.2053 18.7602 17.0741 18.649 16.9637L11.1732 9.49899Z" fill="white"/>
+            </svg>
+        </button>
+        <a href="">Action</a>
+        <a href="">Adventure</a>
+        <a href="">Biography</a>
+        <a href="">Comedy</a>
+        <a href="">Crime</a>
+        <a href="">Drama</a>
+        <a href="">Fantasy</a>
+        <a href="">History</a>
+        <a href="">Horror</a>
+        <a href="">Mystery</a>
+        <a href="">Romance</a>
+        <a href="">Sci-Fi</a>
+        <a href="">Sport</a>
+        <a href="">Thriller</a>
+    `;
+
+    parent.append(categoriesDropdown);
+}
+
+async function renderFilmsandSeries() {
+
+}
+
+function renderFilmsandSeriesBoxes() {
+    const parentDom = document.getElementById("filterpageContainer");
+    parentDom.innerHTML = "";
+    const films = ""; //getEntity films
+    const series = ""; //getEntity series
+    parentDom.innerHTML = `
+        <div id="allFilmsandSeries"></div>
+    `;
+
+    //Lägg in både film och serier i en array för att kunna visa alla.
+
+    //Hämta alla filmer och alla serier. Samt hämta frågor till alla filmer och serier för att
+    //kunna se hur många frågor som finns till varje film och serie, genom att matcha id:n.
+    for (const film of films) {
+        const filmBox = document.createElement("div");
+        const selfId = ``;
+        filmBox.id = selfId;
+        filmBox.classList.add("allFilmsBox");
+
+        filmBox.innerHTML = `
+            <div id="contentContainerFilms">
+                <img src="${film.image}""></img>
+                <p>${film.title}</p>
+                <p>${film.year}</p>
+                <p>${quizfilms.questions.lenght}</p>
+            </div>
+        `;
+    }
+}
+
+renderFilterpageContainer("wrapper");
