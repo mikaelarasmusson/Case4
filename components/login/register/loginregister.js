@@ -76,4 +76,30 @@ function render_create_acc(parent) {
         render_login(document.querySelector("#wrapper"));
     });
 }
-render_create_acc(document.querySelector("#wrapper"))
+render_create_acc(document.querySelector("#wrapper"));
+
+document.getElementById("register").addEventListener("click", login)
+
+async function login (event) {
+    const usernameInput = document.getElementById("username_field").querySelector("input");
+    const passwordInput = document.getElementById("password_field").querySelector("input");
+
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+
+    const data = {
+        username: username,
+        password: password
+    }
+
+    const request = new Request("/php/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({data})
+    });
+
+    const response = await fetch(request)
+    const user = await response.json();
+
+    
+}
