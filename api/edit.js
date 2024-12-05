@@ -2,8 +2,7 @@
 
 import * as func from "./functions.js";
 
-//kolla så id:t stämmer med en profil sen kolla om det finns bara username/password/image eller om allt finns med.
-
+//fetch with a request to "/api/edit"
 export async function editProfileHandler(req) {
     const options = {
         headers: {"Content-Type": "application/json"}
@@ -42,8 +41,4 @@ export async function editProfileHandler(req) {
     
     const updatedUser = await func.deleteKey(userToEdit, "password");
     return new Response(JSON.stringify(updatedUser), options);
-}
-
-export async function updateScore() {
-    console.log("hej, det här kansek ska vara websocket jag vet inte");
 }

@@ -11,7 +11,7 @@ async function handler (req) {
     console.log("pathname is" + pathname);
 
     if (req.method === "GET") {
-        if (pathname === "/api/movies") {
+        if (pathname === "/api/films") {
             return mediaHandler(req, pathname);
         }
 

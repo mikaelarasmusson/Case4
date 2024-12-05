@@ -4,7 +4,7 @@ import * as func from "./functions.js";
 export async function mediaHandler(req, pathname) {
 
     switch (pathname) {
-        case "/api/movies": {
+        case "/api/films": {
             const options = {
                 headers: {"Content-Type": "application/json"}
             };
