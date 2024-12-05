@@ -2,6 +2,7 @@ import { serveDir, serveFile } from "jsr:@std/http/file-server";
 import { loginHandler } from "./login.js";
 import { registerHandler } from "./register.js";
 import { mediaHandler } from "./media.js";
+import { editProfileHandler } from "./edit.js";
 import * as func from "./functions.js";
 
 async function handler (req) {
@@ -38,6 +39,9 @@ async function handler (req) {
     }
 
     if (req.method === "PATCH") {
+        if (pathname === "/api/edit") {
+            return editProfileHandler(req);
+        }
         //do something
     }
 

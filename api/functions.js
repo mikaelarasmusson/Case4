@@ -5,7 +5,6 @@ export async function getFile(file) {
 }
 
 export async function writeToFile(file, data) {
-    console.log(data);
     const json = JSON.stringify(data, null, 2);
     await Deno.writeTextFile(file, json);
 }
@@ -26,6 +25,15 @@ export function deleteKey(object, key) {
     delete object[key];
     return object;
 }
+
+// export async function editProfile (allUsers, editedUser) {
+//     for (let i = 0; i < allUsers.length; i++) {
+//         if (allUsers[i].id === editedUser.id) {
+//             allUsers[i] = editedUser;
+//         }
+//     }
+//     return allUsers
+// }
 
 export async function checkKey (object, key) {
     if (!object[key]) {

@@ -15,8 +15,8 @@
   },
   {
     "id": 3,
-    "username": "newuser",
-    "password": "testlösen",
+    "username": "nyttnamn",
+    "password": "nyttlösen",
     "profileImg": "",
     "score": 0
   }
