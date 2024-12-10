@@ -1,3 +1,4 @@
+
 @media screen and (min-width: 430px) and (max-width: 1024px) {
     #filterpageContainer {
         width: 430px;
@@ -7,7 +8,7 @@
     }
 
     #profileContainerWithBackArrow {
-        margin: 52px 20px 0px 0px;
+        margin: 52px 0px 24px 0px;
     }
 
     #profileContentWithBackArrow {
@@ -56,6 +57,13 @@
         font-family: var(--paragraph_font);
         font-size: 16px;
         padding: 0px;
+    }
+
+    #searchButton {
+        width: 16px;
+        height: 16px;
+        background-color: #000;
+        border: none;
     }
 
     #filterContainer {

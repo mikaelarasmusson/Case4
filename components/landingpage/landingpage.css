@@ -1,12 +1,10 @@
 
+
 @media screen and (min-width: 430px) and (max-width: 1024px) {
-    body {
+    #landingpageContainer {
         background-image: url(../../images/background.png);
         background-size: cover;
         background-repeat: no-repeat;
-    }
-
-    #landingpageContainer {
         width: 430px;
         height: 932px;
         color: #FFFFFF;
@@ -106,9 +104,5 @@
         font-family: var(--paragraph_font);
         font-size: var(--paragraph_size);
         color: var(--paragraph_color);
-    }
-
-    .landingpageButton:hover {
-        cursor: pointer;
     }
 }
