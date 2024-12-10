@@ -187,4 +187,4 @@ function renderFilmsandSeriesBoxes() {
     }
 }
 
-renderFilterpageContainer("wrapper");
+// renderFilterpageContainer("wrapper");

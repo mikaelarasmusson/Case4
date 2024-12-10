@@ -167,4 +167,4 @@ function renderProfile(parentId) {
 }
   
 
-renderQuizpageContainer("wrapper")
+// renderQuizpageContainer("wrapper")
