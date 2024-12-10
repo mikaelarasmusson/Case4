@@ -21,6 +21,7 @@ function renderFilterpageContainer(parentId) {
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
     renderFilterDropDown(container.id);
+    renderFilmsandSeries(container.id);
 }
 
 //Lägg till eventlyssnare på alla knappar som skapats nedan
@@ -154,7 +155,10 @@ function renderFilterDropDown(parentId) {
 }
 
 async function renderFilmsandSeries() {
-
+    let films = State.get("films");
+    console.log(films);
+    let series = State.get("series");
+    console.log(series);
 }
 
 function renderFilmsandSeriesBoxes() {
@@ -187,4 +191,4 @@ function renderFilmsandSeriesBoxes() {
     }
 }
 
-//renderFilterpageContainer("wrapper");
+renderFilterpageContainer("wrapper");
