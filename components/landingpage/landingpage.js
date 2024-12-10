@@ -71,4 +71,4 @@ function renderLandingpageContent(parentId) {
   parent.append(contentElement);
 }
 
-//renderLandingpageContainer("wrapperLandingpage");
+renderLandingpageContainer("wrapper");
