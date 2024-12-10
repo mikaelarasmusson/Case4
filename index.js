@@ -1,7 +1,8 @@
 "use strict";
 
-function startApp() {
-    getData();
+async function startApp() {
+    await getData();
     render_login(document.getElementById("wrapper"));
+
 }
 startApp();
