@@ -13,6 +13,11 @@
 
     #profileContentWithBackArrow {
         display: flex;
+        justify-content: space-between;
+    }
+
+    #profileCont {
+        display: inline-flex;
         justify-content: flex-end;
         align-items: center;
         gap: 12px;
@@ -35,7 +40,7 @@
 
         border-radius: 50px;
         border: 1px solid #FFF;
-        background: url(../../images/profilepic.png) lightgray 50% / cover no-repeat;
+        background: lightgray 50% / cover no-repeat;
     }
 
     #searchContainer {
@@ -107,6 +112,7 @@
     }
 
     #filmsandSeriesBoxesContainer {
+        margin-bottom: 20px;
         display: grid;
         grid-template-columns: repeat(3, 120px);
         grid-template-rows: repeat(3, auto);
