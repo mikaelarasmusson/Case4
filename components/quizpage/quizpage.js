@@ -144,4 +144,4 @@ function renderQuizpageContainer(parentId) {
 }
   
 
-  renderQuizpageContainer("wrapper")
+  // renderQuizpageContainer("wrapper")
