@@ -3,8 +3,7 @@
 function renderFilterpageContainer(parentId) {
     // Get the parent element
     const parent = document.getElementById(parentId);
-    console.log(parent);
-    
+
     // Clear the parent element's content
     parent.innerHTML = "";
     
@@ -21,7 +20,7 @@ function renderFilterpageContainer(parentId) {
     renderFilterContainer(container.id);
     //renderFilterDropDown(container.id);
     renderFilmsandSeriesBoxesContainer(container.id);
-    renderFilmsandSeriesBoxes(container.id);
+    //renderFilmsandSeriesBoxes(container.id);
 }
 
 function renderProfileWithBackArrow(parentId) {
@@ -174,7 +173,7 @@ function renderFilmsandSeriesBoxesContainer(parentId) {
 }
 
 function renderFilmsandSeriesBoxes(parentDom) {
-
+    console.log(parentDom);
   // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
   // Här konkatenerar den två olika arrays till en enkel array.
   const allMedia = [...State.get("films"), ...State.get("series")];
@@ -217,7 +216,7 @@ function renderFilmsandSeriesBoxes(parentDom) {
     mediaContent.appendChild(quizLengthText);
 
     parentDom.appendChild(mediaContent);
-  }
+    }
 }
 
 // Lägg till popup för starta quiz
