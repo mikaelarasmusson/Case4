@@ -29,8 +29,30 @@ function render_login (parent){
         </div>
     </div> `
 
-    document.querySelector("#create_acc").addEventListener("click", () => {
-        renderLandingpageContainer("wrapper");
+    document.querySelector("#create_acc").addEventListener("click", async () => {
+        console.log("hej");
+
+        const usernameInput = document.getElementById("username_field").querySelector("input");
+        const passwordInput = document.getElementById("password_field").querySelector("input")
+        
+        let username = usernameInput.value;
+        let password = passwordInput.value;
+        
+        usernameInput.value = "";
+        passwordInput.value = "";
+
+        const request = new Request("/api/login", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username: username, password: password})
+        });
+        
+        const response = await fetch(request)
+        if (response.ok) {
+            const user = await response.json();
+            console.log(user);
+        }
+        // renderLandingpageContainer("wrapper");
     });
 
 }
@@ -72,40 +94,18 @@ function render_create_acc(parent) {
         
     </div> `
 
-    document.querySelector("#log_in_here").addEventListener("click", () => {
-        render_login(document.querySelector("#wrapper"));
-    });
+    // document.querySelector("#log_in_here").addEventListener("click", () => {
+    //     render_login(document.querySelector("#wrapper"));
+    // });
 }
 render_create_acc(document.querySelector("#wrapper"));
 
-let loginButton = document.getElementById("create_acc");
-console.log(loginButton);
+// let loginButton = document.getElementById("create_acc");
+// console.log(loginButton);
 
-loginButton.addEventListener("click", async () => {
+// loginButton.addEventListener("click", () => {
+//     console.log("clicked");
+// })
 
-    const usernameInput = document.getElementById("username_field").querySelector("input");
-    const passwordInput = document.getElementById("password_field").querySelector("input");
 
-    console.log(usernameInput);
-    console.log(passwordInput);
 
-    const username = usernameInput.value;
-    const password = passwordInput.value;
-
-    console.log(username);
-    console.log(password);
-
-    const data = {
-        username: username,
-        password: password
-    }
-
-    const request = new Request("/php/login", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({data})
-    });
-
-    const response = await fetch(request)
-    const user = await response.json();
-});
