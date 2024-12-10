@@ -43,6 +43,10 @@ function renderProfileLandingpage(parentId) {
   profileContainer.append(profileContent);
 }
 
+function renderPopUpJoinParty(parentId) {
+
+}
+
 function renderLandingpageContent(parentId) {
   // Get the parent element
   const parent = document.getElementById(parentId);
@@ -66,9 +70,21 @@ function renderLandingpageContent(parentId) {
       <button id="buttonJoinParty" class="landingpageButton">Join Party</button>
     </div>  
   `;
-
   // Append the content element to the parent element
   parent.append(contentElement);
+
+
+  document.querySelector("#buttonSinglePlayer").addEventListener("click", () => {
+    renderFilterpageContainer("wrapper");
+  });
+
+  document.querySelector("#buttonMultiPlayer").addEventListener("click", () => {
+    renderFilterpageContainer("wrapper");
+  });
+
+  document.querySelector("#buttonJointParty").addEventListener("click", () => {
+    renderPopUpJoinParty("wrapper");
+  })
 }
 
 renderLandingpageContainer("wrapper");
