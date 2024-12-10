@@ -61,5 +61,12 @@
     "password": "testing",
     "profileImg": "",
     "score": 0
+  },
+  {
+    "id": 10,
+    "username": "testarigen",
+    "password": "testarigen",
+    "profileImg": "",
+    "score": 0
   }
 ]
