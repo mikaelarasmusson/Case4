@@ -60,6 +60,23 @@ export async function mediaHandler(req, pathname) {
 
         case "/api/users": {
             //todo hämta users filen och ta bort lösenordet från alla användare och sen skicka tillbaka;
+            console.log("hej");
+            const options = {
+                headers: {"Content-Type": "application/json"}
+            }
+
+            const users = await func.getFile("./database/users.json");
+
+            if (!users) {
+                return func.sendResponse("Internal server error", 500);
+            }
+
+            for (let i = 0; i < users.length; i++) {
+                const currentUser = users[i];
+                for (let key in currentUser)  {
+                    console.log(key);
+                }
+            }
         }
     }
 }

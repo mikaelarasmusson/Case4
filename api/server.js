@@ -26,6 +26,10 @@ async function handler (req) {
         if (pathname === "/api/quizseries") {
             return mediaHandler(req, pathname);
         }
+
+        if (pathname === "/api/users") {
+            return mediaHandler(req, pathname);
+        }
     }
 
     if (req.method === "POST") {
