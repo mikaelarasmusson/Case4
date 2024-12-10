@@ -4,7 +4,7 @@ body{
 }
 
 @media screen and (min-width: 430px) and (max-width: 1024px) {
-    #wrapper {
+    #quizpage_wrapper {
         height: 932px;
         color: #FFFFFF;
         overflow: hidden;
