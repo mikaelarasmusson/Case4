@@ -30,7 +30,6 @@ function render_login (parent){
     </div> `
 
     document.querySelector("#create_acc").addEventListener("click", async () => {
-        console.log("hej");
 
         const usernameInput = document.getElementById("username_field").querySelector("input");
         const passwordInput = document.getElementById("password_field").querySelector("input")
@@ -50,9 +49,11 @@ function render_login (parent){
         const response = await fetch(request)
         if (response.ok) {
             const user = await response.json();
-            console.log(user);
+            localStorage.setItem("user", JSON.stringify(user));
+            renderLandingpageContainer("wrapper");
+        } else {
+            console.log("error");
         }
-        // renderLandingpageContainer("wrapper");
     });
 
 }
@@ -94,18 +95,12 @@ function render_create_acc(parent) {
         
     </div> `
 
-    // document.querySelector("#log_in_here").addEventListener("click", () => {
-    //     render_login(document.querySelector("#wrapper"));
-    // });
+    document.querySelector("#log_in_here").addEventListener("click", () => {
+        render_login(document.querySelector("#wrapper"));
+    });
 }
 render_create_acc(document.querySelector("#wrapper"));
 
-// let loginButton = document.getElementById("create_acc");
-// console.log(loginButton);
-
-// loginButton.addEventListener("click", () => {
-//     console.log("clicked");
-// })
 
 
 

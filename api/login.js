@@ -21,7 +21,6 @@ export async function loginHandler(req){
         }
 
         const currentUser = await req.json();
-        console.log(currentUser);
         const currentUserEmpty = await func.checkBody(currentUser);
 
         if (currentUserEmpty) {
