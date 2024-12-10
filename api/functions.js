@@ -26,15 +26,6 @@ export function deleteKey(object, key) {
     return object;
 }
 
-// export async function editProfile (allUsers, editedUser) {
-//     for (let i = 0; i < allUsers.length; i++) {
-//         if (allUsers[i].id === editedUser.id) {
-//             allUsers[i] = editedUser;
-//         }
-//     }
-//     return allUsers
-// }
-
 export async function checkKey (object, key) {
     if (!object[key]) {
         return 1;
