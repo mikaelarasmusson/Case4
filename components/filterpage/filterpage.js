@@ -21,7 +21,7 @@ function renderFilterpageContainer(parentId) {
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
     renderFilterDropDown(container.id);
-    renderFilmsandSeries(container.id);
+    renderFilmsandSeriesBoxes(container.id);
 }
 
 //Lägg till eventlyssnare på alla knappar som skapats nedan
@@ -153,27 +153,27 @@ function renderFilterDropDown(parentId) {
 
     parent.append(categoriesDropdown);
 }
-
-async function renderFilmsandSeries() {
-    let films = State.get("films");
-    console.log(films);
-    let series = State.get("series");
-    console.log(series);
-}
-
+/*
 function renderFilmsandSeriesBoxes() {
-    const parentDom = document.getElementById("filterpageContainer");
+    const parentDom = document.getElementById("wrapper");
     parentDom.innerHTML = "";
-    const films = ""; //getEntity films
-    const series = ""; //getEntity series
+
+    const films = State.get("films"); //getEntity films
+    console.log(films);
+    const series = State.get("series"); //getEntity series
+    console.log(series);
     parentDom.innerHTML = `
         <div id="allFilmsandSeries"></div>
     `;
+    
+    allFilms = [];
+
 
     //Lägg in både film och serier i en array för att kunna visa alla.
 
     //Hämta alla filmer och alla serier. Samt hämta frågor till alla filmer och serier för att
     //kunna se hur många frågor som finns till varje film och serie, genom att matcha id:n.
+    
     for (const film of films) {
         const filmBox = document.createElement("div");
         const selfId = ``;
@@ -189,6 +189,54 @@ function renderFilmsandSeriesBoxes() {
             </div>
         `;
     }
+
+}
+*/
+function renderFilmsandSeriesBoxes() {
+  const parentDom = document.getElementById("wrapper");
+  parentDom.innerHTML = "";
+
+  // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
+  // Här konkatenerar den två olika arrays till en enkel array.
+  const allMedia = [...State.get("films"), ...State.get("series")];
+  const quizFilms = State.get("quizfilms");
+  const quizSeries = State.get("quizseries");
+
+  for (const media of allMedia) {
+    const mediaContent = document.createElement("div");
+    mediaContent.id = media.id;
+    mediaContent.classList.add("mediaContent");
+
+    const image = document.createElement("img");
+    image.src = media.image;
+    image.classList.add("mediaImage");
+    mediaContent.appendChild(image);
+
+    const title = document.createElement("p");
+    title.textContent = media.title;
+    mediaContent.appendChild(title);
+
+    const year = document.createElement("div");
+    year.innerHTML = `<p>(${media.year})</p>`;
+    mediaContent.appendChild(year);
+
+    let quizLength;
+    // om media type är film så kommer quizdata referera till quizfilms om media type
+    // är något annat så kommer quizdata referera till quizseries.
+    const quizData = media.type === "film" ? quizFilms : quizSeries;
+    const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
+    if (matchingQuiz) {
+    quizLength = matchingQuiz.questions.length;
+    } else {
+    quizLength = 0;
+    }
+
+    const quizLengthText = document.createElement("p");
+    quizLengthText.textContent = `${quizLength} questions`;
+    mediaContent.appendChild(quizLengthText);
+
+    parentDom.appendChild(mediaContent);
+  }
 }
 
 renderFilterpageContainer("wrapper");
