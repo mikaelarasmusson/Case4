@@ -54,9 +54,6 @@ async function handler (req) {
             urlRoot: ""
         })
     }
-
-
-
 }
 
 Deno.serve(handler);
