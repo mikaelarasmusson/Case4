@@ -1,22 +1,21 @@
 body{
     margin: 0;
+    background-color: black;
 }
 
 @media screen and (min-width: 430px) and (max-width: 1024px) {
     #wrapper {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 430px;
         height: 932px;
-        background-color: rgba(0, 0, 0, 0.70);
         color: #FFFFFF;
+        overflow: hidden;
     }
 
 
     #profileContainer {
-        margin: 48px 0px;
-        text-align: end;
+        margin: 48px 19px;
+        display: flex;
+        justify-content: space-between;
+
   
     }
 
@@ -60,11 +59,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
+    width: 43px;
     border-radius: 50%;
-    margin: auto;
     position: relative;
-    top: -23px;
+    bottom: 30px;
+    height: 43px;
+    margin-left: 10px;
   
     }
     
@@ -73,6 +73,57 @@ body{
     width: 91px;
     }
 
+    #question{
+        text-align: center;
+    }
 
+    .answer{
+        display: flex;
+        background-color: #333333;
+        width: 185px;
+        height: 132px;
+        justify-content: center;
+        align-items: center;
+        border-radius: 10px;
+        border: 2px solid #3E3E3E;
+    }
+
+    #answers_box{
+        display: flex;
+        row-gap: 20px;
+        column-gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 45px;
+    }
+
+    .answer-letter{
+        background-color: #D9D9D9;
+        width: 34px;
+        height: 34px;
+        color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+    }
+
+    #letter_box{
+        display: flex;
+        row-gap: 124px;
+        column-gap: 170px;
+        flex-wrap: wrap;
+        margin-left: 10px;
+        position: relative;
+        bottom: 330px;
+    }
+
+    #backArrow{
+        background-color: black;
+        border: none;
+    }
+
+    #quizpageContent{
+        margin: 0 19px;
+    }
 
 }
