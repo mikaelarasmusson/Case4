@@ -21,6 +21,7 @@ function renderFilterpageContainer(parentId) {
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
     renderFilterDropDown(container.id);
+    renderFilmsandSeriesBoxesContainer(container.id);
     renderFilmsandSeriesBoxes(container.id);
 }
 
@@ -156,8 +157,15 @@ function renderFilterDropDown(parentId) {
     parent.appendChild(categoriesDropdown);
 }
 
-function renderFilmsandSeriesBoxes() {
-  const parentDom = document.getElementById("filterpageContainer");
+function renderFilmsandSeriesBoxesContainer(parentId) {
+  const parent = document.getElementById(parentId);
+  const container = document.createElement("div");
+  container.id = "filmsandSeriesBoxesContainer";
+  parent.appendChild(container);
+  renderFilmsandSeriesBoxes(container);
+}
+
+function renderFilmsandSeriesBoxes(parentDom) {
 
   // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
   // Här konkatenerar den två olika arrays till en enkel array.
