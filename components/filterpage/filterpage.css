@@ -3,5 +3,135 @@
         width: 430px;
         height: 932px;
         color: #FFFFFF;
+        padding: 52px 20px 52px 19px;
+    }
+
+    #profileContainerWithBackArrow {
+        margin: 52px 20px 0px 0px;
+    }
+
+    #profileContentWithBackArrow {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #starIcon {
+        width: 19px;
+        height: 20px;
+        fill: #FFD07A;
+    }
+
+    #userPoints {
+        font-family: var(--paragraph_font);
+        font-size: var(--paragraph_size);
+    }
+
+    #profilePic {
+        width: 50px;
+        height: 50px;
+
+        border-radius: 50px;
+        border: 1px solid #FFF;
+        background: url(../../images/profilepic.png) lightgray 50% / cover no-repeat;
+    }
+
+    #searchContainer {
+        display: flex;
+        padding: 8px 16px;
+        margin-bottom: 16px;
+        justify-content: space-between;
+        align-items: center;
+
+        border-radius: 50px;
+        border: 1px solid #6F7487;
+        background: #000;
+        color: #FFF;
+    }
+
+    #searchBar {
+        background-color: #000;
+        color: #FFF;
+        font-family: var(--paragraph_font);
+        font-size: 16px;
+        padding: 0px;
+    }
+
+    #filterContainer {
+        margin: 0 0 32px 0;
+    }
+
+    #buttonContainerFilter {
+        display: flex;
+        padding: 0px;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 12px;
+    }
+
+    #buttonCategories > p {
+        margin: 0;
+    }
+
+    .filterpageButton {
+        display: flex;
+        padding: 8px 16px;
+        flex-direction: column;
+
+        border-radius: 50px;
+        border: 1px solid #6F7487;
+        background: #000;
+        color: #FFF;
+    }
+
+    #buttonCategories {
+        display: flex;
+        padding: 8px 16px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+
+        border-radius: 50px;
+        border: 1px solid #6F7487;
+        background: #000;
+        color: #FFF;
+    }
+
+    #filmsandSeriesBoxesContainer {
+        display: grid;
+        grid-template-columns: repeat(3, 120px);
+        grid-template-rows: repeat(3, auto);
+        grid-gap: 17px;
+    }
+
+    .mediaImage {
+        width: 119px;
+        height: 173px;
+        border-radius: 5px;
+    }
+
+    .mediaTitle {
+        margin: 12px 0px 0px 0px;
+        font-family: var(--paragraph_font);
+        font-size: 14px;
+        line-height: 130%; /* 18.2px */
+        letter-spacing: 0.017px;
+    }
+
+    .mediaYear {
+        margin: 2px 0px;
+        font-family: var(--paragraph_font);
+        font-size: 14px;
+        line-height: 130%; /* 18.2px */
+        letter-spacing: 0.017px;
+    }
+
+    .mediaQuizLength {
+        margin: 4px 0px 0px 0px;
+        font-family: var(--paragraph_font);
+        font-size: 12px;
+        line-height: 130%; /* 15.6px */
+        letter-spacing: 0.014px;
     }
 }

@@ -81,7 +81,7 @@
         "title": "Jurassic Park",
         "year": 1993,
         "genre": ["Action", "Adventure", "Sci-Fi", "Thriller"],
-        "image": "./images/jurrassicpark.jpg"
+        "image": "./images/jurassicpark.jpg"
     },
     {
         "id": 13,
