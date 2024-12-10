@@ -4,7 +4,8 @@ const _STATE = {
     films: [],
     series: [],
     quizfilms: [],
-    quizseries: []
+    quizseries: [],
+    users: []
 };
 
 async function getData() {
@@ -12,16 +13,19 @@ async function getData() {
     const seriesRequest = new Request("./api/series");
     const quizfilmsRequest = new Request("./api/quizfilms");
     const quizseriesRequest = new Request("./api/quizseries");
+    const usersRequest = new Request("/api/users");
 
     const films = await fetcher(filmRequest);
     const series = await fetcher(seriesRequest);
     const quizfilms = await fetcher(quizfilmsRequest);
     const quizseries = await fetcher(quizseriesRequest);
+    const users = await fetcher(usersRequest);
 
     _STATE.films = films;
     _STATE.series = series;
     _STATE.quizfilms = quizfilms;
     _STATE.quizseries = quizseries;
+    _STATE.users = users;
 }
 
 const State = {

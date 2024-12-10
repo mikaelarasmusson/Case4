@@ -59,8 +59,6 @@ export async function mediaHandler(req, pathname) {
         }
 
         case "/api/users": {
-            //todo hämta users filen och ta bort lösenordet från alla användare och sen skicka tillbaka;
-            console.log("hej");
             const options = {
                 headers: {"Content-Type": "application/json"}
             }
@@ -73,10 +71,15 @@ export async function mediaHandler(req, pathname) {
 
             for (let i = 0; i < users.length; i++) {
                 const currentUser = users[i];
+
                 for (let key in currentUser)  {
-                    console.log(key);
+                    if (key === "password") {
+                        func.deleteKey(currentUser, key);
+                    }
                 }
             }
+
+            return new Response(JSON.stringify(users), options);
         }
     }
 }

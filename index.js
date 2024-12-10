@@ -7,5 +7,3 @@ async function startApp() {
 }
 startApp();
 
-let request = new Request("/api/users");
-fetch(request);
