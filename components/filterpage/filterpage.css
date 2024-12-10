@@ -1,0 +1,7 @@
+@media screen and (min-width: 430px) and (max-width: 1024px) {
+    #filterpageContainer {
+        width: 430px;
+        height: 932px;
+        color: #FFFFFF;
+    }
+}
