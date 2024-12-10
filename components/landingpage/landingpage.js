@@ -16,20 +16,20 @@ function renderLandingpageContainer(parentId) {
   parent.append(container);
   
   // Render the landing page content inside the container
-  renderProfile(container.id);
+  renderProfileLandingpage(container.id);
   renderLandingpageContent(container.id);
 }
 
 // Skapa en egen funktion för profilbilden, poäng och stjärnan
-function renderProfile(parentId) {
+function renderProfileLandingpage(parentId) {
   const parent = document.getElementById(parentId);
 
   const profileContainer = document.createElement("div");
-  profileContainer.id = "profileContainer";
+  profileContainer.id = "profileContainerLandingpage";
   parent.append(profileContainer);
 
   const profileContent = document.createElement("div");
-  profileContent.id = "profileContent";
+  profileContent.id = "profileContentLandingpage";
   profileContent.classList.add("profile");
   
   profileContent.innerHTML = `
@@ -71,4 +71,4 @@ function renderLandingpageContent(parentId) {
   parent.append(contentElement);
 }
 
-//renderLandingpageContainer("wrapperLandingpage");
+renderLandingpageContainer("wrapper");

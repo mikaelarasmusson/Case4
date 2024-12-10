@@ -24,7 +24,7 @@ function render_login (parent){
 
             <div id="register">
                 <p id="create_acc">Sign in</p>
-                <p>Don’t have an account? <span>Sign Up</span> </p>
+                <p>Don’t have an account? <span id="sign_up_button">Sign Up</span> </p>
             </div>
         </div>
     </div> `
@@ -56,6 +56,9 @@ function render_login (parent){
         }
     });
 
+    document.querySelector("#sign_up_button").addEventListener("click", () => {
+        render_create_acc(document.querySelector("#wrapper"));
+    });
 }
 
 const new_wrapper = document.querySelector("#wrapper");

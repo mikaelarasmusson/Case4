@@ -2,6 +2,13 @@
     margin: 0;
 }
 
+
+#leaderboardpage_wrapper {
+    height: 932px;
+    color: #FFFFFF;
+    overflow: hidden;
+}
+
 #leaderboard{
     display: flex;
   justify-content: center;
