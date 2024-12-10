@@ -19,5 +19,47 @@
     "password": "nyttlösen",
     "profileImg": "",
     "score": 0
+  },
+  {
+    "id": 4,
+    "username": "testar",
+    "password": "testar",
+    "profileImg": "",
+    "score": 0
+  },
+  {
+    "id": 5,
+    "username": "Hampus2",
+    "password": "test2",
+    "profileImg": "",
+    "score": 0
+  },
+  {
+    "id": 6,
+    "username": "Hampus3",
+    "password": "test3",
+    "profileImg": "",
+    "score": 0
+  },
+  {
+    "id": 7,
+    "username": "aaaa",
+    "password": "ddd",
+    "profileImg": "",
+    "score": 0
+  },
+  {
+    "id": 8,
+    "username": "ok",
+    "password": "as",
+    "profileImg": "",
+    "score": 0
+  },
+  {
+    "id": 9,
+    "username": "testing",
+    "password": "testing",
+    "profileImg": "",
+    "score": 0
   }
 ]

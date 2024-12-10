@@ -57,5 +57,9 @@ export async function mediaHandler(req, pathname) {
 
             return new Response(JSON.stringify(quizseries), options);
         }
+
+        case "/api/users": {
+            //todo hämta users filen och ta bort lösenordet från alla användare och sen skicka tillbaka;
+        }
     }
 }

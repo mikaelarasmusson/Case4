@@ -23,19 +23,19 @@ function render_login (parent){
             </div>
 
             <div id="register">
-                <p id="create_acc">Sign in</p>
+                <p id="login">Sign in</p>
                 <p>Don’t have an account? <span id="sign_up_button">Sign Up</span> </p>
             </div>
         </div>
     </div> `
 
-    document.querySelector("#create_acc").addEventListener("click", async () => {
+    document.querySelector("#login").addEventListener("click", async () => {
 
         const usernameInput = document.getElementById("username_field").querySelector("input");
         const passwordInput = document.getElementById("password_field").querySelector("input")
         
-        let username = usernameInput.value;
-        let password = passwordInput.value;
+        const username = usernameInput.value;
+        const password = passwordInput.value;
         
         usernameInput.value = "";
         passwordInput.value = "";
@@ -81,12 +81,15 @@ function render_create_acc(parent) {
             <div id="inner_box">
                 <div id="username_field">
                     <input type="text" placeholder="Username" id="username">
+                    <p id="username_error"></p>
                 </div>
                 <div id="password_field">
                     <input type="password" placeholder="Password" id="password">
+                    <p id="password_error">här ska det stå ett fel</p>
                 </div>
                 <div id="repeat_password_field">
                     <input type="password" placeholder="Repeat password" id="password">
+                    <p id="repeat_password_error">här ska det stå ett fel</p>
                 </div>
             </div>
 
@@ -101,6 +104,70 @@ function render_create_acc(parent) {
     document.querySelector("#log_in_here").addEventListener("click", () => {
         render_login(document.querySelector("#wrapper"));
     });
+
+    const usernameError = document.getElementById("username_error");
+    const passwordError = document.getElementById("password_error");
+    const repeatPasswordError = document.getElementById("repeat_password_error");
+
+    usernameError.style.display = "none";
+    passwordError.style.display = "none";
+    repeatPasswordError.style.display = "none";
+
+    document.getElementById("create_acc").addEventListener("click", async () => {
+
+        usernameError.style.display = "none";
+        passwordError.style.display = "none";
+        repeatPasswordError.style.display = "none";
+
+        const usernameInput = document.getElementById("username_field").querySelector("input");
+        const passwordInput = document.getElementById("password_field").querySelector("input");
+        const repeatPasswordInput = document.getElementById("repeat_password_field").querySelector("input");
+
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+        const repeatPassword = repeatPasswordInput.value;
+
+        if (password !== repeatPassword) {
+            console.log("passwords must match");
+
+            repeatPasswordError.textContent = "Passwords must match";
+            repeatPasswordError.style.display = "block";
+
+            passwordInput.value = "";
+            repeatPasswordInput.value = "";
+            return;
+        }
+
+        for (let i = 0; i <= username.length; i++) {
+            if (i > 14) {
+                usernameError.style.display = "block";
+                usernameError.textContent = "Username can't be longer than 14 characters";
+                return;
+            }
+        }
+
+        usernameInput.value = "";
+        passwordInput.value = "";
+        repeatPasswordInput.value = "";
+
+        const request = new Request("/api/register", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username: username, password: password})
+        });
+
+        let response = await fetch(request);
+        if (response.ok) {
+            let newUser = await response.json();
+            localStorage.setItem("user", JSON.stringify(newUser));
+            console.log(newUser);
+            renderLandingpageContainer("wrapper");
+        } else {
+            console.log("error");
+        }
+
+
+    })
 }
 render_create_acc(document.querySelector("#wrapper"));
 

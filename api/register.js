@@ -8,7 +8,6 @@ export async function registerHandler(req) {
 
     const usersFilePath = "./database/users.json";
     const allUsers = await func.getFile(usersFilePath);
-    console.log(allUsers);
 
     if (!allUsers) {
         return func.sendResponse("Internal Server Error", 500);
