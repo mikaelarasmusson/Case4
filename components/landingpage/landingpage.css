@@ -20,11 +20,11 @@ body {
         align-items: center;
     }
 
-    #profileContainer {
+    #profileContainerLandingpage {
         margin: 52px 20px 179px 293px;
     }
 
-    #profileContent {
+    #profileContentLandingpage {
         display: inline-flex;
         padding: 0px;
         justify-content: center;
