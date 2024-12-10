@@ -136,4 +136,4 @@ function renderTopLeaderboard(parentId){
 
   
 
- renderQuizpageContainer("wrapper")
+//  renderQuizpageContainer("wrapper")
