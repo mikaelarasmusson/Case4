@@ -78,14 +78,22 @@ function render_create_acc(parent) {
 }
 render_create_acc(document.querySelector("#wrapper"));
 
-document.getElementById("register").addEventListener("click", login)
+let loginButton = document.getElementById("create_acc");
+console.log(loginButton);
 
-async function login (event) {
+loginButton.addEventListener("click", async () => {
+
     const usernameInput = document.getElementById("username_field").querySelector("input");
     const passwordInput = document.getElementById("password_field").querySelector("input");
 
+    console.log(usernameInput);
+    console.log(passwordInput);
+
     const username = usernameInput.value;
     const password = passwordInput.value;
+
+    console.log(username);
+    console.log(password);
 
     const data = {
         username: username,
@@ -100,6 +108,4 @@ async function login (event) {
 
     const response = await fetch(request)
     const user = await response.json();
-
-    
-}
+});
