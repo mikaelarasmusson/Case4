@@ -165,61 +165,115 @@ function renderFilterDropDown(parentId) {
 */
 
 function renderFilmsandSeriesBoxesContainer(parentId) {
-  const parent = document.getElementById(parentId);
-  const container = document.createElement("div");
-  container.id = "filmsandSeriesBoxesContainer";
-  parent.appendChild(container);
-  renderFilmsandSeriesBoxes(container);
+    const parent = document.getElementById(parentId);
+    const container = document.createElement("div");
+    container.id = "filmsandSeriesBoxesContainer";
+    parent.appendChild(container);
+    renderFilmsandSeriesBoxes(container);
 }
 
 function renderFilmsandSeriesBoxes(parentDom) {
-    console.log(parentDom);
-  // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
-  // Här konkatenerar den två olika arrays till en enkel array.
-  const allMedia = [...State.get("films"), ...State.get("series")];
-  const quizFilms = State.get("quizfilms");
-  const quizSeries = State.get("quizseries");
+    // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
+    // Här konkatenerar den två olika arrays till en enkel array.
+    const allMedia = [...State.get("films"), ...State.get("series")];
+    console.log(allMedia);
+    const quizFilms = State.get("quizfilms");
+    console.log(quizFilms);
+    const quizSeries = State.get("quizseries");
+    console.log(quizSeries);
+    
+    for (const media of allMedia) {
+        const mediaContent = document.createElement("div");
+        mediaContent.id = media.id;
+        mediaContent.classList.add("mediaContent");
+        
+        const image = document.createElement("img");
+        image.src = media.image;
+        image.classList.add("mediaImage");
+        mediaContent.appendChild(image);
+        
+        const title = document.createElement("p");
+        title.textContent = media.title;
+        title.classList.add("mediaTitle");
+        mediaContent.appendChild(title);
+        
+        const year = document.createElement("div");
+        year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
+        mediaContent.appendChild(year);
+        
+        let quizLength;
+        console.log(media);
+        console.log(media.type); // Använder inte type i API, vad definerar om det är film eller serier? Ändra till det vi använder
+        console.log(media.id);
+        // om media type är film så kommer quizdata referera till quizfilms om media type
+        // är något annat så kommer quizdata referera till quizseries.
+        const quizData = media.type === "film" ? quizFilms : quizSeries;
+        console.log(quizData);
+        const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
+        console.log(matchingQuiz);
 
-  for (const media of allMedia) {
-    const mediaContent = document.createElement("div");
-    mediaContent.id = media.id;
-    mediaContent.classList.add("mediaContent");
+        if (matchingQuiz) {
+            quizLength = matchingQuiz.questions.length;
+        } else {
+            quizLength = 0;
+        }
+        
 
-    const image = document.createElement("img");
-    image.src = media.image;
-    image.classList.add("mediaImage");
-    mediaContent.appendChild(image);
+        const quizLengthText = document.createElement("p");
+        quizLengthText.textContent = `${quizLength} questions`;
+        quizLengthText.classList.add("mediaQuizLength");
+        mediaContent.appendChild(quizLengthText);
 
-    const title = document.createElement("p");
-    title.textContent = media.title;
-    title.classList.add("mediaTitle");
-    mediaContent.appendChild(title);
+        parentDom.appendChild(mediaContent);
 
-    const year = document.createElement("div");
-    year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
-    mediaContent.appendChild(year);
+        mediaContent.addEventListener("click", () => {
+            console.log(media);
+            renderStartQuizPopup(parentDom.id, media.id, media.type === "film" ? "films" : "series");
+        });
 
-    let quizLength;
-    // om media type är film så kommer quizdata referera till quizfilms om media type
-    // är något annat så kommer quizdata referera till quizseries.
-    const quizData = media.type === "film" ? quizFilms : quizSeries;
-    const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
-    if (matchingQuiz) {
-    quizLength = matchingQuiz.questions.length;
-    } else {
-    quizLength = 0;
-    }
-
-    const quizLengthText = document.createElement("p");
-    quizLengthText.textContent = `${quizLength} questions`;
-    quizLengthText.classList.add("mediaQuizLength");
-    mediaContent.appendChild(quizLengthText);
-
-    parentDom.appendChild(mediaContent);
     }
 }
 
 // Lägg till popup för starta quiz
+function renderStartQuizPopup(parentId, mediaId, type) {
+    console.log(mediaId, type);
+    const parent = document.getElementById(parentId);
+
+    let quizData;
+    let mediaData;
+
+    switch (type) {
+        case "films":
+        quizData = State.get("quizfilms");
+        mediaData = State.get("films");
+        break;
+        case "series":
+        quizData = State.get("quizseries");
+        mediaData = State.get("series");
+        break;
+        default:
+        console.error("Invalid type");
+        return;
+    }
+
+    const media = mediaData.find((media) => media.id === mediaId);
+
+    if (media) {
+        const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
+
+        const popup = document.createElement("div");
+        popup.id = "startQuizPopup";
+        popup.innerHTML = `
+        <div class="startQuizPopupContent">
+            <h2>${media.title}</h2>
+            <p>${media.year}</p>
+            <p>${matchingQuiz ? matchingQuiz.questions.length : 0} questions</p>
+        </div>
+        `;
+
+        parent.appendChild(popup);
+    }
+}
 
 
 renderFilterpageContainer("wrapper");
