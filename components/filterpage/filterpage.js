@@ -102,6 +102,7 @@ function renderFilterContents (parentId) {
     buttonFilms.textContent = "Films";
     buttonContainer.appendChild(buttonFilms);
 
+    /*
     buttonFilms.addEventListener("click", () => {
         const filmsandSeriesContainer = document.getElementById("filmsandSeriesBoxesContainer");
         filmsandSeriesContainer.innerHTML = "";
@@ -109,6 +110,7 @@ function renderFilterContents (parentId) {
         const onlyFilms = State.get("films");
         renderFilmsandSeriesBoxes(onlyFilms, filmsandSeriesContainer);
     });
+    */
     
     const buttonSeries = document.createElement("button");
     buttonSeries.id = "buttonSeries";    
@@ -176,11 +178,8 @@ function renderFilmsandSeriesBoxes(parentDom) {
     // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
     // Här konkatenerar den två olika arrays till en enkel array.
     const allMedia = [...State.get("films"), ...State.get("series")];
-    console.log(allMedia);
     const quizFilms = State.get("quizfilms");
-    console.log(quizFilms);
     const quizSeries = State.get("quizseries");
-    console.log(quizSeries);
     
     for (const media of allMedia) {
         const mediaContent = document.createElement("div");
@@ -200,14 +199,14 @@ function renderFilmsandSeriesBoxes(parentDom) {
         const year = document.createElement("div");
         year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
         mediaContent.appendChild(year);
+
+        const isFilm = State.get("films").find((film) => film.id === media.id) !== undefined;
+        console.log(isFilm);
         
         let quizLength;
-        console.log(media);
-        console.log(media.type); // Använder inte type i API, vad definerar om det är film eller serier? Ändra till det vi använder
-        console.log(media.id);
         // om media type är film så kommer quizdata referera till quizfilms om media type
         // är något annat så kommer quizdata referera till quizseries.
-        const quizData = media.type === "film" ? quizFilms : quizSeries;
+        const quizData = isFilm ? quizFilms : quizSeries;
         console.log(quizData);
         const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
         console.log(matchingQuiz);
@@ -227,33 +226,27 @@ function renderFilmsandSeriesBoxes(parentDom) {
         parentDom.appendChild(mediaContent);
 
         mediaContent.addEventListener("click", () => {
-            console.log(media);
-            renderStartQuizPopup(parentDom.id, media.id, media.type === "film" ? "films" : "series");
+            renderStartQuizPopup(parentDom.id, media.id, isFilm ? "films" : "series");
         });
 
     }
 }
 
 // Lägg till popup för starta quiz
-function renderStartQuizPopup(parentId, mediaId, type) {
-    console.log(mediaId, type);
+function renderStartQuizPopup(parentId, mediaId) {
     const parent = document.getElementById(parentId);
 
     let quizData;
     let mediaData;
 
-    switch (type) {
-        case "films":
+    const isFilm = State.get("films").find((film) => film.id === mediaId);
+
+    if (isFilm) {
         quizData = State.get("quizfilms");
         mediaData = State.get("films");
-        break;
-        case "series":
+    } else {
         quizData = State.get("quizseries");
         mediaData = State.get("series");
-        break;
-        default:
-        console.error("Invalid type");
-        return;
     }
 
     const media = mediaData.find((media) => media.id === mediaId);
