@@ -177,6 +177,8 @@ function renderFilmsandSeriesBoxes(parentDom) {
   // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
   // Här konkatenerar den två olika arrays till en enkel array.
   const allMedia = [...State.get("films"), ...State.get("series")];
+  const films = State.get("films");
+  const series = State.get("series");
   const quizFilms = State.get("quizfilms");
   const quizSeries = State.get("quizseries");
 
@@ -217,7 +219,60 @@ function renderFilmsandSeriesBoxes(parentDom) {
 
     parentDom.appendChild(mediaContent);
     }
+
+    document.getElementById("buttonFilms").addEventListener("click", async (event) => {
+        const button = event.target;
+        filterFilmsAndSeriesBoxes(films, quizFilms, button);
+    })
+    
+    document.getElementById("buttonSeries").addEventListener("click", async (event) => {
+        const button = event.target;
+        filterFilmsAndSeriesBoxes(series, quizSeries, button);
+    })
 }
+
+function filterFilmsAndSeriesBoxes (mediaType, quizData, button) {
+
+    const container = document.getElementById("filmsandSeriesBoxesContainer");
+    container.innerHTML = "";
+
+    console.log(mediaType);
+    for (const media of mediaType) {
+        const mediaContent = document.createElement("div");
+        mediaContent.id = media.id;
+        mediaContent.classList.add("mediaContent");
+
+        const image = document.createElement("img");
+        image.src = media.image;
+        image.classList.add("mediaImage");
+        mediaContent.appendChild(image);
+
+        const title = document.createElement("p");
+        title.textContent = media.title;
+        title.classList.add("mediaTitle");
+        mediaContent.appendChild(title);
+
+        const year = document.createElement("div");
+        year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
+        mediaContent.appendChild(year);
+
+        let quizLength;
+        const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
+        if (matchingQuiz) {
+            quizLength = matchingQuiz.questions.length;
+        } else {
+            quizLength = 0;
+        }
+        
+        const quizLengthText = document.createElement("p");
+        quizLengthText.textContent = `${quizLength} questions`;
+        quizLengthText.classList.add("mediaQuizLength");
+        mediaContent.appendChild(quizLengthText);
+
+        container.appendChild(mediaContent);
+    }
+}
+
 
 // Lägg till popup för starta quiz
 
