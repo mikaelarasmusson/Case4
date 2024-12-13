@@ -4,7 +4,7 @@
         width: 430px;
         height: 932px;
         color: #FFFFFF;
-        padding: 52px 20px 52px 19px;
+        padding: 52px 20px 52px 20px;
     }
 
     #profileContainerWithBackArrow {
@@ -118,7 +118,7 @@
         left: 0;
 
         position: fixed;
-        z-index: 999;
+        z-index: 900;
         background-color: rgba(45, 45, 45, 0.95);
         backdrop-filter: blur(4px);
     }
@@ -214,7 +214,8 @@
     }
 
     #quizPopupContent {
-        margin: 45px 40px 35px 40px;        display: flex;
+        margin: 45px 40px 35px 40px;        
+        display: flex;
         width: 350px;
         flex-direction: column;
         align-items: flex-start;
