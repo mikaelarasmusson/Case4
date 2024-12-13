@@ -191,7 +191,7 @@ function filterAndRenderMediaByGenre(genre) {
     console.log(filteredMedia);
     
     const container = document.getElementById("filmsandSeriesBoxesContainer");
-    container.innerHTML = ""; // Rensa innehåll i kontaineren
+    container.innerHTML = ""; // Rensa innehåll i containern
 
     renderFilmsandSeriesBoxes(container, filteredMedia);
 }

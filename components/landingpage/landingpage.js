@@ -45,10 +45,6 @@ function renderProfileLandingpage(parentId) {
   profileContainer.append(profileContent);
 }
 
-function renderPopUpJoinParty(parentId) {
-
-}
-
 function renderLandingpageContent(parentId) {
   // Get the parent element
   const parent = document.getElementById(parentId);
@@ -86,6 +82,11 @@ function renderLandingpageContent(parentId) {
   document.querySelector("#buttonJointParty").addEventListener("click", () => {
     renderPopUpJoinParty("wrapper");
   })
+}
+
+function renderPopUpJoinParty(parentId) {
+  const 
+
 }
 
 renderLandingpageContainer("wrapper");
