@@ -103,4 +103,72 @@
         font-size: var(--paragraph_size);
         color: var(--paragraph_color);
     }
+
+    #partyPopUp {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+
+        padding: 17px 21px 51px 40px;
+
+        position: fixed;
+        top: 300px;
+        left: 32px;        
+        z-index: 999;
+        background-color: #161616;
+        border-radius: 20px;
+        box-shadow: -20px -20px 20px 0px rgba(78, 78, 78, 0.25), 20px 20px 20px 0px rgba(78, 78, 78, 0.25);
+    }
+
+    #partyPopUpClose {
+        position: fixed;
+        top: 317px;
+        right: 61px;
+        color: #FFF;
+        background-color: #161616;
+        border: none;
+    }
+
+    #partyPopUpContent {
+        display: flex;
+        width: 310.408px;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
+    .popupEmoji {
+        margin: 0;
+        color: #FFF;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-size: 88px;
+        line-height: 150%; /* 132px */
+        letter-spacing: 0.106px;
+    }
+
+    .partyPopUpTitle {
+        margin: 0;
+
+        font-size: 22px;
+        font-family: var(--main_title_font);
+        text-align: center;
+        color: #FFF;
+        line-height: 150%; /* 30px */
+        letter-spacing: 0.024px;
+    }
+
+    #pinInputText {
+        display: flex;
+        padding: 8px;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        width: 310px;
+
+
+        border-radius: 50px;
+        border: 1px solid #6F7487;
+        background: #161616;
+        color: #FF0000;
+    }
 }
