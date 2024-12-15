@@ -6,9 +6,6 @@ function renderQuizpageContent(parentId, mediaId) {
     document.querySelector("body").style.background = "none"
     document.querySelector("body").style.backgroundColor = "black"
 
-
-    console.log(mediaId);
-
         // Create a new content element
     const quizpageWrapper = document.createElement("div");
     quizpageWrapper.id = "quizpageWrapper";
@@ -57,7 +54,6 @@ function renderQuizpageContent(parentId, mediaId) {
         </div>
     `;
 
-    
 
     // Render the first question
     if (selectedMedia.questions && selectedMedia.questions.length > 0) {
