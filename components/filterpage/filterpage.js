@@ -298,7 +298,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType) {
         parent.appendChild(popup);
 
         document.getElementById("startQuizButton").addEventListener("click", () => {
-            parent.removeChild(popup);
+            renderQuizpageContent("wrapper",mediaId)
         });
 
         document.getElementById("closePopupButton").addEventListener("click", () => {
