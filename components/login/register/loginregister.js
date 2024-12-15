@@ -1,9 +1,14 @@
 
 function render_login (parent){
     document.querySelector("#wrapper").innerHTML = "";
+
+    const Login_wrapper = document.createElement("div");
+    Login_wrapper.id = "Login_wrapper"
+    parent.appendChild(Login_wrapper);    
+
     const container = document.createElement("div");
     container.id = "login_container"
-    parent.appendChild(container);
+    Login_wrapper.appendChild(container);
 
     container.innerHTML = `
     <div id="outer_box">
@@ -68,9 +73,13 @@ const new_wrapper = document.querySelector("#wrapper");
 function render_create_acc(parent) {
     document.querySelector("#wrapper").innerHTML = "";
 
+    const Register_wrapper = document.createElement("div");
+    Register_wrapper.id = "Register_wrapper"
+    parent.appendChild(Register_wrapper);
+
     const new_container = document.createElement("div");
     new_container.id = "create_acc_container"
-    parent.appendChild(new_container);
+    Register_wrapper.appendChild(new_container);
 
     new_container.innerHTML = `
     <div id="outer_box">

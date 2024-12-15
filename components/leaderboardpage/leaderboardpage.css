@@ -1,13 +1,9 @@
-*{
-    margin: 0;
-}
-
-
+@media screen and (min-width: 430px) and (max-width: 1024px) {
 #leaderboardpage_wrapper {
-    background-color: black;
+    width: 430px;
     height: 932px;
     color: #FFFFFF;
-    overflow: hidden;
+    padding: 52px 20px 52px 19px;
 }
 
 #leaderboard{
@@ -21,6 +17,7 @@
     justify-content: center;
     align-items: center;
     gap: 6px;
+    height: 40px;
 }
 
 .top_user{
@@ -40,7 +37,7 @@
     align-items: center;
     gap:20px;
     position: relative;
-    bottom: 35px;
+    bottom: 70px;
 }
 
 .user_info{
@@ -51,6 +48,9 @@
     gap: 4px;
 }
 
+.user_info > p{
+    margin-bottom: 0;
+}
 #user{
     display: flex;
     flex-direction: column;
@@ -62,7 +62,8 @@
     display: flex;
     gap: 30px;
     justify-content: center;
-    margin-top: 60px;
+    position: relative;
+    top: 70px;
 }
 
 #profilePic_user1,
@@ -70,7 +71,7 @@
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 1px solid #FFF;
+    border: 4px solid #E50913;
     background: url(../../images/profilepic.png) lightgray 50% / cover no-repeat;
 
 }
@@ -79,23 +80,22 @@
     width: 108px;
     height: 108px;
     border-radius: 50%;
-    border: 1px solid #FFF;
+    border: 4px solid #E50913;
     background: url(../../images/profilepic.png) lightgray 50% / cover no-repeat;
 }
 
 #leaderBoard_container{
-    background-color: #202021;
-    border-radius: 30px 30px 0 0;
-    height: 100vh;
-    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
-#leaderboard_list{
+.leaderboard_list{
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    border-bottom: 1px solid #4E515C;
-    margin: 20px;
+    background-color: #161616;
+    padding: 12px 24px;
+    border-radius: 20px;
 }
 
 #the_resttop{
@@ -106,3 +106,32 @@
     gap: 24px;
 }
 
+.profilePic_users{
+    width: 50px;
+    height: 50px;
+
+    border-radius: 50%;
+    border: 2px solid #FFFFFF;
+    background: lightgray 50% / cover no-repeat;
+}
+
+
+.top_numnber{
+    background-color: #E50913;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: relative;
+    bottom: 105px;
+}
+
+
+
+#leaderBoard_h2{
+    margin-bottom: 6px;
+}
+
+}

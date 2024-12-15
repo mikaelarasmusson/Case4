@@ -3,70 +3,77 @@
     "id": 1,
     "username": "mikkan",
     "password": "lol123",
-    "profileImg": "",
+    "profileImg": "./images/profilepic.png",
     "score": 17
   },
   {
     "id": 2,
     "username": "Hampus",
     "password": "test",
-    "profileImg": "",
+    "profileImg": "./images/profilepic.png",
     "score": 18
   },
   {
     "id": 3,
     "username": "nyttnamn",
     "password": "nyttlösen",
-    "profileImg": "",
-    "score": 0
+    "profileImg": "./images/profilepic.png",
+    "score": 60
   },
   {
     "id": 4,
     "username": "testar",
     "password": "testar",
-    "profileImg": "",
-    "score": 0
+    "profileImg": "./images/profilepic.png",
+    "score": 34
   },
   {
     "id": 5,
     "username": "Hampus2",
     "password": "test2",
-    "profileImg": "",
-    "score": 0
+    "profileImg": "./images/profilepic.png",
+    "score": 90
   },
   {
     "id": 6,
     "username": "Hampus3",
     "password": "test3",
-    "profileImg": "",
+    "profileImg": "./images/profilepic.png",
     "score": 0
   },
   {
     "id": 7,
     "username": "aaaa",
     "password": "ddd",
-    "profileImg": "",
+    "profileImg": "./images/profilepic.png",
     "score": 0
   },
   {
     "id": 8,
     "username": "ok",
     "password": "as",
-    "profileImg": "",
+    "profileImg": "./images/profilepic.png",
     "score": 0
   },
   {
     "id": 9,
     "username": "testing",
     "password": "testing",
-    "profileImg": "",
+    "profileImg": "./images/profilepic.png",
     "score": 0
   },
   {
     "id": 10,
     "username": "testarigen",
     "password": "testarigen",
-    "profileImg": "",
-    "score": 0
+    "profileImg": "./images/profilepic.png",
+    "score": 75
+  },
+  {
+    "id": 11,
+    "username": "isra",
+    "password": "isra",
+    "profileImg": "./images/profilepic.png",
+    "score": 100
   }
 ]

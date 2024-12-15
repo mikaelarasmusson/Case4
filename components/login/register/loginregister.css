@@ -1,151 +1,143 @@
-@media screen and (min-width: 430px) and (max-width: 1024px){
+@media screen and (min-width: 430px) and (max-width: 1024px) {
+    /* Wrappers Styling */
+    #Login_wrapper,
+    #Register_wrapper {
+        background: url(../../../images/background_image.png) center / cover no-repeat;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative; /* Added for proper ::before usage */
+    }
 
-body{
-    background-image: url(../../../images/background_image.png);
-    background-position: center; 
-    background-repeat: no-repeat;  
-    background-size: cover;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-}
+    #Login_wrapper::before,
+    #Register_wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0; /* Shortcut for top, right, bottom, left */
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1;
+    }
 
-#wrapper{
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.70);
-}
+    #Login_wrapper > *,
+    #Register_wrapper > * {
+        position: relative;
+        z-index: 2;
+    }
 
+    /* General Flexbox Wrapper */
+    #wrapper {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-#login_container,
-#create_acc_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* Containers */
+    #login_container,
+    #create_acc_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-}
+    /* Box Styling */
+    #outer_box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-#outer_box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+    #inner_box {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        width: 265px;
+    }
 
-#inner_box {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;   
-    width: 265px; 
-}
+    /* Title Styling */
+    #title_wrapper {
+        width: 265px;
+    }
 
-#title_wrapper{
-    width: 265px;
-}
+    #title_wrapper > p:first-child {
+        font-size: 65px;
+        color: #E50913;
+        margin: 0;
+        font-weight: 700;
+    }
 
-#title_wrapper>p:first-child {
-    font-size: 65px;
-    color: #E50913;
-    margin: 0;
-    font-weight: 700;
-}
+    #title_wrapper > p:last-child {
+        color: #FFFFFF;
+    }
 
-#title_wrapper>p:last-child{
-    color: #FFFFFF;
-}
+    /* Forms and Buttons */
+    #register,
+    #login_create_acc {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
 
-#register {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+    input {
+        width: 242px;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #333333;
+        color: #B3B3B3;
+        border: none;
+    }
 
-#login_create_acc {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
+    span {
+        text-decoration: underline;
+        cursor: pointer;
+    }
 
-input {
-    width: 242px;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #333333;
-    color: #B3B3B3;
-    border: none;
-}
+    #create_acc,
+    #login {
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #E50913;
+        width: 242px;
+        text-align: center;
+        color: #FFFFFF;
+        cursor: pointer;
+    }
 
-span {
-    text-decoration: underline;
-    cursor: pointer;
-}
+    #login_create_acc > p:last-child,
+    #register > p:last-child {
+        margin: 0;
+        font-size: 14px;
+        color: #FFFFFF;
+    }
 
-#create_acc {
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #E50913;
-    margin: 0;
-    width: 242px;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer; 
-}
+    /* Additional Layout Styling */
+    #test {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
 
-#login {
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #E50913;
-    margin: 0;
-    width: 242px;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-}
+    #forgotten_password {
+        margin: 0;
+        font-size: 14px;
+        color: #FFFFFF;
+        text-align: right;
+    }
 
-#login_create_acc > p:last-child,
-#register > p:last-child{
-    margin: 0;
-    font-size: 14px;
-    color: #FFFFFF;
-}
+    #password_field {
+        gap: 12px;
+        display: flex;
+        flex-direction: column;
+    }
 
-
-#test{
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-}
-
-#forgotten_password{
-    margin: 0;
-    font-size: 14px;
-    color: #FFFFFF;
-    text-align: right;
-}
-
-#password_field{
-    gap: 12px;
-    display: flex;
-    flex-direction: column;
-}
-
-#username_error {
-    color: #e50913;
-    margin: 0;
-    margin-top: 5px;
-}
-
-#password_error {
-    color: #e50913;
-    margin: 0;
-    margin-top: 5px;
-}
-
-#repeat_password_error {
-    color: #e50913;
-    margin: 0;
-    margin-top: 5px;
-}
+    /* Error Messages */
+    #username_error,
+    #password_error,
+    #repeat_password_error {
+        color: #E50913;
+        margin: 5px 0 0; /* Simplified margin */
+    }
 }
