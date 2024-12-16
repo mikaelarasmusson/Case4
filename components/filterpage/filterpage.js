@@ -19,9 +19,7 @@ function renderFilterpageContainer(parentId) {
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
     //renderFilterDropDown(container.id);
-    renderFilmsandSeriesBoxesContainer(container.id);
-    //renderFilmsandSeriesBoxes(container.id);
-}
+    renderFilmsandSeriesBoxesContainer(container.id);}
 
 function renderProfileWithBackArrow(parentId) {
     const parent = document.getElementById(parentId);
@@ -47,7 +45,7 @@ function renderProfileWithBackArrow(parentId) {
           <path d="M18.9854 8.10816C19.0803 7.6103 18.7006 7.01288 18.2259 7.01288L12.8151 6.21631L10.347 1.03863C10.2521 0.839491 10.1572 0.73992 9.96731 0.640349C9.49268 0.341637 8.92312 0.540778 8.63834 1.03863L6.26517 6.21631L0.854341 7.01288C0.569561 7.01288 0.379707 7.11245 0.28478 7.31159C-0.0949268 7.70987 -0.0949268 8.3073 0.28478 8.70558L4.17678 12.6884L3.22751 18.3639C3.22751 18.5631 3.22751 18.7622 3.32244 18.9614C3.60722 19.4592 4.17678 19.6584 4.65141 19.3597L9.49268 16.6712L14.3339 19.3597C14.4289 19.4592 14.6187 19.4592 14.8086 19.4592C14.9035 19.4592 14.9035 19.4592 14.9984 19.4592C15.4731 19.3597 15.8528 18.8618 15.7578 18.2644L14.8086 12.5888L18.7006 8.60601C18.8904 8.50644 18.9854 8.3073 18.9854 8.10816Z" fill="#FFD07A"/>
         </svg>
         <p id="userPoints">${userInfo.score}</p>
-        <img id="profilePic" src="${userInfo.profilePic}">
+        <img id="profilePic" src="${userInfo.profileImg}">
       </div>
     `;
 
@@ -140,31 +138,23 @@ function renderFilterContainer (parentId) {
     renderFilterContents(container.id);
 }
 
-function renderFilterContents (parentId) {
+function renderFilterContents(parentId) {
     const parent = document.getElementById(parentId);
     const buttonContainer = document.createElement("div");
     buttonContainer.id = "buttonContainerFilter";
-    
+
     const buttonFilms = document.createElement("button");
     buttonFilms.id = "buttonFilms";
     buttonFilms.classList.add("filterpageButton");
     buttonFilms.textContent = "Films";
     buttonContainer.appendChild(buttonFilms);
 
-    buttonFilms.addEventListener("click", () => {
-        const filmsandSeriesContainer = document.getElementById("filmsandSeriesBoxesContainer");
-        filmsandSeriesContainer.innerHTML = "";
-
-        const onlyFilms = State.get("films");
-        renderFilmsandSeriesBoxes(onlyFilms, filmsandSeriesContainer);
-    });
-    
     const buttonSeries = document.createElement("button");
     buttonSeries.id = "buttonSeries";    
     buttonSeries.classList.add("filterpageButton");
     buttonSeries.textContent = "Series";
     buttonContainer.appendChild(buttonSeries);  
-    
+
     const buttonCategories = document.createElement("button");
     buttonCategories.id = "buttonCategories";
     buttonCategories.innerHTML = `
@@ -174,47 +164,14 @@ function renderFilterContents (parentId) {
         </svg>
     `;
     buttonContainer.appendChild(buttonCategories);
-    
+
+    // Lägg till event-lyssnare för Categories-knappen
+    buttonCategories.addEventListener("click", () => {
+        renderFilterDropDownPopUp(parentId);
+    });
+
     parent.appendChild(buttonContainer);
 }
-
-
-
-
-// Lägg till en toggle för när dropdown ska visas och inte
-/*
-function renderFilterDropDown(parentId) {
-    console.log(parentId);
-    const parent = document.getElementById(parentId);
-
-    const categoriesDropdown = document.createElement("div");
-    console.log(categoriesDropdown)
-    categoriesDropdown.id = "categoriesDropdown";
-    categoriesDropdown.innerHTML = `
-        <button id="exitDropdown">
-            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
-                <path d="M11.1732 9.49899L18.649 2.03423C18.8724 1.81075 18.998 1.50766 18.998 1.19162C18.998 0.875585 18.8724 0.572491 18.649 0.349018C18.4255 0.125546 18.1225 0 17.8065 0C17.4905 0 17.1874 0.125546 16.964 0.349018L9.5 7.82565L2.03603 0.349018C1.81259 0.125546 1.50952 2.80593e-07 1.19352 2.82947e-07C0.877516 2.85302e-07 0.574455 0.125546 0.351006 0.349018C0.127557 0.572491 0.00202541 0.875585 0.0020254 1.19162C0.0020254 1.50766 0.127557 1.81075 0.351006 2.03423L7.82684 9.49899L0.351006 16.9637C0.239784 17.0741 0.151505 17.2053 0.0912611 17.35C0.031017 17.4946 0 17.6497 0 17.8064C0 17.963 0.031017 18.1181 0.0912611 18.2628C0.151505 18.4074 0.239784 18.5386 0.351006 18.649C0.46132 18.7602 0.592563 18.8485 0.737166 18.9087C0.881769 18.969 1.03687 19 1.19352 19C1.35017 19 1.50527 18.969 1.64987 18.9087C1.79448 18.8485 1.92572 18.7602 2.03603 18.649L9.5 11.1723L16.964 18.649C17.0743 18.7602 17.2055 18.8485 17.3501 18.9087C17.4947 18.969 17.6498 19 17.8065 19C17.9631 19 18.1182 18.969 18.2628 18.9087C18.4074 18.8485 18.5387 18.7602 18.649 18.649C18.7602 18.5386 18.8485 18.4074 18.9087 18.2628C18.969 18.1181 19 17.963 19 17.8064C19 17.6497 18.969 17.4946 18.9087 17.35C18.8485 17.2053 18.7602 17.0741 18.649 16.9637L11.1732 9.49899Z" fill="white"/>
-            </svg>
-        </button>
-        <a href="">Action</a>
-        <a href="">Adventure</a>
-        <a href="">Biography</a>
-        <a href="">Comedy</a>
-        <a href="">Crime</a>
-        <a href="">Drama</a>
-        <a href="">Fantasy</a>
-        <a href="">History</a>
-        <a href="">Horror</a>
-        <a href="">Mystery</a>
-        <a href="">Romance</a>
-        <a href="">Sci-Fi</a>
-        <a href="">Sport</a>
-        <a href="">Thriller</a>
-    `;
-
-    parent.appendChild(categoriesDropdown);
-}
-*/
 
 function renderFilmsandSeriesBoxesContainer(parentId) {
     const parent = document.getElementById(parentId);
@@ -224,39 +181,44 @@ function renderFilmsandSeriesBoxesContainer(parentId) {
     renderFilmsandSeriesBoxes(container);
 }
 
-function renderFilmsandSeriesBoxes(parentDom) {
-    // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
-    // Här konkatenerar den två olika arrays till en enkel array.
-    const allMedia = [...State.get("films"), ...State.get("series")];
-    const films = State.get("films");
-    const series = State.get("series");
+// function renderFilmsandSeriesBoxes(parentDom) {
+//     // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
+//     // Här konkatenerar den två olika arrays till en enkel array.
+//     const allMedia = [...State.get("films"), ...State.get("series")];
+//     const films = State.get("films");
+//     const series = State.get("series");
+//     const quizFilms = State.get("quizfilms");
+//     const quizSeries = State.get("quizseries");
+    
+function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
+    const allMedia = mediaList || [...State.get("films"), ...State.get("series")];
     const quizFilms = State.get("quizfilms");
     const quizSeries = State.get("quizseries");
-    
+
     for (const media of allMedia) {
         const mediaContent = document.createElement("div");
         mediaContent.id = media.id;
         mediaContent.classList.add("mediaContent");
-        
+
         const image = document.createElement("img");
         image.src = media.image;
         image.classList.add("mediaImage");
         mediaContent.appendChild(image);
-        
+
         const title = document.createElement("p");
         title.textContent = media.title;
         title.classList.add("mediaTitle");
         mediaContent.appendChild(title);
-        
+
         const year = document.createElement("div");
         year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
         mediaContent.appendChild(year);
-        
+
+        const isFilm = media.type === "films";
+        const isSeries = media.type === "series";
+
         let quizLength;
-        // Använder inte type i API, vad definerar om det är film eller serier? Ändra till det vi använder
-        // om media type är film så kommer quizdata referera till quizfilms om media type
-        // är något annat så kommer quizdata referera till quizseries.
-        const quizData = media.type === "film" ? quizFilms : quizSeries;
+        const quizData = isFilm ? quizFilms : quizSeries;
         const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
 
         if (matchingQuiz) {
@@ -264,7 +226,6 @@ function renderFilmsandSeriesBoxes(parentDom) {
         } else {
             quizLength = 0;
         }
-        
 
         const quizLengthText = document.createElement("p");
         quizLengthText.textContent = `${quizLength} questions`;
@@ -274,10 +235,9 @@ function renderFilmsandSeriesBoxes(parentDom) {
         parentDom.appendChild(mediaContent);
 
         mediaContent.addEventListener("click", () => {
-            console.log(media);
-            renderStartQuizPopup(parentDom.id, media.id, media.type === "film" ? "films" : "series");
+            const mediaType = isFilm ? "films" : isSeries ? "series" : null;
+            renderStartQuizPopup(parentDom.id, media.id, mediaType);
         });
-
     }
 
     document.getElementById("buttonFilms").addEventListener("click", (event) => {
@@ -335,45 +295,131 @@ function filterFilmsAndSeriesBoxes (mediaType, quizData) {
 
 
 // Lägg till popup för starta quiz
-function renderStartQuizPopup(parentId, mediaId, type) {
-    console.log(mediaId, type);
+// function renderStartQuizPopup(parentId, mediaId, type) {
+//     console.log(mediaId, type);
+// }
+function filterAndRenderMediaByGenre(genre) {
+    const allMedia = [...State.get("films"), ...State.get("series")];
+    const filteredMedia = allMedia.filter((media) => {
+        return media.genre && media.genre.includes(genre);
+    });
+    console.log(filteredMedia);
+    
+    const container = document.getElementById("filmsandSeriesBoxesContainer");
+    container.innerHTML = ""; // Rensa innehåll i containern
+
+    renderFilmsandSeriesBoxes(container, filteredMedia);
+}
+
+function renderFilterDropDownPopUp(parentId) {
     const parent = document.getElementById(parentId);
 
-    let quizData;
-    let mediaData;
+    // Kontrollera om popupen redan finns för att förhindra duplicering
+    if (document.getElementById("categoriesDropdown")) {
+        return;
+    }
 
-    switch (type) {
-        case "films":
+    const categoriesDropdown = document.createElement("div");
+    categoriesDropdown.id = "categoriesDropdown";
+    categoriesDropdown.innerHTML = `
+        <button id="exitDropdown">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                <path d="M11.1732 9.49899L18.649 2.03423C18.8724 1.81075 18.998 1.50766 18.998 1.19162C18.998 0.875585 18.8724 0.572491 18.649 0.349018C18.4255 0.125546 18.1225 0 17.8065 0C17.4905 0 17.1874 0.125546 16.964 0.349018L9.5 7.82565L2.03603 0.349018C1.81259 0.125546 1.50952 2.80593e-07 1.19352 2.82947e-07C0.877516 2.85302e-07 0.574455 0.125546 0.351006 0.349018C0.127557 0.572491 0.00202541 0.875585 0.0020254 1.19162C0.0020254 1.50766 0.127557 1.81075 0.351006 2.03423L7.82684 9.49899L0.351006 16.9637C0.239784 17.0741 0.151505 17.2053 0.0912611 17.35C0.031017 17.4946 0 17.6497 0 17.8064C0 17.963 0.031017 18.1181 0.0912611 18.2628C0.151505 18.4074 0.239784 18.5386 0.351006 18.649C0.46132 18.7602 0.592563 18.8485 0.737166 18.9087C0.881769 18.969 1.03687 19 1.19352 19C1.35017 19 1.50527 18.969 1.64987 18.9087C1.79448 18.8485 1.92572 18.7602 2.03603 18.649L9.5 11.1723L16.964 18.649C17.0743 18.7602 17.2055 18.8485 17.3501 18.9087C17.4947 18.969 17.6498 19 17.8065 19C17.9631 19 18.1182 18.969 18.2628 18.9087C18.4074 18.8485 18.5387 18.7602 18.649 18.649C18.7602 18.5386 18.8485 18.4074 18.9087 18.2628C18.969 18.1181 19 17.963 19 17.8064C19 17.6497 18.969 17.4946 18.9087 17.35C18.8485 17.2053 18.7602 17.0741 18.649 16.9637L11.1732 9.49899Z" fill="white"/>
+            </svg>
+        </button>
+        <div id="linksContainer">
+            <a href="#" class="categoryLink">Action</a>
+            <a href="#" class="categoryLink">Adventure</a>
+            <a href="#" class="categoryLink">Biography</a>
+            <a href="#" class="categoryLink">Comedy</a>
+            <a href="#" class="categoryLink">Crime</a>
+            <a href="#" class="categoryLink">Drama</a>
+            <a href="#" class="categoryLink">Fantasy</a>
+            <a href="#" class="categoryLink">History</a>
+            <a href="#" class="categoryLink">Horror</a>
+            <a href="#" class="categoryLink">Mystery</a>
+            <a href="#" class="categoryLink">Romance</a>
+            <a href="#" class="categoryLink">Sci-Fi</a>
+            <a href="#" class="categoryLink">Sport</a>
+            <a href="#" class="categoryLink">Thriller</a> 
+        </div>   
+        `;
+
+    // Lägg till händelse för att stänga popupen
+    categoriesDropdown.querySelector("#exitDropdown").addEventListener("click", () => {
+        categoriesDropdown.remove();
+    });
+
+    parent.appendChild(categoriesDropdown);
+
+    const categoryLinks = document.querySelectorAll(".categoryLink");
+    categoryLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            categoriesDropdown.remove();
+
+            const selectedCategory = link.textContent.trim();
+
+            filterAndRenderMediaByGenre(selectedCategory);
+        });
+    });
+    console.log(categoryLinks);
+}
+
+// Lägg till popup för starta quiz
+function renderStartQuizPopup(parentId, mediaId, mediaType) {
+    const parent = document.getElementById(parentId);
+
+    let quizData, mediaData;
+
+    if (mediaType === "films") {
         quizData = State.get("quizfilms");
         mediaData = State.get("films");
-        break;
-        case "series":
+    } else if (mediaType === "series") {
         quizData = State.get("quizseries");
         mediaData = State.get("series");
-        break;
-        default:
-        console.error("Invalid type");
+    } else {
+        console.error("Unknown or invalid media type");
         return;
     }
 
     const media = mediaData.find((media) => media.id === mediaId);
+    if (!media) {
+        console.error(`No media found with ID: ${mediaId} in ${mediaType}`);
+        return;
+    }
+
+    const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
 
     if (media) {
-        const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
-
         const popup = document.createElement("div");
-        popup.id = "startQuizPopup";
+        popup.id = "quizPopup";
+
         popup.innerHTML = `
-        <div class="startQuizPopupContent">
-            <h2>${media.title}</h2>
-            <p>${media.year}</p>
-            <p>${matchingQuiz ? matchingQuiz.questions.length : 0} questions</p>
-        </div>
+            <button id="closePopupButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <path d="M11.1732 9.49899L18.649 2.03423C18.8724 1.81075 18.998 1.50766 18.998 1.19162C18.998 0.875585 18.8724 0.572491 18.649 0.349018C18.4255 0.125546 18.1225 0 17.8065 0C17.4905 0 17.1874 0.125546 16.964 0.349018L9.5 7.82565L2.03603 0.349018C1.81259 0.125546 1.50952 2.80593e-07 1.19352 2.82947e-07C0.877516 2.85302e-07 0.574455 0.125546 0.351006 0.349018C0.127557 0.572491 0.00202541 0.875585 0.0020254 1.19162C0.0020254 1.50766 0.127557 1.81075 0.351006 2.03423L7.82684 9.49899L0.351006 16.9637C0.239784 17.0741 0.151505 17.2053 0.0912611 17.35C0.031017 17.4946 0 17.6497 0 17.8064C0 17.963 0.031017 18.1181 0.0912611 18.2628C0.151505 18.4074 0.239784 18.5386 0.351006 18.649C0.46132 18.7602 0.592563 18.8485 0.737166 18.9087C0.881769 18.969 1.03687 19 1.19352 19C1.35017 19 1.50527 18.969 1.64987 18.9087C1.79448 18.8485 1.92572 18.7602 2.03603 18.649L9.5 11.1723L16.964 18.649C17.0743 18.7602 17.2055 18.8485 17.3501 18.9087C17.4947 18.969 17.6498 19 17.8065 19C17.9631 19 18.1182 18.969 18.2628 18.9087C18.4074 18.8485 18.5387 18.7602 18.649 18.649C18.7602 18.5386 18.8485 18.4074 18.9087 18.2628C18.969 18.1181 19 17.963 19 17.8064C19 17.6497 18.969 17.4946 18.9087 17.35C18.8485 17.2053 18.7602 17.0741 18.649 16.9637L11.1732 9.49899Z" fill="white"/>
+                </svg>
+            </button>
+            <div id="quizPopupContent">
+                <p id="quizPopupMainTitle">Quiz</p>
+                <p id="quizPopupMediaTitle">${media.title}</p>
+                <p id="quizPopupQuestionCount">${matchingQuiz ? matchingQuiz.questions.length : 0} questions</p>
+                <button id="startQuizButton">Start</button>
+            </div>
         `;
 
         parent.appendChild(popup);
+
+        document.getElementById("startQuizButton").addEventListener("click", () => {
+            renderQuizpageContent("wrapper",mediaId)
+        });
+
+        document.getElementById("closePopupButton").addEventListener("click", () => {
+            parent.removeChild(popup);
+        });
     }
 }
-
 
 renderFilterpageContainer("wrapper");

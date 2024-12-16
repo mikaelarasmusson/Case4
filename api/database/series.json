@@ -1,6 +1,7 @@
 [
     {
         "id": 1,
+        "type": "series",
         "title": "Breaking Bad",
         "year": 2008,
         "genre": ["Drama", "Thriller", "Crime"],
@@ -8,6 +9,7 @@
     },
     {
         "id": 2,
+        "type": "series",
         "title": "Game of Thrones",
         "year": 2011,
         "genre": ["Action", "Adventure", "Drama", "Fantasy"],
@@ -15,6 +17,7 @@
     },
     {
         "id": 3,
+        "type": "series",
         "title": "The Sopranos",
         "year": 1999,
         "genre": ["Drama", "Crime"],
@@ -22,6 +25,7 @@
     },
     {
         "id": 4,
+        "type": "series",
         "title": "The Crown",
         "year": 2016,
         "genre": ["Drama", "Biography", "History"],
@@ -29,6 +33,7 @@
     },
     {
         "id": 5,
+        "type": "series",
         "title": "Ozark",
         "year": 2017,
         "genre": ["Drama", "Thriller", "Crime"],
@@ -36,6 +41,7 @@
     },
     {
         "id": 6,
+        "type": "series",
         "title": "Friends",
         "year": 1994,
         "genre": ["Comedy", "Romance"],
@@ -43,6 +49,7 @@
     },
     {
         "id": 7,
+        "type": "series",
         "title": "The Office",
         "year": 2005,
         "genre": ["Comedy"],
@@ -50,6 +57,7 @@
     },
     {
         "id": 8,
+        "type": "series",
         "title": "Brooklyn Nine-Nine",
         "year": 2013,
         "genre": ["Comedy", "Crime"],
@@ -57,6 +65,7 @@
     },
     {
         "id": 9,
+        "type": "series",
         "title": "Parks and Recreation",
         "year": 2009,
         "genre": ["Comedy"],
@@ -64,6 +73,7 @@
     },
     {
         "id": 10,
+        "type": "series",
         "title": "Ted Lasso",
         "year": 2020,
         "genre": ["Drama", "Comedy", "Sport"],
@@ -71,6 +81,7 @@
     },
     {
         "id": 11,
+        "type": "series",
         "title": "Stranger Things",
         "year": 2016,
         "genre": ["Drama", "Fantasy", "Horror", "Sci-Fi", "Thriller", "Mystery"],
@@ -78,6 +89,7 @@
     },
     {
         "id": 12,
+        "type": "series",
         "title": "The Mandalorian",
         "year": 2019,
         "genre": ["Action", "Adventure", "Fantasy", "Sci-Fi"],
@@ -85,6 +97,7 @@
     },
     {
         "id": 13,
+        "type": "series",
         "title": "Black Mirror",
         "year": 2011,
         "genre": ["Drama", "Thriller", "Crime", "Mystery", "Sci-Fi"],
@@ -92,6 +105,7 @@
     },
     {
         "id": 14,
+        "type": "series",
         "title": "The Witcher",
         "year": 2019,
         "genre": ["Drama", "Action", "Adventure", "Fantasy", "Mystery"],
@@ -99,6 +113,7 @@
     },
     {
         "id": 15,
+        "type": "series",
         "title": "Doctor Who",
         "year": 1963,
         "genre": ["Drama", "Adventure", "Sci-Fi"],
