@@ -83,10 +83,10 @@ function renderSearchbar(parentId) {
 
     searchbar.addEventListener("keyup", function (event) {
 
-        const media = [...State.get("series"), ...State.get("films")];
+        const media = [...State.get("films"), ...State.get("series")];
         const search = searchbar.value;
 
-        let foundMedia = searchTitle(event, search, media);
+        const foundMedia = searchTitle(event, search, media);
         renderSearchedMedia(foundMedia);
     })
 }
