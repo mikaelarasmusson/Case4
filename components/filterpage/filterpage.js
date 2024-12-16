@@ -85,49 +85,12 @@ function renderSearchbar(parentId) {
         const search = searchbar.value;
 
         const foundMedia = searchTitle(event, search, media);
-        renderSearchedMedia(foundMedia);
+        console.log(foundMedia);
+        // renderSearchedMedia(foundMedia);
+        let searchParent = document.getElementById("filmsandSeriesBoxesContainer");
+        renderFilmsandSeriesBoxes(searchParent, foundMedia);
     })
-}
-
-function renderSearchedMedia(foundMedia) {
-
-
-    const quizData = [...State.get("films"), ...State.get("series")];
-
-    let container = document.getElementById("filmsandSeriesBoxesContainer");
-    container.innerHTML = "";
-    for (let media of foundMedia) {
-        const mediaContent = document.createElement("div");
-        mediaContent.id = media.id;
-        mediaContent.classList.add("mediaContent");
-        
-        const image = document.createElement("img");
-        image.src = media.image;
-        image.classList.add("mediaImage");
-        mediaContent.appendChild(image);
-        
-        const title = document.createElement("p");
-        title.textContent = media.title;
-        title.classList.add("mediaTitle");
-        mediaContent.appendChild(title);
-        
-        const year = document.createElement("div");
-        year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
-        mediaContent.appendChild(year);
-
-        // for (let quiz of quizData) {
-        //     console.log(quiz);
-        //     if (media.title === quiz.title) {
-                
-        //         let quizLength = document.createElement("p");
-        //         // quizLength.textContent = quiz.questions.length;
-        //         // mediaContent.appendChild(quizLength);
-        //     }
-        // }
-
-        container.appendChild(mediaContent);
-    }
-}   
+} 
 
 function renderFilterContainer (parentId) {
     const parent = document.getElementById(parentId);
@@ -191,9 +154,13 @@ function renderFilmsandSeriesBoxesContainer(parentId) {
 //     const quizSeries = State.get("quizseries");
     
 function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
+
+    // console.log(parentDom);
+    // console.log(mediaList);
     const allMedia = mediaList || [...State.get("films"), ...State.get("series")];
     const quizFilms = State.get("quizfilms");
     const quizSeries = State.get("quizseries");
+    parentDom.innerHTML = "";
 
     for (const media of allMedia) {
         const mediaContent = document.createElement("div");
@@ -370,7 +337,10 @@ function renderFilterDropDownPopUp(parentId) {
 // Lägg till popup för starta quiz
 function renderStartQuizPopup(parentId, mediaId, mediaType) {
     const parent = document.getElementById(parentId);
-
+    console.log(parent);
+    console.log(mediaId);
+    console.log(mediaType);
+    console.log("Clicked on a film");
     let quizData, mediaData;
 
     if (mediaType === "films") {
