@@ -1,13 +1,20 @@
 "use strict";
 
-function search (event) {
-    
-    if (event.key !== "Enter") {
+function searchTitle (event, search, media) {
 
-    } else {
-        console.log("search")
+    let searchQuery = search.trim().toLowerCase();
+    let foundTitles = [];
+
+    for (let i = 0; i < media.length; i++) {
+        let currentMedia = media[i]
+        let title = currentMedia.title.trim().toLowerCase();
+        if (title.includes(searchQuery)) {
+            foundTitles.push(currentMedia);
+        }
     }
+    return foundTitles;
 }
+
 
 function basicSearch(array, search) {
 

@@ -80,7 +80,56 @@ function renderSearchbar(parentId) {
     searchContainer.appendChild(searchButton);
 
     parent.appendChild(searchContainer);
+
+    searchbar.addEventListener("keyup", function (event) {
+
+        const media = [...State.get("series"), ...State.get("films")];
+        const search = searchbar.value;
+
+        let foundMedia = searchTitle(event, search, media);
+        renderSearchedMedia(foundMedia);
+    })
 }
+
+function renderSearchedMedia(foundMedia) {
+
+
+    const quizData = [...State.get("films"), ...State.get("series")];
+
+    let container = document.getElementById("filmsandSeriesBoxesContainer");
+    container.innerHTML = "";
+    for (let media of foundMedia) {
+        const mediaContent = document.createElement("div");
+        mediaContent.id = media.id;
+        mediaContent.classList.add("mediaContent");
+        
+        const image = document.createElement("img");
+        image.src = media.image;
+        image.classList.add("mediaImage");
+        mediaContent.appendChild(image);
+        
+        const title = document.createElement("p");
+        title.textContent = media.title;
+        title.classList.add("mediaTitle");
+        mediaContent.appendChild(title);
+        
+        const year = document.createElement("div");
+        year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
+        mediaContent.appendChild(year);
+
+        // for (let quiz of quizData) {
+        //     console.log(quiz);
+        //     if (media.title === quiz.title) {
+                
+        //         let quizLength = document.createElement("p");
+        //         // quizLength.textContent = quiz.questions.length;
+        //         // mediaContent.appendChild(quizLength);
+        //     }
+        // }
+
+        container.appendChild(mediaContent);
+    }
+}   
 
 function renderFilterContainer (parentId) {
     const parent = document.getElementById(parentId);
@@ -129,6 +178,9 @@ function renderFilterContents (parentId) {
     parent.appendChild(buttonContainer);
 }
 
+
+
+
 // Lägg till en toggle för när dropdown ska visas och inte
 /*
 function renderFilterDropDown(parentId) {
@@ -176,13 +228,10 @@ function renderFilmsandSeriesBoxes(parentDom) {
     // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
     // Här konkatenerar den två olika arrays till en enkel array.
     const allMedia = [...State.get("films"), ...State.get("series")];
-  const films = State.get("films");
-  const series = State.get("series");
-    console.log(allMedia);
+    const films = State.get("films");
+    const series = State.get("series");
     const quizFilms = State.get("quizfilms");
-    console.log(quizFilms);
     const quizSeries = State.get("quizseries");
-    console.log(quizSeries);
     
     for (const media of allMedia) {
         const mediaContent = document.createElement("div");
@@ -204,15 +253,11 @@ function renderFilmsandSeriesBoxes(parentDom) {
         mediaContent.appendChild(year);
         
         let quizLength;
-        console.log(media);
-        console.log(media.type); // Använder inte type i API, vad definerar om det är film eller serier? Ändra till det vi använder
-        console.log(media.id);
+        // Använder inte type i API, vad definerar om det är film eller serier? Ändra till det vi använder
         // om media type är film så kommer quizdata referera till quizfilms om media type
         // är något annat så kommer quizdata referera till quizseries.
         const quizData = media.type === "film" ? quizFilms : quizSeries;
-        console.log(quizData);
         const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
-        console.log(matchingQuiz);
 
         if (matchingQuiz) {
             quizLength = matchingQuiz.questions.length;
@@ -235,70 +280,18 @@ function renderFilmsandSeriesBoxes(parentDom) {
 
     }
 
-    document.getElementById("buttonFilms").addEventListener("click", async (event) => {
+    document.getElementById("buttonFilms").addEventListener("click", (event) => {
         const button = event.target;
-        filterFilmsAndSeriesBoxes(films, quizFilms, button);
+        filterFilmsAndSeriesBoxes(films, quizFilms);
     })
     
-    document.getElementById("buttonSeries").addEventListener("click", async (event) => {
+    document.getElementById("buttonSeries").addEventListener("click", (event) => {
         const button = event.target;
-        filterFilmsAndSeriesBoxes(series, quizSeries, button);
+        filterFilmsAndSeriesBoxes(series, quizSeries);
     })
 }
 
-function filterFilmsAndSeriesBoxes (mediaType, quizData, button) {
-
-    const container = document.getElementById("filmsandSeriesBoxesContainer");
-    container.innerHTML = "";
-
-    console.log(mediaType);
-    for (const media of mediaType) {
-        const mediaContent = document.createElement("div");
-        mediaContent.id = media.id;
-        mediaContent.classList.add("mediaContent");
-
-        const image = document.createElement("img");
-        image.src = media.image;
-        image.classList.add("mediaImage");
-        mediaContent.appendChild(image);
-
-        const title = document.createElement("p");
-        title.textContent = media.title;
-        title.classList.add("mediaTitle");
-        mediaContent.appendChild(title);
-
-        const year = document.createElement("div");
-        year.innerHTML = `<p class="mediaYear">(${media.year})</p>`;
-        mediaContent.appendChild(year);
-
-        let quizLength;
-        const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
-        if (matchingQuiz) {
-            quizLength = matchingQuiz.questions.length;
-        } else {
-            quizLength = 0;
-        }
-        
-        const quizLengthText = document.createElement("p");
-        quizLengthText.textContent = `${quizLength} questions`;
-        quizLengthText.classList.add("mediaQuizLength");
-        mediaContent.appendChild(quizLengthText);
-
-        container.appendChild(mediaContent);
-    }
-
-    document.getElementById("buttonFilms").addEventListener("click", async (event) => {
-        const button = event.target;
-        filterFilmsAndSeriesBoxes(films, quizFilms, button);
-    })
-    
-    document.getElementById("buttonSeries").addEventListener("click", async (event) => {
-        const button = event.target;
-        filterFilmsAndSeriesBoxes(series, quizSeries, button);
-    })
-}
-
-function filterFilmsAndSeriesBoxes (mediaType, quizData, button) {
+function filterFilmsAndSeriesBoxes (mediaType, quizData) {
 
     const container = document.getElementById("filmsandSeriesBoxesContainer");
     container.innerHTML = "";
