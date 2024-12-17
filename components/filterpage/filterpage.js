@@ -18,7 +18,6 @@ function renderFilterpageContainer(parentId) {
     renderProfileWithBackArrow(container.id);
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
-    //renderFilterDropDown(container.id);
     renderFilmsandSeriesBoxesContainer(container.id);}
 
 function renderProfileWithBackArrow(parentId) {
