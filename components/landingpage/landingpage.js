@@ -85,6 +85,7 @@ function renderLandingpageContent(parentId) {
 
   document.querySelector("#buttonMultiPlayer").addEventListener("click", () => {
     renderFilterpageContainer("wrapper");
+    renderStartQuizPopup("wrapper", mediaId, mediaType, true);
   });
 
   document.querySelector("#buttonJoinParty").addEventListener("click", () => {

@@ -39,28 +39,29 @@ function render_login (parent){
        //den ska flyttas in under if (response.ok);
        renderLandingpageWrapper("wrapper");
 
-        // const usernameInput = document.getElementById("username_field").querySelector("input");
-        // const passwordInput = document.getElementById("password_field").querySelector("input")
+        const usernameInput = document.getElementById("username_field").querySelector("input");
+        const passwordInput = document.getElementById("password_field").querySelector("input")
         
-        // const username = usernameInput.value;
-        // const password = passwordInput.value;
+        const username = usernameInput.value;
+        const password = passwordInput.value;
         
-        // usernameInput.value = "";
-        // passwordInput.value = "";
+        usernameInput.value = "";
+        passwordInput.value = "";
 
-        // const request = new Request("/api/login", {
-        //     method: "POST",
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify({username: username, password: password})
-        // });
+        const request = new Request("/api/login", {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({username: username, password: password})
+        });
         
-        // const response = await fetch(request)
-        // if (response.ok) {
-        //     const user = await response.json();
-        //     localStorage.setItem("user", JSON.stringify(user));
-        // } else {
-        //     console.log("error");
-        // }
+        const response = await fetch(request)
+        if (response.ok) {
+            const user = await response.json();
+            localStorage.setItem("user", JSON.stringify(user));
+            renderLandingpageContainer("wrapper");
+        } else {
+            console.log("error");
+        }
     });
 
     document.querySelector("#sign_up_button").addEventListener("click", () => {
