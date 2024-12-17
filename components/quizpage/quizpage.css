@@ -4,6 +4,7 @@
         height: 932px;
         color: #FFFFFF;
         padding: 52px 20px 52px 19px;
+        background-color: black;
     }
 
     #movie_img{
@@ -12,7 +13,9 @@
     border-radius: 5px;
     }
 
-    #superPower{
+    #superPower,
+    #DoublePoints,
+    #Stop{
     background-color: #E50913;
     display: flex;
     align-items: center;
@@ -25,6 +28,14 @@
     margin-left: 10px;
     }
     
+    
+    
+    #superPowerMenu,
+    #superPowerContainer{
+        display: flex;
+        gap: 16px;
+    }
+
     #question_counter{
     margin: auto;
     width: 91px;
@@ -95,7 +106,7 @@
     }
     
     #progress_bar .progress {
-        width: 0; /* يبدأ من الصفر */
+        width: 0; 
         height: 100%;
         background-color: #E50913;
         transition: width 15s linear; 
@@ -104,6 +115,7 @@
     .selectedAnswer{
         background-color: #E50913;
         border: 2px solid #3E3E3E ;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6);    }
+        box-shadow: 0px 0px 10px rgba(208, 208, 208, 0.4);
+    }
     
 }

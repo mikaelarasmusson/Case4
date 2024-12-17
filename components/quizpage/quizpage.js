@@ -1,33 +1,24 @@
 function renderQuizpageContent(parentId, mediaId) {
     const parent = document.getElementById(parentId);
-    
     parent.innerHTML = "";
 
-    document.querySelector("body").style.background = "none"
-    document.querySelector("body").style.backgroundColor = "black"
 
-        // Create a new content element
+    // Create a new content element
     const quizpageWrapper = document.createElement("div");
     quizpageWrapper.id = "quizpageWrapper";
-
-    // Append the content element to the quizpageWrapper element
     parent.append(quizpageWrapper);
     
     renderProfileWithBackArrow(quizpageWrapper.id)
        
-    
     // Create a new content element
     const contentElement = document.createElement("div");
     contentElement.id = "quizpageContent";
-    contentElement.classList.add("quizpage");
     quizpageWrapper.append(contentElement)
    
     // Find the selected media based on mediaId
     const allMedia = [...State.get("quizfilms"), ...State.get("quizseries")];
     const selectedMedia = allMedia.find(media => media.id === mediaId);
-    console.log(selectedMedia);
-    console.log(allMedia);
-    
+
     if (!selectedMedia) {
         console.error("Media not found");
         return;
@@ -40,8 +31,19 @@ function renderQuizpageContent(parentId, mediaId) {
 
         <div id="quiz_content">
             <img id="movie_img" src="${selectedMedia.image}" >
-            <div id="superPower">
-                <p>&#129668;</p>
+            <div id= "superPowerContainer">
+                <div id="superPower">
+                    <p>&#129668;</p>
+                </div>
+                <!-- Here is the hidden menu that will appear on click -->
+                <div id="superPowerMenu" style="display: none;" >
+                    <div id="DoublePoints">
+                        <p>x2</p>
+                    </div>
+                    <div id="Stop">
+                        <p>🤚🏼</p>
+                    </div>
+                </div>
             </div>
             <div id="progress_bar">
                 <div class="progress"></div>
@@ -54,19 +56,35 @@ function renderQuizpageContent(parentId, mediaId) {
         </div>
     `;
 
+        // Add click event to show/hide the menu
+    const superPower = document.getElementById("superPower");
+    const superPowerMenu = document.getElementById("superPowerMenu");
+    
+    superPower.addEventListener("click", function() {
+        // Toggle the 'show' class to control animation
+        superPowerMenu.classList.toggle("show");
+    
+        // Toggle the background color of the superPower button
+        if (superPowerMenu.classList.contains("show")) {
+            superPower.style.backgroundColor = "#676767";
+            superPowerMenu.style.display = "flex";
+
+        } else {
+            
+            superPower.style.backgroundColor = "#E50913";
+            superPowerMenu.style.display = "none";
+        }
+    });
 
     // Render the first question
     if (selectedMedia.questions && selectedMedia.questions.length > 0) {
         let currentQuestionIndex = 0;  // Start from the first question
 
         function renderNextQuestion() {
-
-        
             // If we have reached the end of the questions, stop the interval
             if (currentQuestionIndex >= selectedMedia.questions.length) {
                 clearInterval(questionInterval);
-                renderQuizpageContainer(parentId)
-
+                renderLeaderboardpageContainer(parentId)
                 return;
             }
 
@@ -82,21 +100,6 @@ function renderQuizpageContent(parentId, mediaId) {
         
             // Move to the next question
             currentQuestionIndex++;
-        }
-        
-        // Function to reset and start progress bar
-        function resetAndStartProgressBar() {
-            const progressBar = document.querySelector("#progress_bar .progress");
-        
-            // Reset the progress bar
-            progressBar.style.transition = "none";
-            progressBar.style.width = "0%";
-        
-            // Start the progress bar animation
-            setTimeout(() => {
-                progressBar.style.transition = "width 15s linear";
-                progressBar.style.width = "100%";
-            }, 10); // Slight delay to ensure reset takes effect
         }
         
         // Render the first question
@@ -144,18 +147,8 @@ function renderAnswers(parent, answers = [], correctAnswer) {
                 answerDiv.style.pointerEvents = "none"; // Disable clicks
             });
 
-            // Log the selected answer
-            console.log(`Selected answer: ${answerText}`);
-
-            // Check if the selected answer is correct
-            if (answerText === correctAnswer) {
-                console.log("true"); // Correct answer
-            } else {
-                console.log("false"); // Incorrect answer
-            }
-
             // Highlight the selected answer
-            newElement.classList.add( "selectedAnswer") // Green for selected answer
+            newElement.classList.add( "selectedAnswer")
         });
 
         newElement.append(answer);
@@ -163,3 +156,17 @@ function renderAnswers(parent, answers = [], correctAnswer) {
     });
 }
 
+// Function to reset and start progress bar
+function resetAndStartProgressBar() {
+    const progressBar = document.querySelector("#progress_bar .progress");
+
+    // Reset the progress bar
+    progressBar.style.transition = "none";
+    progressBar.style.width = "0%";
+
+    // Start the progress bar animation
+    setTimeout(() => {
+        progressBar.style.transition = "width 15s linear";
+        progressBar.style.width = "100%";
+    }, 10); // Slight delay to ensure reset takes effect
+}
