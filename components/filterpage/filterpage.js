@@ -333,7 +333,7 @@ function renderFilterDropDownPopUp(parentId) {
         </div>   
         `;
 
-    // Lägg till händelse för att stänga popupen
+    // Stänga popupen
     categoriesDropdown.querySelector("#exitDropdown").addEventListener("click", () => {
         categoriesDropdown.remove();
     });
