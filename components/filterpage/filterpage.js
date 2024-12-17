@@ -137,6 +137,12 @@ function renderFilterContents(parentId) {
     const buttonContainer = document.createElement("div");
     buttonContainer.id = "buttonContainerFilter";
 
+    const buttonNoFilter = document.createElement("button");
+    buttonNoFilter.id = "buttonNoFilter";
+    buttonNoFilter.classList.add("filterpageButton");
+    buttonNoFilter.textContent = "No Filter";
+    buttonContainer.appendChild(buttonNoFilter);
+
     const buttonFilms = document.createElement("button");
     buttonFilms.id = "buttonFilms";
     buttonFilms.classList.add("filterpageButton");
@@ -227,6 +233,7 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
         });
     }
 
+    /*
     document.getElementById("buttonFilms").addEventListener("click", (event) => {
         const button = event.target;
         filterFilmsAndSeriesBoxes(films, quizFilms);
@@ -236,6 +243,7 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
         const button = event.target;
         filterFilmsAndSeriesBoxes(series, quizSeries);
     })
+    */
 }
 
 function filterFilmsAndSeriesBoxes (mediaType, quizData) {
