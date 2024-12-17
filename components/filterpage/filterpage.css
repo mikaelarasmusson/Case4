@@ -277,7 +277,6 @@
     #fetchGameButton {
         width: 350px;
         height: 47px;
-        padding: 14px 131px;
         text-align: center;
 
         font-family: var(--main_title_font);
