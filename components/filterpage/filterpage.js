@@ -73,6 +73,7 @@ function renderProfileWithBackArrow(parentId) {
     profileContainer.appendChild(profileContent);
 
     document.getElementById("backArrow").addEventListener("click", () => {
+        localStorage.removeItem("gameMode");
         renderLandingpageWrapper("wrapper");
     });
 }
@@ -220,7 +221,9 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
 
         mediaContent.addEventListener("click", () => {
             const mediaType = isFilm ? "films" : isSeries ? "series" : null;
-            renderStartQuizPopup(parentDom.id, media.id, mediaType);
+            const gameMode = localStorage.getItem("gameMode");
+            const isMultiPlayer = gameMode === "multiplayer";
+            renderStartQuizPopup(parentDom.id, media.id, mediaType, isMultiPlayer);
         });
     }
 
@@ -354,6 +357,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
     console.log(mediaId);
     console.log(mediaType);
     console.log("Clicked on a film");
+    console.log(isMultiPlayer);
     let quizData, mediaData;
 
     if (mediaType === "films") {
@@ -402,6 +406,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
             
             const message = {event: "createdGame", data: {newGameCode: gameCode, host: json}};
             socket.send(JSON.stringify(message));
+            console.log(isMultiPlayer);
             renderWaitingRoom(parentId, userData);
         })
 
