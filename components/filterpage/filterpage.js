@@ -51,7 +51,7 @@ function renderProfileWithBackArrow(parentId) {
     profileContainer.appendChild(profileContent);
 
     document.getElementById("backArrow").addEventListener("click", () => {
-        renderLandingpageContainer("wrapper");
+        renderLandingpageWrapper("wrapper");
     });
 }
 
