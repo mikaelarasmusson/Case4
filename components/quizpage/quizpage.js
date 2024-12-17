@@ -86,7 +86,7 @@ function renderQuizpageContent(parentId, mediaId) {
             // If we have reached the end of the questions, stop the interval
             if (currentQuestionIndex >= selectedMedia.questions.length) {
                 clearInterval(questionInterval);
-                // renderLeaderboardpageContainer(parentId)
+                 renderLeaderboardpageContainer(parentId)
                 return;
             }
 
