@@ -122,6 +122,15 @@ function renderFilterContainer (parentId) {
     renderFilterContents(container.id);
 }
 
+let selectedCategory = "Categories";
+
+function updateCategoryText (newCategory) {
+    selectedCategory = newCategory;
+    const categoryButton = document.getElementById("buttonCategories");
+    const categoryText = categoryButton.querySelector("p");
+    categoryText.textContent = selectedCategory;
+}
+
 function renderFilterContents(parentId) {
     const parent = document.getElementById(parentId);
     const buttonContainer = document.createElement("div");
@@ -142,7 +151,7 @@ function renderFilterContents(parentId) {
     const buttonCategories = document.createElement("button");
     buttonCategories.id = "buttonCategories";
     buttonCategories.innerHTML = `
-        <p>Categories</p>
+        <p>${selectedCategory}</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
             <path d="M0 1.6465L1.16788 0.5L8 7.26434L14.8321 0.5L16 1.6465L8 9.5L0 1.6465Z" fill="white"/>
         </svg>
@@ -164,15 +173,6 @@ function renderFilmsandSeriesBoxesContainer(parentId) {
     parent.appendChild(container);
     renderFilmsandSeriesBoxes(container);
 }
-
-// function renderFilmsandSeriesBoxes(parentDom) {
-//     // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
-//     // Här konkatenerar den två olika arrays till en enkel array.
-//     const allMedia = [...State.get("films"), ...State.get("series")];
-//     const films = State.get("films");
-//     const series = State.get("series");
-//     const quizFilms = State.get("quizfilms");
-//     const quizSeries = State.get("quizseries");
     
 function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
 
@@ -349,6 +349,7 @@ function renderFilterDropDownPopUp(parentId) {
 
             const selectedCategory = link.textContent.trim();
 
+            updateCategoryText(selectedCategory);
             filterAndRenderMediaByGenre(selectedCategory);
         });
     });
