@@ -25,10 +25,13 @@
     position: relative;
     bottom: 30px;
     height: 43px;
-    margin-left: 10px;
+
     }
-    
-    
+
+    #superPower{
+        margin-left: 10px;
+    }
+
     
     #superPowerMenu,
     #superPowerContainer{
@@ -117,5 +120,16 @@
         border: 2px solid #3E3E3E ;
         box-shadow: 0px 0px 10px rgba(208, 208, 208, 0.4);
     }
-    
+
+    #superPowerMenu {
+        opacity: 0; 
+        transform: scale(0.8); 
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        z-index: 10;
+    }
+    #superPowerMenu.show {
+        opacity: 1; 
+        transform: scale(1); 
+        visibility: visible; 
+    }
 }
