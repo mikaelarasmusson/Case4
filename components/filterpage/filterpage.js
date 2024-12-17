@@ -51,7 +51,13 @@ function renderProfileWithBackArrow(parentId) {
     profileContainer.appendChild(profileContent);
 
     document.getElementById("backArrow").addEventListener("click", () => {
-        renderLandingpageWrapper("wrapper");
+        
+        if(parentId == "quizpageWrapper"){
+            renderLeavequizPopup("quizpageContent")
+        }else{
+            document.getElementById("wrapper").innerHTML = ""
+            renderLandingpageWrapper("wrapper");
+        }
     });
 }
 
@@ -130,6 +136,7 @@ function renderFilmsandSeriesBoxesContainer(parentId) {
     parent.appendChild(container);
     renderFilmsandSeriesBoxes(container);
 }
+
 
 function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
     const allMedia = mediaList || [...State.get("films"), ...State.get("series")];

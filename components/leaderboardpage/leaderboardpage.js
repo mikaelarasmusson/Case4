@@ -39,9 +39,7 @@ function renderTopLeaderboard(parentId){
 
     const allUsers = [...State.get("users")];
 
-    console.log(allUsers);
     const sortedUsers = allUsers.sort((a, b) => b.score - a.score);
-    console.log(sortedUsers);
 
     const parent = document.getElementById(parentId);
 

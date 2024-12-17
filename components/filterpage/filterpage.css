@@ -7,6 +7,7 @@
         padding: 52px 20px 52px 20px;
         background: #000;
         overflow: scroll;
+        margin-top: 145px;
     }
 
     #profileContainerWithBackArrow {
@@ -16,6 +17,13 @@
     #profileContentWithBackArrow {
         display: flex;
         justify-content: space-between;
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        background-color: black;
+        padding: 44px 20px 24px 20px;
     }
 
     #profileCont {
@@ -125,7 +133,7 @@
         left: 0;
 
         position: fixed;
-        z-index: 900;
+        z-index:1010;
         background-color: rgba(45, 45, 45, 0.95);
         backdrop-filter: blur(4px);
     }
