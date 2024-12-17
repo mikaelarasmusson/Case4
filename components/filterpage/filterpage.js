@@ -24,6 +24,7 @@ socket.addEventListener("close", (event) => {
 
 function renderFilterpageContainer(parentId) {
     // Get the parent element
+    console.log(parentId);
     const parent = document.getElementById(parentId);
 
     // Clear the parent element's content

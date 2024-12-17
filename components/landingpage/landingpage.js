@@ -1,5 +1,24 @@
 "use strict";
 
+const socket = new WebSocket("http://localhost:8000");
+
+socket.addEventListener("open", (event) => {
+  console.log("connected");
+})
+
+socket.addEventListener("message", (event) => {
+
+  const message = JSON.parse(event.data);
+
+  if (message.event == "joinGame") {
+    console.log(JSON.parse(message));
+  }
+})
+
+socket.addEventListener("close", (event) => {
+  console.log("disconnected");
+})
+
 function renderLandingpageWrapper(parentId) {
   // Get the parent element
   const parent = document.getElementById(parentId);
@@ -120,6 +139,14 @@ function renderPopUpJoinParty(parentId) {
   });
 
   parent.appendChild(joinPartyPopUp);
+
+  document.getElementById("joinPartyButton").addEventListener("click", (event) => {
+    const inputCodeString = document.getElementById("pinInputText").value;
+    const inputCode = parseInt(inputCodeString);
+    
+    const user = localStorage.getItem("user");
+    const json = JSON.parse(user);
+  })
 }
 
 renderLandingpageContainer("wrapper");

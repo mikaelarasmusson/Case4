@@ -86,6 +86,16 @@ async function handleWebsocket(request) {
             socket.send(JSON.stringify(gameCodes));
         }
 
+        if (message.event == "joinGame") {
+            const joinCode = message.data.joinGameCode;
+            //kolla om koden finns i gameCodes och om det gör det skicka tillbaka profilen och något "OK!"
+            for (let code of codes) {
+                if (code == joinGameCode) {
+                    socket.send(JSON.stringify(message));
+                }
+            }
+        }
+
         //för att inte skicka till sig själv
         // for (let id in connections) {
         //     console.log(id);
