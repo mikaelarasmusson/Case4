@@ -1,22 +1,28 @@
 "use strict";
 
-function renderLandingpageContainer(parentId) {
-
+function renderLandingpageWrapper(parentId) {
   // Get the parent element
   const parent = document.getElementById(parentId);
-  console.log(parent);
 
   // Clear the parent element"s content
   parent.innerHTML = "";
 
-  // Create a new container element
-  const container = document.createElement("div");
-  container.id = "landingpageContainer";
-
-  // Append the container to the parent element
-  parent.append(container);
+  //Create a second wrapper
+  const landingpageWrapper = document.createElement("div");
+  landingpageWrapper.id = "landingpageWrapper";
+  parent.append(landingpageWrapper);
 
   // Render the landing page content inside the container
+  renderLandingpageContainer(landingpageWrapper.id);
+}
+
+function renderLandingpageContainer(parentId) {
+  const parent = document.getElementById(parentId);
+
+  const container = document.createElement("div");
+  container.id = "landingpageContainer";
+  parent.append(container);
+
   renderProfileLandingpage(container.id);
   renderLandingpageContent(container.id);
 }

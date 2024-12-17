@@ -37,7 +37,7 @@ function render_login (parent){
 
     document.querySelector("#login").addEventListener("click", async () => {
        //den ska flyttas in under if (response.ok);
-        renderLandingpageContainer("wrapper");
+       renderLandingpageWrapper("wrapper");
 
         // const usernameInput = document.getElementById("username_field").querySelector("input");
         // const passwordInput = document.getElementById("password_field").querySelector("input")
