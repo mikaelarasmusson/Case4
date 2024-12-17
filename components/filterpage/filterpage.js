@@ -40,7 +40,6 @@ function renderFilterpageContainer(parentId) {
     renderProfileWithBackArrow(container.id);
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
-    //renderFilterDropDown(container.id);
     renderFilmsandSeriesBoxesContainer(container.id);}
 
 function renderProfileWithBackArrow(parentId) {
@@ -74,7 +73,7 @@ function renderProfileWithBackArrow(parentId) {
     profileContainer.appendChild(profileContent);
 
     document.getElementById("backArrow").addEventListener("click", () => {
-        renderLandingpageContainer("wrapper");
+        renderLandingpageWrapper("wrapper");
     });
 }
 

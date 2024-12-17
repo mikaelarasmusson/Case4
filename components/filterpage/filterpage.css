@@ -5,6 +5,8 @@
         height: 932px;
         color: #FFFFFF;
         padding: 52px 20px 52px 20px;
+        background: #000;
+        overflow: scroll;
     }
 
     #profileContainerWithBackArrow {
@@ -21,6 +23,11 @@
         justify-content: flex-end;
         align-items: center;
         gap: 12px;
+    }
+
+    #backArrow {
+        background-color: #000;
+        border: none;
     }
 
     #starIcon {

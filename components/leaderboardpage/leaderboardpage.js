@@ -1,4 +1,4 @@
-function renderQuizpageContainer(parentId) {
+function renderLeaderboardpageContainer(parentId) {
     // Get the parent element
     const parent = document.getElementById(parentId);
 
