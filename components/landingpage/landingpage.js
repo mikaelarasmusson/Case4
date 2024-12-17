@@ -77,15 +77,14 @@ function renderLandingpageContent(parentId) {
   // Append the content element to the parent element
   parent.append(contentElement);
 
-  document
-    .querySelector("#buttonSinglePlayer")
-    .addEventListener("click", () => {
+  document.querySelector("#buttonSinglePlayer").addEventListener("click", () => {
+      localStorage.setItem("gameMode", "singleplayer");
       renderFilterpageContainer("wrapper");
     });
 
   document.querySelector("#buttonMultiPlayer").addEventListener("click", () => {
+    localStorage.setItem("gameMode", "multiplayer");
     renderFilterpageContainer("wrapper");
-    renderStartQuizPopup("wrapper", mediaId, mediaType, true);
   });
 
   document.querySelector("#buttonJoinParty").addEventListener("click", () => {

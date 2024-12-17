@@ -233,7 +233,7 @@
         display: flex;
         width: 350px;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;    
     }
 
     #quizPopupMainTitle {
@@ -261,6 +261,20 @@
     }
 
     #startQuizButton {
+        width: 350px;
+        height: 47px;
+        padding: 14px 131px;
+        text-align: center;
+
+        font-family: var(--main_title_font);
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #E50913;
+        color: #FFF;
+    }
+
+    #fetchGameButton {
         width: 350px;
         height: 47px;
         padding: 14px 131px;
