@@ -59,4 +59,58 @@ async function HTTPhandler (req) {
     }
 }
 
-Deno.serve(handler);Deno.serve(handleRequest);
+let connections = {};
+let connectionId = 1;
+
+let gameCodes = [];
+
+
+async function handleWebsocket(request) {
+    const {socket, response} = Deno.upgradeWebSocket(request);
+
+    let myId = connectionId++;
+
+    socket.addEventListener("open", (event) => {
+        console.log(`Connection ${myId} connected`);
+        connections[myId] = socket;
+        console.log(connections);
+    })
+
+    socket.addEventListener("message", (event) => {
+        const message = JSON.parse(event.data);
+        console.log("server received", message);
+
+        if (message.event == "createdGame") {
+            const hostCode = message.data.newGameCode;
+            gameCodes.push(hostCode);
+            socket.send(JSON.stringify(gameCodes));
+        }
+
+        //för att inte skicka till sig själv
+        // for (let id in connections) {
+        //     console.log(id);
+        //     if (id != myId) {
+        //         const connection = connections[id];
+        //         connection.send(JSON.stringify(message))
+        //     }
+        // }
+
+    })
+
+    socket.addEventListener("close", (event )=> {
+        console.log(`Connection ${myId} disconnected`);
+        delete connections[myId];
+    })
+
+    return response;
+}
+
+async function handleRequest(request) {
+    if (request.headers.get("upgrade") == "websocket") {
+        return handleWebsocket(request);
+    } else {
+        return HTTPhandler(request);
+    }
+} 
+
+Deno.serve(handleRequest);
