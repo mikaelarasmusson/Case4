@@ -73,8 +73,12 @@ function renderProfileWithBackArrow(parentId) {
     profileContainer.appendChild(profileContent);
 
     document.getElementById("backArrow").addEventListener("click", () => {
-        localStorage.removeItem("gameMode");
-        renderLandingpageWrapper("wrapper");
+        if  (parentId == "quizpageWrapper"){
+            renderLeavequizPopup("wrapper")
+        }else{
+            localStorage.removeItem("gameMode");
+            renderLandingpageWrapper("wrapper");
+        }
     });
 }
 
