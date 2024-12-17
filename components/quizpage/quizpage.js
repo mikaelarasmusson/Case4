@@ -36,7 +36,7 @@ function renderQuizpageContent(parentId, mediaId) {
                     <p>&#129668;</p>
                 </div>
                 <!-- Here is the hidden menu that will appear on click -->
-                <div id="superPowerMenu" style="display: none;" >
+                <div id="superPowerMenu">
                     <div id="DoublePoints">
                         <p>x2</p>
                     </div>
@@ -61,20 +61,24 @@ function renderQuizpageContent(parentId, mediaId) {
     const superPowerMenu = document.getElementById("superPowerMenu");
     
     superPower.addEventListener("click", function() {
-        // Toggle the 'show' class to control animation
-        superPowerMenu.classList.toggle("show");
-    
-        // Toggle the background color of the superPower button
         if (superPowerMenu.classList.contains("show")) {
-            superPower.style.backgroundColor = "#676767";
-            superPowerMenu.style.display = "flex";
+            superPower.style.backgroundColor = "#E50913";
+
+            superPowerMenu.classList.remove("show");
+            setTimeout(() => {
+                superPowerMenu.style.visibility = "hidden";
+            }, 400); 
 
         } else {
-            
-            superPower.style.backgroundColor = "#E50913";
-            superPowerMenu.style.display = "none";
+            superPower.style.backgroundColor = "#676767";
+
+            superPowerMenu.style.visibility = "visible";
+            superPowerMenu.classList.add("show");
         }
+    
+
     });
+    
 
     // Render the first question
     if (selectedMedia.questions && selectedMedia.questions.length > 0) {
@@ -84,7 +88,7 @@ function renderQuizpageContent(parentId, mediaId) {
             // If we have reached the end of the questions, stop the interval
             if (currentQuestionIndex >= selectedMedia.questions.length) {
                 clearInterval(questionInterval);
-                renderLeaderboardpageContainer(parentId)
+                // renderLeaderboardpageContainer(parentId)
                 return;
             }
 
