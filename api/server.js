@@ -5,10 +5,9 @@ import { mediaHandler } from "./media.js";
 import { editProfileHandler } from "./edit.js";
 import * as func from "./functions.js";
 
-async function handler (req) {
+async function HTTPhandler (req) {
 
     const pathname = new URL(req.url).pathname;
-    console.log("pathname is" + pathname);
 
     if (req.method === "GET") {
         if (pathname === "/api/films") {
@@ -60,4 +59,4 @@ async function handler (req) {
     }
 }
 
-Deno.serve(handler);
+Deno.serve(handler);Deno.serve(handleRequest);

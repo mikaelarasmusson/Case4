@@ -1,5 +1,27 @@
 "use strict"
 
+const socket = new WebSocket("http://localhost:8000");
+
+socket.addEventListener("open", (event) => {
+    console.log("connected");
+});
+
+socket.addEventListener("message", (event) => {
+    //do something
+
+    //messages: "createdGame", "joinGame", "startGame"
+
+    const message = JSON.parse(event.data);
+    console.log(message);
+    if (message.event == "createdGame") {
+        console.log("message");
+    }
+});
+
+socket.addEventListener("close", (event) => {
+    console.log("disconnected");
+});
+
 function renderFilterpageContainer(parentId) {
     // Get the parent element
     const parent = document.getElementById(parentId);
@@ -383,7 +405,13 @@ function renderStartQuizPopup(parentId, mediaId, mediaType) {
         parent.appendChild(popup);
 
         document.getElementById("startQuizButton").addEventListener("click", () => {
-            renderQuizpageContent("wrapper",mediaId)
+            // renderQuizpageContent("wrapper",mediaId)
+            const user = localStorage.getItem("user");
+            const json = JSON.parse(user);
+            const gameCode = Math.floor(100000 + Math.random() * 900000);
+            
+            const message = {event: "createdGame", data: {newGameCode: gameCode, host: json}};
+            socket.send(JSON.stringify(message));
         });
 
         document.getElementById("closePopupButton").addEventListener("click", () => {
