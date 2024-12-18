@@ -81,3 +81,17 @@
     font-size: --paragraph_size;
     font-family: OpensansBold;
 }
+
+#gameRulesPopUp {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 17px 21px 51px 40px;
+
+    position: fixed;
+    top: 180px;
+    left: 0px;     
+    z-index: 999;
+    background-color: #161616;
+}
