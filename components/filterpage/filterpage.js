@@ -141,6 +141,17 @@ function renderFilterContents(parentId) {
     const buttonContainer = document.createElement("div");
     buttonContainer.id = "buttonContainerFilter";
 
+    const buttonNoFilter = document.createElement("button");
+    buttonNoFilter.id = "buttonNoFilter";
+    buttonNoFilter.classList.add("filterpageButton");
+    buttonNoFilter.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M15.5 2.01607L13.9839 0.5L8 6.48393L2.01607 0.5L0.5 2.01607L6.48393 8L0.5 13.9839L2.01607 15.5L8 9.51607L13.9839 15.5L15.5 13.9839L9.51607 8L15.5 2.01607Z" fill="white"/>
+        </svg>
+    `;
+    buttonNoFilter.style.display = "none";
+    buttonContainer.appendChild(buttonNoFilter);
+
     const buttonFilms = document.createElement("button");
     buttonFilms.id = "buttonFilms";
     buttonFilms.classList.add("filterpageButton");
@@ -163,7 +174,28 @@ function renderFilterContents(parentId) {
     `;
     buttonContainer.appendChild(buttonCategories);
 
+    buttonNoFilter.addEventListener("click", () => {
+        buttonFilms.style.display = "block";
+        buttonSeries.style.display = "block";
+        buttonFilms.style.backgroundColor = "";
+        buttonSeries.style.backgroundColor = "";
+        buttonNoFilter.style.display = "none";
+    });
+
+    buttonFilms.addEventListener("click", () => {
+        buttonFilms.style.backgroundColor = "#6D6D6D";
+        buttonSeries.style.display = "none";
+        buttonNoFilter.style.display = "block";
+    })
+
+    buttonSeries.addEventListener("click", () => {
+        buttonSeries.style.backgroundColor = "#6D6D6D";
+        buttonFilms.style.display = "none";
+        buttonNoFilter.style.display = "block";
+    })
+
     buttonCategories.addEventListener("click", () => {
+        buttonCategories.style.backgroundColor = "#6D6D6D";
         renderFilterDropDownPopUp(parentId);
     });
 
@@ -231,6 +263,7 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
         });
     }
 
+    /*
     document.getElementById("buttonFilms").addEventListener("click", (event) => {
         const button = event.target;
         filterFilmsAndSeriesBoxes(films, quizFilms);
@@ -240,6 +273,7 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
         const button = event.target;
         filterFilmsAndSeriesBoxes(series, quizSeries);
     })
+    */
 }
 
 function filterFilmsAndSeriesBoxes (mediaType, quizData) {
