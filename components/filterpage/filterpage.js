@@ -12,9 +12,8 @@ socket.addEventListener("message", (event) => {
     //messages: "createdGame", "joinGame", "startGame"
 
     const message = JSON.parse(event.data);
-    console.log(message);
     if (message.event == "createdGame") {
-        console.log("message");
+        waitingRoom(message.data);
     }
 });
 

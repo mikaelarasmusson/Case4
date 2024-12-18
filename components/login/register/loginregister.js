@@ -37,7 +37,7 @@ function render_login (parent){
 
     document.querySelector("#login").addEventListener("click", async () => {
        //den ska flyttas in under if (response.ok);
-       renderLandingpageWrapper("wrapper");
+       //renderLandingpageWrapper("wrapper");
 
         const usernameInput = document.getElementById("username_field").querySelector("input");
         const passwordInput = document.getElementById("password_field").querySelector("input")
@@ -58,7 +58,7 @@ function render_login (parent){
         if (response.ok) {
             const user = await response.json();
             localStorage.setItem("user", JSON.stringify(user));
-            renderLandingpageContainer("wrapper");
+            renderLandingpageWrapper("wrapper");
         } else {
             console.log("error");
         }

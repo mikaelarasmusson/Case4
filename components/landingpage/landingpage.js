@@ -1,21 +1,22 @@
 "use strict";
 
-const socket = new WebSocket("http://localhost:8000");
+const joinGameSocket = new WebSocket("http://localhost:8000");
 
-socket.addEventListener("open", (event) => {
+joinGameSocket.addEventListener("open", (event) => {
   console.log("connected");
 })
 
-socket.addEventListener("message", (event) => {
+joinGameSocket.addEventListener("message", (event) => {
 
   const message = JSON.parse(event.data);
 
   if (message.event == "joinGame") {
-    console.log(JSON.parse(message));
+    // console.log(message);
+    waitingRoom(message.data);
   }
 })
 
-socket.addEventListener("close", (event) => {
+joinGameSocket.addEventListener("close", (event) => {
   console.log("disconnected");
 })
 
@@ -145,7 +146,11 @@ function renderPopUpJoinParty(parentId) {
     const inputCode = parseInt(inputCodeString);
     
     const user = localStorage.getItem("user");
+    console.log(user);
     const json = JSON.parse(user);
+
+    const message = {event: "joinGame", data: {joinGameCode: inputCode, user: json}}
+    joinGameSocket.send(JSON.stringify(message));
   })
 }
 

@@ -62,8 +62,9 @@ async function HTTPhandler (req) {
 let connections = {};
 let connectionId = 1;
 
-let gameCodes = [];
-
+// let gameCodes = [];
+let activeGames = [];
+//ett ID för spelet och alla spelar
 
 async function handleWebsocket(request) {
     const {socket, response} = Deno.upgradeWebSocket(request);
@@ -81,22 +82,44 @@ async function handleWebsocket(request) {
         console.log("server received", message);
 
         if (message.event == "createdGame") {
+            console.log(message);
             const hostCode = message.data.newGameCode;
-            gameCodes.push(hostCode);
-            socket.send(JSON.stringify(gameCodes));
+            const gameHost = message.data.host;
+            console.log(hostCode);
+            console.log(gameHost);
+
+            let game = {
+                code: hostCode,
+                gameHost: gameHost,
+                players: []
+            }
+            // console.log(gameCodes);
+            activeGames.push(game);
+            console.log(game);
+            const returnMessage = {event: message.event, data: game}
+            console.log(returnMessage);
+            socket.send(JSON.stringify(returnMessage))
+            // socket.send(JSON.stringify(message));
         }
 
         if (message.event == "joinGame") {
             const joinCode = message.data.joinGameCode;
-            //kolla om koden finns i gameCodes och om det gör det skicka tillbaka profilen och något "OK!"
-            for (let code of codes) {
-                if (code == joinGameCode) {
-                    socket.send(JSON.stringify(message));
+            console.log(message);
+
+
+            for (let game of activeGames) {
+                if (joinCode == game.code) {
+                    game.players.push(message.data.user);
+                    const returnMessage = {event: message.event, data: game}
+
+                    for (let id in connections) {
+                        connections[id].send(JSON.stringify(returnMessage));
+                    }
                 }
             }
         }
 
-        //för att inte skicka till sig själv
+        //för att inte skicka till sig själv ifall det behövs
         // for (let id in connections) {
         //     console.log(id);
         //     if (id != myId) {
