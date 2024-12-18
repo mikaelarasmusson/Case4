@@ -4,11 +4,18 @@
     height: 932px;
     color: #FFFFFF;
     padding: 52px 20px 52px 19px;
+    background-color: black;
+    overflow: scroll;
 }
+
 
 #leaderboard{
     display: flex;
     justify-content: center;
+}
+
+#leaderpageContainer{
+    margin-top: 125px;
 }
 
 #user_content{
@@ -88,6 +95,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    margin-bottom: 20px;
 }
 
 .leaderboard_list{

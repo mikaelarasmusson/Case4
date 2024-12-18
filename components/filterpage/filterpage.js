@@ -73,7 +73,12 @@ function renderProfileWithBackArrow(parentId) {
     profileContainer.appendChild(profileContent);
 
     document.getElementById("backArrow").addEventListener("click", () => {
-        renderLandingpageWrapper("wrapper");
+        if  (parentId == "quizpageWrapper"){
+            renderLeavequizPopup("wrapper")
+        }else{
+            localStorage.removeItem("gameMode");
+            renderLandingpageWrapper("wrapper");
+        }
     });
 }
 
@@ -122,6 +127,15 @@ function renderFilterContainer (parentId) {
     renderFilterContents(container.id);
 }
 
+let selectedCategory = "Categories";
+
+function updateCategoryText (newCategory) {
+    selectedCategory = newCategory;
+    const categoryButton = document.getElementById("buttonCategories");
+    const categoryText = categoryButton.querySelector("p");
+    categoryText.textContent = selectedCategory;
+}
+
 function renderFilterContents(parentId) {
     const parent = document.getElementById(parentId);
     const buttonContainer = document.createElement("div");
@@ -142,14 +156,13 @@ function renderFilterContents(parentId) {
     const buttonCategories = document.createElement("button");
     buttonCategories.id = "buttonCategories";
     buttonCategories.innerHTML = `
-        <p>Categories</p>
+        <p>${selectedCategory}</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10" fill="none">
             <path d="M0 1.6465L1.16788 0.5L8 7.26434L14.8321 0.5L16 1.6465L8 9.5L0 1.6465Z" fill="white"/>
         </svg>
     `;
     buttonContainer.appendChild(buttonCategories);
 
-    // Lägg till event-lyssnare för Categories-knappen
     buttonCategories.addEventListener("click", () => {
         renderFilterDropDownPopUp(parentId);
     });
@@ -164,20 +177,8 @@ function renderFilmsandSeriesBoxesContainer(parentId) {
     parent.appendChild(container);
     renderFilmsandSeriesBoxes(container);
 }
-
-// function renderFilmsandSeriesBoxes(parentDom) {
-//     // Spread operator är ... den expanderar en array eller ett objekt till individuella element.
-//     // Här konkatenerar den två olika arrays till en enkel array.
-//     const allMedia = [...State.get("films"), ...State.get("series")];
-//     const films = State.get("films");
-//     const series = State.get("series");
-//     const quizFilms = State.get("quizfilms");
-//     const quizSeries = State.get("quizseries");
     
 function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
-
-    // console.log(parentDom);
-    // console.log(mediaList);
     const allMedia = mediaList || [...State.get("films"), ...State.get("series")];
     const quizFilms = State.get("quizfilms");
     const quizSeries = State.get("quizseries");
@@ -224,7 +225,9 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
 
         mediaContent.addEventListener("click", () => {
             const mediaType = isFilm ? "films" : isSeries ? "series" : null;
-            renderStartQuizPopup(parentDom.id, media.id, mediaType);
+            const gameMode = localStorage.getItem("gameMode");
+            const isMultiPlayer = gameMode === "multiplayer";
+            renderStartQuizPopup(parentDom.id, media.id, mediaType, isMultiPlayer);
         });
     }
 
@@ -281,11 +284,6 @@ function filterFilmsAndSeriesBoxes (mediaType, quizData) {
     }
 }
 
-
-// Lägg till popup för starta quiz
-// function renderStartQuizPopup(parentId, mediaId, type) {
-//     console.log(mediaId, type);
-// }
 function filterAndRenderMediaByGenre(genre) {
     const allMedia = [...State.get("films"), ...State.get("series")];
     const filteredMedia = allMedia.filter((media) => {
@@ -333,7 +331,7 @@ function renderFilterDropDownPopUp(parentId) {
         </div>   
         `;
 
-    // Lägg till händelse för att stänga popupen
+    // Stänga popupen
     categoriesDropdown.querySelector("#exitDropdown").addEventListener("click", () => {
         categoriesDropdown.remove();
     });
@@ -349,6 +347,7 @@ function renderFilterDropDownPopUp(parentId) {
 
             const selectedCategory = link.textContent.trim();
 
+            updateCategoryText(selectedCategory);
             filterAndRenderMediaByGenre(selectedCategory);
         });
     });
@@ -356,12 +355,13 @@ function renderFilterDropDownPopUp(parentId) {
 }
 
 // Lägg till popup för starta quiz
-function renderStartQuizPopup(parentId, mediaId, mediaType) {
+function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
     const parent = document.getElementById(parentId);
     console.log(parent);
     console.log(mediaId);
     console.log(mediaType);
     console.log("Clicked on a film");
+    console.log(isMultiPlayer);
     let quizData, mediaData;
 
     if (mediaType === "films") {
@@ -383,7 +383,42 @@ function renderStartQuizPopup(parentId, mediaId, mediaType) {
 
     const matchingQuiz = quizData.find((quiz) => quiz.id === media.id);
 
-    if (media) {
+    if (isMultiPlayer) {
+        const popup = document.createElement("div");
+        popup.id = "quizPopup";
+
+        popup.innerHTML = `
+            <button id="closePopupButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                    <path d="M11.1732 9.49899L18.649 2.03423C18.8724 1.81075 18.998 1.50766 18.998 1.19162C18.998 0.875585 18.8724 0.572491 18.649 0.349018C18.4255 0.125546 18.1225 0 17.8065 0C17.4905 0 17.1874 0.125546 16.964 0.349018L9.5 7.82565L2.03603 0.349018C1.81259 0.125546 1.50952 2.80593e-07 1.19352 2.82947e-07C0.877516 2.85302e-07 0.574455 0.125546 0.351006 0.349018C0.127557 0.572491 0.00202541 0.875585 0.0020254 1.19162C0.0020254 1.50766 0.127557 1.81075 0.351006 2.03423L7.82684 9.49899L0.351006 16.9637C0.239784 17.0741 0.151505 17.2053 0.0912611 17.35C0.031017 17.4946 0 17.6497 0 17.8064C0 17.963 0.031017 18.1181 0.0912611 18.2628C0.151505 18.4074 0.239784 18.5386 0.351006 18.649C0.46132 18.7602 0.592563 18.8485 0.737166 18.9087C0.881769 18.969 1.03687 19 1.19352 19C1.35017 19 1.50527 18.969 1.64987 18.9087C1.79448 18.8485 1.92572 18.7602 2.03603 18.649L9.5 11.1723L16.964 18.649C17.0743 18.7602 17.2055 18.8485 17.3501 18.9087C17.4947 18.969 17.6498 19 17.8065 19C17.9631 19 18.1182 18.969 18.2628 18.9087C18.4074 18.8485 18.5387 18.7602 18.649 18.649C18.7602 18.5386 18.8485 18.4074 18.9087 18.2628C18.969 18.1181 19 17.963 19 17.8064C19 17.6497 18.969 17.4946 18.9087 17.35C18.8485 17.2053 18.7602 17.0741 18.649 16.9637L11.1732 9.49899Z" fill="white"/>
+                </svg>
+            </button>
+            <div id="quizPopupContent">
+                <p id="quizPopupMainTitle">Quiz</p>
+                <p id="quizPopupMediaTitle">${media.title}</p>
+                <p id="quizPopupQuestionCount">${matchingQuiz ? matchingQuiz.questions.length : 0} questions</p>
+                <button id="fetchGameButton">Fetch game PIN</button>
+            </div>
+        `;
+
+        parent.appendChild(popup);
+
+        document.getElementById("fetchGameButton").addEventListener("click", () => {
+            const user = localStorage.getItem("user");
+            const json = JSON.parse(user);
+            const gameCode = Math.floor(100000 + Math.random() * 900000);
+            
+            const message = {event: "createdGame", data: {newGameCode: gameCode, host: json}};
+            socket.send(JSON.stringify(message));
+            console.log(isMultiPlayer);
+            renderWaitingRoom(parentId, userData);
+        })
+
+        document.getElementById("closePopupButton").addEventListener("click", () => {
+            parent.removeChild(popup);
+        });
+
+    } else {
         const popup = document.createElement("div");
         popup.id = "quizPopup";
 
@@ -404,13 +439,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType) {
         parent.appendChild(popup);
 
         document.getElementById("startQuizButton").addEventListener("click", () => {
-            // renderQuizpageContent("wrapper",mediaId)
-            const user = localStorage.getItem("user");
-            const json = JSON.parse(user);
-            const gameCode = Math.floor(100000 + Math.random() * 900000);
-            
-            const message = {event: "createdGame", data: {newGameCode: gameCode, host: json}};
-            socket.send(JSON.stringify(message));
+            renderQuizpageContent("wrapper",mediaId);
         });
 
         document.getElementById("closePopupButton").addEventListener("click", () => {

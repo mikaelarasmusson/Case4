@@ -7,6 +7,7 @@
         padding: 52px 20px 52px 20px;
         background: #000;
         overflow: scroll;
+        margin-top: 145px;
     }
 
     #profileContainerWithBackArrow {
@@ -16,6 +17,13 @@
     #profileContentWithBackArrow {
         display: flex;
         justify-content: space-between;
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        background-color: black;
+        padding: 44px 20px 24px 20px;
     }
 
     #profileCont {
@@ -125,7 +133,7 @@
         left: 0;
 
         position: fixed;
-        z-index: 900;
+        z-index:1010;
         background-color: rgba(45, 45, 45, 0.95);
         backdrop-filter: blur(4px);
     }
@@ -225,7 +233,7 @@
         display: flex;
         width: 350px;
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;    
     }
 
     #quizPopupMainTitle {
@@ -256,6 +264,19 @@
         width: 350px;
         height: 47px;
         padding: 14px 131px;
+        text-align: center;
+
+        font-family: var(--main_title_font);
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        background-color: #E50913;
+        color: #FFF;
+    }
+
+    #fetchGameButton {
+        width: 350px;
+        height: 47px;
         text-align: center;
 
         font-family: var(--main_title_font);
