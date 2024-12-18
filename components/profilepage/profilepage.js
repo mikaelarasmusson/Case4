@@ -5,10 +5,11 @@ function renderProfilePageContainer (parentId) {
 
     const container = document.createElement("div");
     container.id = "profilePageContainer";
-
     parent.append(container);
 
     // Rendera allt här
+    renderProfilePageBackArrow(container.id);
+    renderMyProfileContent(container.id);
 }
 
 function renderProfilePageBackArrow (parentId) {
@@ -102,4 +103,11 @@ function renderMyProfileContent (parentId) {
         </div>
     </div>
     `;
+
+    parent.appendChild(myProfileContentContainer);
+
+    document.getElementById("signOutButton").addEventListener("click", () => {
+        localStorage.clear();
+        render_login("wrapper");
+    });
 }
