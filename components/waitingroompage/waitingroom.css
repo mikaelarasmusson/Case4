@@ -87,11 +87,11 @@
     flex-direction: column;
     align-items: flex-end;
 
-    padding: 30px 30px 74px 30px;
+    padding: 50px 30px 50px 30px;
     gap: 25px;
 
     position: fixed;
-    top: 180px;
+    top: 144px;
     left: 18px;
     z-index: 998;
     border-radius: 20px;
@@ -103,7 +103,7 @@
 #exitRulePopUpButton {
     position: fixed;
     z-index: 9999;
-    top: 210px;
+    top: 173px;
     right: 48px;
     color: #FFF;
     background-color: #161616;
@@ -139,7 +139,7 @@
 .rule > p:first-child {
     margin: 0;
     color: #FFF;
-    font-family: var(--paragraph_font);
+    font-family: var(--main_title_font);
     font-size: 18px;
     line-height: 150%; /* 27px */
     letter-spacing: 0.022px;
@@ -156,6 +156,7 @@
 
 #point ul {
     margin: 0;
+    padding: 0px 0px 0px 24px;
 }
 
 #point li {
@@ -172,4 +173,48 @@
     align-items: flex-start;
     gap: 20px;
     align-self: stretch;
+}
+
+#superPowers {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.powerBox {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 50px;
+    background: #E50913;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.powerBox p {
+    font-family: var(--paragraph_font);
+    font-size: var(--paragraph_size);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.textBox {
+    color: #FFF;
+    font-family: var(--paragraph_font);
+    font-size: 16px;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.019px;
+}
+
+.textBox p {
+    margin: 0;
+    padding: 0px 0px 0px 16px;
+}
+
+.textBox p:first-child {
+    font-family: var(--bold_font);
 }

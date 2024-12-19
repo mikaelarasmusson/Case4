@@ -109,7 +109,7 @@
         border-color: transparent;
         background: var(--main_title_color);
 
-        font-family: var(--paragraph_font);
+        font-family: var(--bold_font);
         font-size: var(--paragraph_size);
         color: var(--paragraph_color);
     }
@@ -195,7 +195,7 @@
         background-color: #FF0000;
         border-radius: 5px;
         border: none;
-        font-family: var(--main_title_font);
+        font-family: var(--bold_font);
         font-size: 16px;
     }
 }

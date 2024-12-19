@@ -147,4 +147,9 @@ function renderGameRulesPopUp(parentId) {
             </div>
         </div>
     `;
+
+    exitPopUpButton.addEventListener("click", () => {
+        gameRulesPopUp.remove();
+        exitPopUpButton.remove();
+    });
 }

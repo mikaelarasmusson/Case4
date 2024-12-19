@@ -45,6 +45,7 @@
     --paragraph_color: #FFFFFF;
     --main_title_font: OpensansSemiBold;
     --paragraph_font: OpensansRegular;
+    --bold_font: OpensansBold;
 }
 
 body {
