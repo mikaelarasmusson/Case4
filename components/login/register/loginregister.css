@@ -48,6 +48,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 48px;
     }
 
     #inner_box {
@@ -59,18 +60,25 @@
 
     /* Title Styling */
     #title_wrapper {
-        width: 265px;
+        width: 312px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
     }
 
     #title_wrapper > p:first-child {
-        font-size: 65px;
+        font-size: 68px;
+        height: 74px;
         color: #E50913;
         margin: 0;
-        font-weight: 700;
+        font-family: WittgensteinExtraBold;
     }
 
     #title_wrapper > p:last-child {
         color: #FFFFFF;
+        font-family: OpensansRegular;
+        margin: 0;
+
     }
 
     /* Forms and Buttons */
@@ -79,6 +87,7 @@
         display: flex;
         flex-direction: column;
         gap: 12px;
+        height: 71px;
     }
 
     input {
@@ -88,12 +97,16 @@
         background-color: #333333;
         color: #B3B3B3;
         border: none;
+        font-family: OpensansRegular;
+        font-size: 16px;
+
     }
 
     span {
         text-decoration: underline;
-        cursor: pointer;
     }
+
+    
 
     #create_acc,
     #login {
@@ -103,6 +116,9 @@
         width: 242px;
         text-align: center;
         color: #FFFFFF;
+        margin: 0;
+        font-family: OpensansBold;
+
     }
 
     #login_create_acc > p:last-child,
@@ -110,6 +126,8 @@
         margin: 0;
         font-size: 14px;
         color: #FFFFFF;
+        font-family: OpensansSemiBold;
+
     }
 
     /* Additional Layout Styling */
@@ -131,6 +149,13 @@
         display: flex;
         flex-direction: column;
     }
+
+    #forgotten_password{
+        font-family: OpensansSemiBold;
+        font-size: 14px;
+
+    }
+    
 
     /* Error Messages */
     #username_error,

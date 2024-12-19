@@ -1,4 +1,4 @@
-let questionInterval; // إعلان المتغير بشكل عام
+let questionInterval;
 
 function renderQuizpageContent(parentId, mediaId) {
     const parent = document.getElementById(parentId);
@@ -8,7 +8,6 @@ function renderQuizpageContent(parentId, mediaId) {
     }
     parent.innerHTML = "";
 
-    // إنشاء المحتوى الرئيسي
     const quizpageWrapper = document.createElement("div");
     quizpageWrapper.id = "quizpageWrapper";
     parent.append(quizpageWrapper);
@@ -19,7 +18,6 @@ function renderQuizpageContent(parentId, mediaId) {
     contentElement.id = "quizpageContent";
     quizpageWrapper.append(contentElement);
    
-    // جلب الـ media من الـ State
     const allMedia = [...State.get("quizfilms"), ...State.get("quizseries")];
     const selectedMedia = allMedia.find(media => media.id === mediaId);
 
@@ -30,7 +28,7 @@ function renderQuizpageContent(parentId, mediaId) {
 
     contentElement.innerHTML = `
         <div id="movie_name">    
-            <h1 class="leaderboardpageTitle">${selectedMedia.title}</h1>
+            <h1 class="quizpageTitle">${selectedMedia.title}</h1>
         </div>
         <div id="quiz_content">
             <img id="movie_img" src="${selectedMedia.image}">
@@ -52,7 +50,6 @@ function renderQuizpageContent(parentId, mediaId) {
         </div>
     `;
 
-    // إظهار/إخفاء قائمة الـ super power
     const superPower = document.getElementById("superPower");
     const superPowerMenu = document.getElementById("superPowerMenu");
 

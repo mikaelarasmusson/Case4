@@ -5,6 +5,13 @@
         color: #FFFFFF;
         padding: 52px 20px 52px 19px;
         background-color: black;
+        overflow: scroll;
+    }
+
+    .quizpageTitle{
+        font-size: 24px;
+        font-family: OpensansSemiBold;
+
     }
 
     #quizpageContent{
@@ -45,11 +52,15 @@
 
     #question_counter{
     margin: auto;
-    width: 91px;
+    width: 100px;
+    font-family: OpensansRegular;
+
     }
 
     #question{
         text-align: center;
+        font-family: OpensansRegular;
+
     }
 
     .answer{
@@ -61,6 +72,8 @@
         align-items: center;
         border-radius: 10px;
         border: 2px solid #3E3E3E;
+        font-family: OpensansRegular;
+
     }
 
     #answers_box{
@@ -124,6 +137,8 @@
         background-color: #E50913;
         border: 2px solid #3E3E3E ;
         box-shadow: 0px 0px 10px rgba(208, 208, 208, 0.4);
+        font-family: OpensansRegular;
+
     }
 
     #superPowerMenu {
