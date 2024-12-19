@@ -151,7 +151,14 @@ function renderPopUpJoinParty(parentId) {
 
     const message = {event: "joinGame", data: {joinGameCode: inputCode, user: json}}
     joinGameSocket.send(JSON.stringify(message));
+    //waiting room funktionen
+    //renderWaitingRoom("wrapper", State.get("users"));
   })
+  
+  // joinPartyPopUp.querySelector("#joinPartyButton").addEventListener("click", () => {
+  //   renderWaitingRoom("wrapper", State.get("users"));
+  // });
+
 }
 
 renderLandingpageContainer("wrapper");

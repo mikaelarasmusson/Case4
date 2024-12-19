@@ -18,7 +18,7 @@
     margin-top: 125px;
 }
 
-#user_content{
+.user_content{
     display: inline-flex;
     padding: 0px;
     justify-content: center;
@@ -106,7 +106,7 @@
     border-radius: 20px;
 }
 
-#the_resttop{
+.the_resttop{
     display: inline-flex;
     padding: 0px;
     justify-content: center;
