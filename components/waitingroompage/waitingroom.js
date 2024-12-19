@@ -27,7 +27,7 @@ function renderPinContainer(parentId){
 
     pinContainer.innerHTML = `
     <p>Game PIN</p>
-    <p id = "pinCode"> 1234 </p>`
+    <p id = "pinCode"> 1234 </p>`;
 }
 
 function renderJoinedUser (parentId, userData){
@@ -75,15 +75,76 @@ function renderWaitingRoomFooter(parentId){
 
     waitingRoomFooter.innerHTML = `
     <button id="gameInfo">How does it work?</button>
-    <button id="startGame">Start Quiz</button>`
+    <button id="startGame">Start Quiz</button>`;
 
     document.getElementById("gameInfo").addEventListener("click",() =>{
-
+        renderGameRulesPopUp(parentId);
     });
 
     document.getElementById("startGame").addEventListener("click",() =>{
 
     });
+}
 
+function renderGameRulesPopUp(parentId) {
+    const parent = document.getElementById(parentId);
 
+    const gameRulesPopUp = document.createElement("div");
+    gameRulesPopUp.id = "gameRulesPopUp";
+    parent.appendChild(gameRulesPopUp);
+
+    const exitPopUpButton = document.createElement("button");
+    exitPopUpButton.id = "exitRulePopUpButton";
+    exitPopUpButton.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+            <path d="M19 1.92036L17.0796 0L9.5 7.57964L1.92036 0L0 1.92036L7.57964 9.5L0 17.0796L1.92036 19L9.5 11.4204L17.0796 19L19 17.0796L11.4204 9.5L19 1.92036Z" fill="white"/>
+        </svg>
+    `;
+    gameRulesPopUp.appendChild(exitPopUpButton);
+
+    gameRulesPopUp.innerHTML = `
+        <div id="gameRulesPopUpContent">
+            <h2>How it works</h2>
+            <div id="goal" class="rule">
+                <p>🎯 The goal</p>
+                <p>Answer as many questions correctly to test your knowledge!</p>
+            </div>
+            <div id="time" class="rule">
+                <p>⏰ Time limit</p>
+                <p>Each question has a 15-second timer — think quickly!</p>
+            </div>
+            <div id="point" class="rule">
+                <p>⭐ Earn points️</p>
+                <ul>
+                    <li>150 points for the fastest answer</li>
+                    <li>Lose 10 points for every second you wait</li>
+                </ul>
+            </div>
+            <div id="superPowersContainer">
+                <div id="superPowers" class="powers">
+                    <div class="powerBox">
+                        <p>🪄</p>
+                    </div>
+                    <div class="textBox">
+                        <p>Superpowers</p>
+                        <p>This is where you keep your superpowers</p>
+                    </div>
+                    <div class="powerBox">
+                        <p>x2</p>
+                    </div>
+                    <div class="textBox">
+                        <p>Double points</p>
+                        <p>Boost your score on one question</p>
+                    </div>
+                    <div class="powerBox">
+                        <p>🤚🏼</p>
+                    </div>
+                    <div class="textBox">
+                        <p>Block a friend</p>
+                        <p>Stop an opponent from answering a question</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
 }

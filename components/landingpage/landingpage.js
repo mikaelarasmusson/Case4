@@ -120,6 +120,11 @@ function renderPopUpJoinParty(parentId) {
   });
 
   parent.appendChild(joinPartyPopUp);
+
+  joinPartyPopUp.querySelector("#joinPartyButton").addEventListener("click", () => {
+    renderWaitingRoom("wrapper", State.get("users"));
+  });
+
 }
 
 renderLandingpageContainer("wrapper");
