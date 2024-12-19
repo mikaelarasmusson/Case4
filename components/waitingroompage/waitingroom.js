@@ -100,7 +100,7 @@ function renderGameRulesPopUp(parentId) {
             <path d="M19 1.92036L17.0796 0L9.5 7.57964L1.92036 0L0 1.92036L7.57964 9.5L0 17.0796L1.92036 19L9.5 11.4204L17.0796 19L19 17.0796L11.4204 9.5L19 1.92036Z" fill="white"/>
         </svg>
     `;
-    gameRulesPopUp.appendChild(exitPopUpButton);
+    parent.appendChild(exitPopUpButton);
 
     gameRulesPopUp.innerHTML = `
         <div id="gameRulesPopUpContent">
