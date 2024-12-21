@@ -57,7 +57,7 @@ function render_login (parent){
         const response = await fetch(request)
         if (response.ok) {
             const user = await response.json();
-            localStorage.setItem("user", JSON.stringify(user));
+            sessionStorage.setItem("user", JSON.stringify(user));
             renderLandingpageWrapper("wrapper");
         } else {
             console.log("error");
@@ -171,7 +171,7 @@ function render_create_acc(parent) {
         let response = await fetch(request);
         if (response.ok) {
             let newUser = await response.json();
-            localStorage.setItem("user", JSON.stringify(newUser));
+            sessionStorage.setItem("user", JSON.stringify(newUser));
             console.log(newUser);
             renderLandingpageContainer("wrapper");
         } else {

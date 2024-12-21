@@ -11,8 +11,9 @@ joinGameSocket.addEventListener("message", (event) => {
   const message = JSON.parse(event.data);
 
   if (message.event == "joinGame") {
-    // console.log(message);
-    waitingRoom(message.data);
+    console.log(message);
+    renderWaitingRoom("wrapper", message.data);
+    // waitingRoom(message.data);
   }
 })
 
@@ -145,7 +146,7 @@ function renderPopUpJoinParty(parentId) {
     const inputCodeString = document.getElementById("pinInputText").value;
     const inputCode = parseInt(inputCodeString);
     
-    const user = localStorage.getItem("user");
+    const user = sessionStorage.getItem("user");
     console.log(user);
     const json = JSON.parse(user);
 
@@ -154,7 +155,7 @@ function renderPopUpJoinParty(parentId) {
     //waiting room funktionen
     //renderWaitingRoom("wrapper", State.get("users"));
   })
-  
+
   // joinPartyPopUp.querySelector("#joinPartyButton").addEventListener("click", () => {
   //   renderWaitingRoom("wrapper", State.get("users"));
   // });

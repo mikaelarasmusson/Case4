@@ -13,7 +13,9 @@ socket.addEventListener("message", (event) => {
 
     const message = JSON.parse(event.data);
     if (message.event == "createdGame") {
-        waitingRoom(message.data);
+        // waitingRoom(message.data);
+        console.log(message.data);
+        renderWaitingRoom("wrapper", message.data);
     }
 });
 
@@ -438,14 +440,15 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
         parent.appendChild(popup);
 
         document.getElementById("fetchGameButton").addEventListener("click", () => {
-            const user = localStorage.getItem("user");
+            const user = sessionStorage.getItem("user");
             const json = JSON.parse(user);
             const gameCode = Math.floor(100000 + Math.random() * 900000);
             
             const message = {event: "createdGame", data: {newGameCode: gameCode, host: json}};
             socket.send(JSON.stringify(message));
+            sessionStorage.setItem("mediaId", mediaId);
             console.log(isMultiPlayer);
-            renderWaitingRoom(parentId, userData);
+            // renderWaitingRoom(parentId, userData);
         })
 
         document.getElementById("closePopupButton").addEventListener("click", () => {
@@ -473,7 +476,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
         parent.appendChild(popup);
 
         document.getElementById("startQuizButton").addEventListener("click", () => {
-            renderQuizpageContent("wrapper",mediaId);
+            renderQuizpageContent("wrapper", mediaId);
         });
 
         document.getElementById("closePopupButton").addEventListener("click", () => {

@@ -32,3 +32,12 @@ export async function checkKey (object, key) {
     }
 }
 
+export function highestId(array) {
+    let highestId = 0;
+    if (highestId < array.id) {
+        highestId = array.id;
+        console.log(highestId);
+    }
+    return highestId + 1;
+}
+

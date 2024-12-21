@@ -1,6 +1,7 @@
 let questionInterval; // إعلان المتغير بشكل عام
 
 function renderQuizpageContent(parentId, mediaId) {
+    console.log(mediaId);
     const parent = document.getElementById(parentId);
     if (!parent) {
         console.error(`Parent element with id "${parentId}" not found.`);

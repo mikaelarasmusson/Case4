@@ -44,7 +44,23 @@
     border-radius: 20px;
 }
 
+.joinedHostBox {
+    display: flex;
+    justify-content: space-between;
+    background-color: #161616;
+    padding: 12px 24px;
+    border-radius: 20px;
+}
+
 #joinedUsersList{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 508px;
+    overflow: scroll;
+}
+
+#joinedHost {
     display: flex;
     flex-direction: column;
     gap: 16px;

@@ -1,5 +1,28 @@
+const quizSocket = new WebSocket("http://localhost:8000");
+
+quizSocket.addEventListener("open", (event) => {
+
+}) 
+
+
+
+quizSocket.addEventListener("message", (event)=> {
+    const message = JSON.parse(event.data);
+
+    if (message.event == "startGame") {
+        console.log(message);
+    }
+}) 
+
+
+quizSocket.addEventListener("close", (event) => {
+    console.log("disconneted");
+}) 
+
+
 function renderWaitingRoom(parentId, userData){
 
+    console.log(userData);
     const parent = document.getElementById(parentId);
     parent.innerHTML = "";
 
@@ -13,12 +36,12 @@ function renderWaitingRoom(parentId, userData){
     container.id = "waitingRoomContainer";
     waitingRoomWrapper.appendChild(container);
 
-    renderPinContainer(container.id);
+    renderPinContainer(container.id, userData);
     renderJoinedUser (container.id, userData);
-    renderWaitingRoomFooter(container.id)
+    renderWaitingRoomFooter(container.id, userData);
 }
 
-function renderPinContainer(parentId){
+function renderPinContainer(parentId, gameData){
     const parent = document.getElementById(parentId);
 
     const pinContainer = document.createElement("div");
@@ -27,35 +50,38 @@ function renderPinContainer(parentId){
 
     pinContainer.innerHTML = `
     <p>Game PIN</p>
-    <p id = "pinCode"> 1234 </p>`;
+    <p id = "pinCode">${gameData.code}</p>`;
 }
 
 function renderJoinedUser (parentId, userData){
     const parent = document.getElementById(parentId);
 
-    const joinedUsersContainer = document.createElement("div");
+    let joinedUsersContainer = document.createElement("div");
+    joinedUsersContainer = document.createElement("div");
     joinedUsersContainer.id = "joinedUsersContainer";
     parent.appendChild(joinedUsersContainer);
 
     const joinedUsersCounter = document.createElement("div");
     joinedUsersCounter.id = "joinedUsersCounter";
     joinedUsersContainer.appendChild(joinedUsersCounter);
-    
-    joinedUsersCounter.innerHTML = `<p id = "playersCounter"> ${userData.length} Player${userData.length > 1 ? "s" : ""}</p>` 
 
-    const joinedUsersList = document.createElement("div");
+    
+    joinedUsersCounter.innerHTML = `<p id = "playersCounter"> ${userData.players.length} Player${userData.length > 1 ? "s" : ""}</p>` 
+
+    let joinedUsersList = document.createElement("div");
     joinedUsersList.id = "joinedUsersList";
     joinedUsersContainer.appendChild(joinedUsersList);
-    
-    userData.forEach((user, index) => {
+
+    for (let user of userData.players) {
+        console.log(user)
         const joinedUsersBox = document.createElement("div");
         joinedUsersBox.className = "joinedUsersBox";
         joinedUsersList.appendChild(joinedUsersBox);
 
         joinedUsersBox.innerHTML = `
             <div class="the_resttop">
-                <img class="profilePic_users" src="${user.profileImg}" alt="${user.username}'s profile picture">
-                <p class="name">${user.username}</p>
+                <img class="profilePic_users" src="${user.user.profileImg}" alt="${user.user.username}'s profile picture">
+                <p class="name">${user.user.username}</p>
             </div>
             <div class="user_content">
                 <svg id="starIcon" xmlns="http://www.w3.org/2000/svg" width="19" height="20" viewBox="0 0 19 20" fill="none">
@@ -63,28 +89,48 @@ function renderJoinedUser (parentId, userData){
                 </svg>
                 <p class="userPoints">${user.score}</p>
             </div>`;
-    });
+    }
 }
 
-function renderWaitingRoomFooter(parentId){
+function renderWaitingRoomFooter(parentId, gameHost){
     const parent = document.getElementById(parentId);
 
     const waitingRoomFooter = document.createElement("div");
     waitingRoomFooter.id = "waitingRoomFooter";
     parent.appendChild(waitingRoomFooter);
 
-    waitingRoomFooter.innerHTML = `
-    <button id="gameInfo">How does it work?</button>
-    <button id="startGame">Start Quiz</button>`;
+    const host = JSON.parse(sessionStorage.getItem("user"));
+    if (host.username === gameHost.gameHost.username) {
+        waitingRoomFooter.innerHTML = `
+        <button id="gameInfo">How does it work?</button>
+        <button id="startGame">Start Quiz</button>`;
+    } else {
+        waitingRoomFooter.innerHTML = `
+        <button id="gameInfo">How does it work?</button>`;
+    }
 
     document.getElementById("gameInfo").addEventListener("click",() =>{
         renderGameRulesPopUp(parentId);
     });
 
     document.getElementById("startGame").addEventListener("click",() =>{
-
+        
+        const currentUser = JSON.parse(sessionStorage.getItem("user"));
+        console.log(gameHost.gameHost.username);
+        console.log(currentUser.username);
+        let quizToStart = parseInt(sessionStorage.getItem("mediaId"));
+        let data = {
+            mediaId: quizToStart,
+            user: currentUser
+        }
+        // skicka startgame till alla och skicka med rätt film/serie id
+        const message = {event: "startGame", data: data}
+        quizSocket.send(JSON.stringify(message));
+        // renderQuizpageContent("wrapper", mediaInt);
+        //nytt event startGame så att quizzet startas för alla samtidigt. Lägg till websocket för det bara hosten kan starta.
     });
 }
+
 
 function renderGameRulesPopUp(parentId) {
     const parent = document.getElementById(parentId);

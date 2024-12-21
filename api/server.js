@@ -82,39 +82,62 @@ async function handleWebsocket(request) {
         console.log("server received", message);
 
         if (message.event == "createdGame") {
-            console.log(message);
             const hostCode = message.data.newGameCode;
             const gameHost = message.data.host;
-            console.log(hostCode);
-            console.log(gameHost);
+
+
+            //add a key for every players connection id in order to make the block powerup work also add the host to the playerlist
+            //add an id to every game so that they are identifiable and easy to find
+            let gameId = 0;
+            if (activeGames.length != 0) {
+                for (let game of activeGames) {
+                    if (gameId < game.id) {
+                        gameId = game.id;
+                    }
+                }
+            } else {
+                let gameId = 1;
+            }
+            gameId++;
 
             let game = {
+                id: gameId,
                 code: hostCode,
                 gameHost: gameHost,
-                players: []
+                players: [{connectionId: myId, user: gameHost}]
             }
             // console.log(gameCodes);
             activeGames.push(game);
-            console.log(game);
             const returnMessage = {event: message.event, data: game}
-            console.log(returnMessage);
             socket.send(JSON.stringify(returnMessage))
             // socket.send(JSON.stringify(message));
         }
 
         if (message.event == "joinGame") {
             const joinCode = message.data.joinGameCode;
-            console.log(message);
 
-
-            for (let game of activeGames) {
+            for (const game of activeGames) {
                 if (joinCode == game.code) {
-                    game.players.push(message.data.user);
+                    const data = {
+                        connectionId: myId,
+                        user: message.data.user
+                    }
+                    // game.players.user = message.data.user;
+                    // game.players.connectionId = myId;
+                    game.players.push(data);
                     const returnMessage = {event: message.event, data: game}
-
                     for (let id in connections) {
                         connections[id].send(JSON.stringify(returnMessage));
                     }
+                }
+            }
+        }
+
+        if (message.event == "startGame") {
+            console.log(message.data.user);
+            for (let game of activeGames) {
+                if (game.gameHost === message.data.username) {
+                    console.log(game.gameHost);
                 }
             }
         }

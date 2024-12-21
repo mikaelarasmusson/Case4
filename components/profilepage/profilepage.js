@@ -107,7 +107,7 @@ function renderMyProfileContent (parentId) {
     parent.appendChild(myProfileContentContainer);
 
     document.getElementById("signOutButton").addEventListener("click", () => {
-        localStorage.clear();
+    sessionStorage.clear();
         render_login("wrapper");
     });
 }
