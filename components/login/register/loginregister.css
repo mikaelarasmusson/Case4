@@ -55,7 +55,7 @@
         display: flex;
         flex-direction: column;
         gap: 24px;
-        width: 265px;
+        width: 312px;;
     }
 
     /* Title Styling */
@@ -91,7 +91,7 @@
     }
 
     input {
-        width: 242px;
+        width: 276px;
         padding: 10px;
         border-radius: 5px;
         background-color: #333333;
@@ -113,7 +113,7 @@
         padding: 10px;
         border-radius: 5px;
         background-color: #E50913;
-        width: 242px;
+        width: 276px;
         text-align: center;
         color: #FFFFFF;
         margin: 0;
