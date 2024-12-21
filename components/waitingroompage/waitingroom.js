@@ -2,22 +2,19 @@ const quizSocket = new WebSocket("http://localhost:8000");
 
 quizSocket.addEventListener("open", (event) => {
 
-}) 
-
-
+}); 
 
 quizSocket.addEventListener("message", (event)=> {
     const message = JSON.parse(event.data);
 
     if (message.event == "startGame") {
-        console.log(message);
+        renderQuizpageContent("wrapper", message.data.mediaId);
     }
-}) 
-
+});
 
 quizSocket.addEventListener("close", (event) => {
     console.log("disconneted");
-}) 
+});
 
 
 function renderWaitingRoom(parentId, userData){

@@ -134,10 +134,11 @@ async function handleWebsocket(request) {
         }
 
         if (message.event == "startGame") {
-            console.log(message.data.user);
             for (let game of activeGames) {
-                if (game.gameHost === message.data.username) {
-                    console.log(game.gameHost);
+                if (game.gameHost.username === message.data.user.username) {
+                    for (let id in connections) {
+                        connections[id].send(JSON.stringify(message));
+                    }
                 }
             }
         }
