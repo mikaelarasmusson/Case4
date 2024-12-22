@@ -4,9 +4,118 @@
         display: flex;
         width: 430px;
         height: 100%;
-        padding: 0px 20px 167px 19px;
+        padding: 0px 30px 167px 30px;
         flex-direction: column;
         align-items: flex-start;
         background: #000;
     }
+
+    #profileArrowTitleContainer {
+        display: flex;
+        justify-content: space-between;
+        position: fixed;
+        right: 0;
+        left: 0;
+        top: 0;
+        z-index: 1000;
+        background-color: black;
+        padding: 44px 20px 24px 20px;
+    }
+
+    #myProfileContentContainer {
+        display: flex;
+        width: 390px;
+        margin: 226px 0px 0px 0px;
+        flex-direction: column;
+        align-items: center;
+        color: #FFF;
+    }
+
+    #profileInfoPic {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 17px;
+    }
+
+    #myProfileTitle {
+        margin: 0;
+        align-self: stretch;
+
+        color: #FFF;
+        text-align: center;
+        font-family: var(--main_title_font);
+        font-size: 20px;
+        line-height: normal;
+        letter-spacing: 0.024px;
+    }
+
+    #myProfilePic {
+        width: 145px;
+        height: 145px;
+
+        border-radius: 145px;
+        border: 1px solid #FFF;
+        background: lightgray 50% / cover no-repeat;
+    }
+
+    #userName {
+        margin: 0;
+        color: #FFF;
+        text-align: center;
+        font-family: var(--paragraph_font);
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: 0.022px;
+    }
+
+    #starAndScore {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
+
+    #userPointsProfilePage {
+        margin: 0;
+        color: #FFF;
+        text-align: center;
+        font-family: var(--paragraph_font);
+        font-size: 14px;
+        line-height: normal;
+        letter-spacing: 0.017px;
+    }
+
+    #myProfileSettingsContainer {
+        margin: 35px 0px 0px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        align-self: stretch;
+    }
+
+    .profileSettingsButtons {
+        display: flex;
+        padding: 2px 16px 2px 16px;
+        justify-content: space-between;
+        align-items: center;
+        align-self: stretch;
+
+        border-radius: 5px;
+        border: none;
+        background: #333;
+        color: #FFF;
+        font-family: var(--main_title_font);
+        font-size: 14px;
+    }
+
+    #iconAndTextContainer {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
 }

@@ -81,6 +81,12 @@ function renderProfileWithBackArrow(parentId) {
             renderLandingpageWrapper("wrapper");
         }
     });
+
+    const profilePic = document.querySelector("#profilePic");
+    profilePic.addEventListener("click", () => {
+      document.getElementById("wrapper").innerHTML = "";
+      renderProfilePageContainer("wrapper");
+    });
 }
 
 function renderSearchbar(parentId) {
