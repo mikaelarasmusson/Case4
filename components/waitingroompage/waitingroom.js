@@ -1,5 +1,4 @@
 const quizSocket = new WebSocket("http://localhost:8000");
-console.log("waitingroompage is loaded");
 
 quizSocket.addEventListener("open", (event) => {
     console.log("connected");
@@ -14,7 +13,8 @@ quizSocket.addEventListener("message", (event)=> {
             const currentUser = JSON.parse(sessionStorage.getItem("user"));
             for (let player of message.game.players) {
                 if (currentUser.id === player.user.id) {
-                    renderQuizpageContent("wrapper", message.mediaId, "multiplayer");
+                    console.log(message);
+                    renderQuizpageContent("wrapper", message.mediaId, message.mediaType, "multiplayer");
                     updateCurrentGame(message.game);
                 }
             }
@@ -125,9 +125,11 @@ function renderWaitingRoomFooter(parentId, gameHost){
         const currentUser = JSON.parse(sessionStorage.getItem("user"));
         console.log(gameHost.gameHost.username);
         console.log(currentUser.username);
-        let quizToStart = parseInt(sessionStorage.getItem("mediaId"));
-        let data = {
+        const quizToStart = parseInt(sessionStorage.getItem("mediaId"));
+        const mediaType = sessionStorage.getItem("mediaType");
+        const data = {
             mediaId: quizToStart,
+            mediaType: mediaType,
             user: currentUser
         }
         // skicka startgame till alla och skicka med rätt film/serie id

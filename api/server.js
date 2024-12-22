@@ -144,6 +144,7 @@ async function handleWebsocket(request) {
                     const returnMessage = {
                         event: message.event,
                         mediaId: message.data.mediaId,
+                        mediaType: message.data.mediaType,
                         game: game
                     }
                     for (let id in connections) {

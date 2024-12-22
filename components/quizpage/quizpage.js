@@ -18,12 +18,9 @@ gameSocket.addEventListener("message", (event) => {
     if (message.event === "updatePoints") {
         currentGame = message.data;
         console.log(currentGame);
-        //vet inte ens om den behöver returnera något men den måste uppdatera spelarobjektet kanske kan skicka tillbaka det och spara det i en variabel
-        //som sedan skickas till leaderboarden?
     }
 
     if (message.event === "blockUser") {
-        //do something
         const currentUser = JSON.parse(sessionStorage.getItem("user"));
         if (currentUser.id === message.data.id) {
             console.log(currentUser);

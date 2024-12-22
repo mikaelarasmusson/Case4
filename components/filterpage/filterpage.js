@@ -460,6 +460,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
             const message = {event: "createdGame", data: {newGameCode: gameCode, host: json}};
             socket.send(JSON.stringify(message));
             sessionStorage.setItem("mediaId", mediaId);
+            sessionStorage.setItem("mediaType", mediaType);
             console.log(isMultiPlayer);
             // renderWaitingRoom(parentId, userData);
         })
