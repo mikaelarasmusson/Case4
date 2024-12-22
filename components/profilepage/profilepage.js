@@ -7,7 +7,6 @@ function renderProfilePageContainer (parentId) {
     container.id = "profilePageContainer";
     parent.append(container);
 
-    // Rendera allt här
     renderProfilePageBackArrow(container.id);
     renderMyProfileContent(container.id);
 }

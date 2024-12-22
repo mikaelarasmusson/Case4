@@ -22,27 +22,24 @@ socket.addEventListener("close", (event) => {
     console.log("disconnected");
 });
 
+//Container for filterpage
 function renderFilterpageContainer(parentId) {
-    // Get the parent element
     const parent = document.getElementById(parentId);
 
-    // Clear the parent element's content
     parent.innerHTML = "";
     
-    // Create a new container element
     const container = document.createElement("div");
     container.id = "filterpageContainer"; 
     
-    // Append the container to the parent element
     parent.append(container);
         
-    // Render the landing page content inside the container
     renderProfileWithBackArrow(container.id);
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
     renderFilmsandSeriesBoxesContainer(container.id);
 }
 
+// Profile-header
 function renderProfileWithBackArrow(parentId) {
     const parent = document.getElementById(parentId);
   
@@ -89,6 +86,7 @@ function renderProfileWithBackArrow(parentId) {
     });
 }
 
+// Searchbar
 function renderSearchbar(parentId) {
     const parent = document.getElementById(parentId);
 
@@ -119,12 +117,12 @@ function renderSearchbar(parentId) {
 
         const foundMedia = searchTitle(event, search, media);
         console.log(foundMedia);
-        // renderSearchedMedia(foundMedia);
         let searchParent = document.getElementById("filmsandSeriesBoxesContainer");
         renderFilmsandSeriesBoxes(searchParent, foundMedia);
     })
 } 
 
+// Filter Container
 function renderFilterContainer (parentId) {
     const parent = document.getElementById(parentId);
     const container = document.createElement("div");
@@ -134,6 +132,7 @@ function renderFilterContainer (parentId) {
     renderFilterContents(container.id);
 }
 
+// Update the category text
 let selectedCategory = "Categories";
 
 function updateCategoryText (newCategory) {
@@ -143,6 +142,7 @@ function updateCategoryText (newCategory) {
     categoryText.textContent = selectedCategory;
 }
 
+// Contents for filter
 function renderFilterContents(parentId) {
     const parent = document.getElementById(parentId);
     const buttonContainer = document.createElement("div");
@@ -184,7 +184,7 @@ function renderFilterContents(parentId) {
                     <path d="M15.5 2.01607L13.9839 0.5L8 6.48393L2.01607 0.5L0.5 2.01607L6.48393 8L0.5 13.9839L2.01607 15.5L8 9.51607L13.9839 15.5L15.5 13.9839L9.51607 8L15.5 2.01607Z" fill="white"/>
                 </svg>
             `;
-            buttonContainer.insertBefore(buttonNoFilter, buttonContainer.firstChild); // Placera först
+            buttonContainer.insertBefore(buttonNoFilter, buttonContainer.firstChild);
             buttonNoFilter.classList.add("active");
 
             // Lägg till klick-hanterare för att gömma knappen
@@ -192,14 +192,13 @@ function renderFilterContents(parentId) {
                 hideNoFilterButton();
                 buttonFilms.classList.remove("hidden");
                 buttonSeries.classList.remove("hidden");
-                // Återställ bakgrundsfärger när noFilter tas bort
                 buttonFilms.style.backgroundColor = "";
                 buttonSeries.style.backgroundColor = "";
                 buttonCategories.style.backgroundColor = "";
             });
         }
 
-        buttonNoFilter.classList.add("active"); // Visa med animation
+        buttonNoFilter.classList.add("active"); 
     }
 
     // Funktion för att gömma noFilter-knappen
@@ -209,34 +208,30 @@ function renderFilterContents(parentId) {
             buttonNoFilter.classList.remove("active");
             setTimeout(() => {
                 buttonNoFilter.remove();
-            }, 300); // Matcha transition-tiden
+            }, 300);
         }
     }
 
-    // Klick-event för Films
     buttonFilms.addEventListener("click", () => {
-        buttonFilms.style.backgroundColor = "#6D6D6D"; // Sätt bakgrundsfärg på Films
-        buttonSeries.classList.add("hidden"); // Dölj Series
-        showNoFilterButton(); // Visa noFilter-knappen
+        buttonFilms.style.backgroundColor = "#6D6D6D"; 
+        buttonSeries.classList.add("hidden"); 
+        showNoFilterButton(); 
     });
 
-    // Klick-event för Series
     buttonSeries.addEventListener("click", () => {
-        buttonSeries.style.backgroundColor = "#6D6D6D"; // Sätt bakgrundsfärg på Series
-        buttonFilms.classList.add("hidden"); // Dölj Films
-        showNoFilterButton(); // Visa noFilter-knappen
+        buttonSeries.style.backgroundColor = "#6D6D6D"; 
+        buttonFilms.classList.add("hidden"); 
+        showNoFilterButton(); 
     });
 
-    // Klick-event för Categories
     buttonCategories.addEventListener("click", () => {
-        buttonCategories.style.backgroundColor = "#6D6D6D"; // Sätt bakgrundsfärg på Categories
+        buttonCategories.style.backgroundColor = "#6D6D6D"; 
         showNoFilterButton(); 
         renderFilterDropDownPopUp(parentId);
     });
 }
 
-
-
+// Container for films and series
 function renderFilmsandSeriesBoxesContainer(parentId) {
     const parent = document.getElementById(parentId);
     const container = document.createElement("div");
@@ -245,6 +240,7 @@ function renderFilmsandSeriesBoxesContainer(parentId) {
     renderFilmsandSeriesBoxes(container);
 }
     
+// Content of films and series
 function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
     const allMedia = mediaList || [...State.get("films"), ...State.get("series")];
     const quizFilms = State.get("quizfilms");
@@ -297,20 +293,9 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
             renderStartQuizPopup(parentDom.id, media.id, mediaType, isMultiPlayer);
         });
     }
-
-    /*
-    document.getElementById("buttonFilms").addEventListener("click", (event) => {
-        const button = event.target;
-        filterFilmsAndSeriesBoxes(films, quizFilms);
-    })
-    
-    document.getElementById("buttonSeries").addEventListener("click", (event) => {
-        const button = event.target;
-        filterFilmsAndSeriesBoxes(series, quizSeries);
-    })
-    */
 }
 
+// Content of films and series
 function filterFilmsAndSeriesBoxes (mediaType, quizData) {
 
     const container = document.getElementById("filmsandSeriesBoxesContainer");
@@ -353,6 +338,7 @@ function filterFilmsAndSeriesBoxes (mediaType, quizData) {
     }
 }
 
+// Filter by genre
 function filterAndRenderMediaByGenre(genre) {
     const allMedia = [...State.get("films"), ...State.get("series")];
     const filteredMedia = allMedia.filter((media) => {
@@ -361,15 +347,15 @@ function filterAndRenderMediaByGenre(genre) {
     console.log(filteredMedia);
     
     const container = document.getElementById("filmsandSeriesBoxesContainer");
-    container.innerHTML = ""; // Rensa innehåll i containern
+    container.innerHTML = ""; 
 
     renderFilmsandSeriesBoxes(container, filteredMedia);
 }
 
+// Filter popup
 function renderFilterDropDownPopUp(parentId) {
     const parent = document.getElementById(parentId);
 
-    // Kontrollera om popupen redan finns för att förhindra duplicering
     if (document.getElementById("categoriesDropdown")) {
         return;
     }
@@ -400,7 +386,6 @@ function renderFilterDropDownPopUp(parentId) {
         </div>   
         `;
 
-    // Stänga popupen
     categoriesDropdown.querySelector("#exitDropdown").addEventListener("click", () => {
         categoriesDropdown.remove();
     });
@@ -423,14 +408,10 @@ function renderFilterDropDownPopUp(parentId) {
     console.log(categoryLinks);
 }
 
-// Lägg till popup för starta quiz
+// Start quiz popup
 function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
     const parent = document.getElementById(parentId);
-    console.log(parent);
-    console.log(mediaId);
-    console.log(mediaType);
-    console.log("Clicked on a film");
-    console.log(isMultiPlayer);
+
     let quizData, mediaData;
 
     if (mediaType === "films") {
