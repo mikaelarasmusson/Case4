@@ -50,6 +50,12 @@ function renderProfileLandingpage(parentId) {
   `;
 
   profileContainer.append(profileContent);
+
+  const profilePic = document.querySelector("#profilePic");
+  profilePic.addEventListener("click", () => {
+    document.getElementById("wrapper").innerHTML = "";
+    renderProfilePageContainer("wrapper");
+  });
 }
 
 function renderLandingpageContent(parentId) {

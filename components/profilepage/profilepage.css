@@ -1,0 +1,12 @@
+
+@media screen and (min-width: 430px) and (max-width: 1024px) {
+    #profilePageContainer {
+        display: flex;
+        width: 430px;
+        height: 100%;
+        padding: 0px 20px 167px 19px;
+        flex-direction: column;
+        align-items: flex-start;
+        background: #000;
+    }
+}
