@@ -101,13 +101,136 @@
 #gameRulesPopUp {
     display: inline-flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
 
-    padding: 17px 21px 51px 40px;
+    padding: 50px 30px 50px 30px;
+    gap: 25px;
 
     position: fixed;
-    top: 180px;
-    left: 0px;     
-    z-index: 999;
+    top: 144px;
+    left: 18px;
+    z-index: 998;
+    border-radius: 20px;
+    border: 1px solid #212121;
+    background: #161616;
+    box-shadow: -20px -20px 20px 0px rgba(78, 78, 78, 0.25), 20px 20px 20px 0px rgba(78, 78, 78, 0.25);
+}
+
+#exitRulePopUpButton {
+    position: fixed;
+    z-index: 9999;
+    top: 173px;
+    right: 48px;
+    color: #FFF;
     background-color: #161616;
+    border: none;
+}
+
+#gameRulesPopUpContent {
+    display: flex;
+    width: 330px;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+#gameRulesPopUpContent h2 {
+    margin: 0;
+    color: #FFF;
+    text-align: center;
+    font-family: var(--main_title_font);
+    font-size: 24px;
+    line-height: 150%; /* 36px */
+    letter-spacing: 0.029px;
+}
+
+.rule {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    align-self: stretch;
+}
+
+.rule > p:first-child {
+    margin: 0;
+    color: #FFF;
+    font-family: var(--main_title_font);
+    font-size: 18px;
+    line-height: 150%; /* 27px */
+    letter-spacing: 0.022px;
+}
+
+.rule > p:last-child {
+    margin: 0;
+    color: #FFF;
+    font-family: var(--paragraph_font);
+    font-size: 16px;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.019px;
+}
+
+#point ul {
+    margin: 0;
+    padding: 0px 0px 0px 24px;
+}
+
+#point li {
+    color: #FFF;
+    font-family: var(--paragraph_font);
+    font-size: 16px;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.019px;
+}
+
+#superPowersContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+}
+
+#superPowers {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr 1fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.powerBox {
+    display: flex;
+    width: 50px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 50px;
+    background: #E50913;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.powerBox p {
+    font-family: var(--paragraph_font);
+    font-size: var(--paragraph_size);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.textBox {
+    color: #FFF;
+    font-family: var(--paragraph_font);
+    font-size: 16px;
+    line-height: 150%; /* 24px */
+    letter-spacing: 0.019px;
+}
+
+.textBox p {
+    margin: 0;
+    padding: 0px 0px 0px 16px;
+}
+
+.textBox p:first-child {
+    font-family: var(--bold_font);
 }

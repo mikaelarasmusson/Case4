@@ -41,7 +41,8 @@ function renderFilterpageContainer(parentId) {
     renderProfileWithBackArrow(container.id);
     renderSearchbar(container.id);
     renderFilterContainer(container.id);
-    renderFilmsandSeriesBoxesContainer(container.id);}
+    renderFilmsandSeriesBoxesContainer(container.id);
+}
 
 function renderProfileWithBackArrow(parentId) {
     const parent = document.getElementById(parentId);
@@ -81,6 +82,12 @@ function renderProfileWithBackArrow(parentId) {
             localStorage.removeItem("gameMode");
             renderLandingpageWrapper("wrapper");
         }
+    });
+
+    const profilePic = document.querySelector("#profilePic");
+    profilePic.addEventListener("click", () => {
+      document.getElementById("wrapper").innerHTML = "";
+      renderProfilePageContainer("wrapper");
     });
 }
 
@@ -181,6 +188,7 @@ function renderFilterContents(parentId) {
         buttonSeries.style.display = "block";
         buttonFilms.style.backgroundColor = "";
         buttonSeries.style.backgroundColor = "";
+        buttonCategories.style.backgroundColor = "";
         buttonNoFilter.style.display = "none";
     });
 
@@ -188,16 +196,21 @@ function renderFilterContents(parentId) {
         buttonFilms.style.backgroundColor = "#6D6D6D";
         buttonSeries.style.display = "none";
         buttonNoFilter.style.display = "block";
+        buttonNoFilter.style.display = "flex";
+        buttonFilms.style.transition = "all 0.3s ease";
     })
 
     buttonSeries.addEventListener("click", () => {
         buttonSeries.style.backgroundColor = "#6D6D6D";
         buttonFilms.style.display = "none";
         buttonNoFilter.style.display = "block";
+        buttonNoFilter.style.display = "flex";
     })
 
     buttonCategories.addEventListener("click", () => {
         buttonCategories.style.backgroundColor = "#6D6D6D";
+        buttonNoFilter.style.display = "block"; 
+        buttonNoFilter.style.display = "flex";
         renderFilterDropDownPopUp(parentId);
     });
 
