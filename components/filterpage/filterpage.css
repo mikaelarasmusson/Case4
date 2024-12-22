@@ -243,7 +243,7 @@
         height: 251px;
 
         border-radius: 30px 30px 0px 0px;
-        background: #2D2D2D;
+        background: #161616;
         position: fixed;
         bottom: 0;
         left: 0;
@@ -256,7 +256,7 @@
         right: -3px;
         z-index: 888;
         color: #FFF;
-        background-color: #2D2D2D;
+        background-color: #161616;
         border: none;
         margin: 28px 40px 0px 0px;
     }
