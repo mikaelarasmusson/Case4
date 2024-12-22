@@ -2,10 +2,6 @@ let questionInterval; // إعلان المتغير بشكل عام
 
 let currentGame;
 let points = 0;
-const player = JSON.parse(sessionStorage.getItem("user"));
-if (player.score !== 0) {
-    player.score = 0;
-}
 
 const gameSocket = new WebSocket("http://localhost:8000");
 
@@ -18,6 +14,7 @@ gameSocket.addEventListener("message", (event) => {
 
     if (message.event === "updatePoints") {
         currentGame = message.data;
+        console.log(currentGame);
         //vet inte ens om den behöver returnera något men den måste uppdatera spelarobjektet kanske kan skicka tillbaka det och spara det i en variabel
         //som sedan skickas till leaderboarden?
     }
@@ -95,7 +92,7 @@ function renderQuizpageContent(parentId, mediaId) {
     function renderNextQuestion() {
         if (currentQuestionIndex >= selectedMedia.questions.length) {
             clearInterval(questionInterval);
-            renderLeaderboardpageContainer(parentId);
+            renderLeaderboardpageContainer(parentId, currentGame);
             return;
         }
 
@@ -120,6 +117,7 @@ function renderQuizpageContent(parentId, mediaId) {
     }
 
     function renderAnswers(parent, answers = [], correctAnswer) {
+        const player = JSON.parse(sessionStorage.getItem("user"));
         answers.forEach(answerText => {
             const newElement = document.createElement("div");
             newElement.classList.add("answer");

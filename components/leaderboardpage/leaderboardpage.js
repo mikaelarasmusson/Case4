@@ -1,7 +1,8 @@
-function renderLeaderboardpageContainer(parentId) {
+function renderLeaderboardpageContainer(parentId, game) {
     // Get the parent element
     const parent = document.getElementById(parentId);
 
+    console.log(game);
     const leaderboard_page_wrapper = document.createElement("div");
     leaderboard_page_wrapper.id = "leaderboardpage_wrapper";
     parent.append(leaderboard_page_wrapper)
@@ -23,7 +24,7 @@ function renderLeaderboardpageContainer(parentId) {
 
 
     // Render the landing page content inside the container
-    renderTopLeaderboard(container.id)
+    renderTopLeaderboard(container.id, game)
 }
 
 
@@ -35,11 +36,12 @@ function renderLeaderboardContent(parentId){
     parent.append(profileContainer)
 }
 
-function renderTopLeaderboard(parentId){
+function renderTopLeaderboard(parentId, game){
 
+    const players = game.players;
     const allUsers = [...State.get("users")];
 
-    const sortedUsers = allUsers.sort((a, b) => b.score - a.score);
+    const sortedUsers = players.sort((a, b) => b.score - a.score);
 
     const parent = document.getElementById(parentId);
 
@@ -53,6 +55,9 @@ function renderTopLeaderboard(parentId){
     Topleaderboard.id = "Topleaderboard";
     parent.append(Topleaderboard);
    
+    // if (sortedUsers.length === 1) {
+
+    // }
 
     Topleaderboard.innerHTML = `
     <div class="top_user">
@@ -149,14 +154,12 @@ function renderTopLeaderboard(parentId){
     leaderBoard_h2.textContent = "Other ranks";
 
 
-    for (let i =  3; i < sortedUsers.length ; i++ ){
+    for (let i = 3; i < sortedUsers.length ; i++ ){
         const leaderBoard_list = document.createElement("div");
         leaderBoard_list.classList.add("leaderboard_list");
         leaderBoard_container.append(leaderBoard_list)
     
         leaderBoard_list.innerHTML += `
-    
-    
             <div class = "the_resttop">
                 <h2>${i+1}</h2>
                 <img class="profilePic_users" src="${sortedUsers[i].profileImg}">
