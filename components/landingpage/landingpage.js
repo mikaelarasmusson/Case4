@@ -11,8 +11,14 @@ joinGameSocket.addEventListener("message", (event) => {
   const message = JSON.parse(event.data);
 
   if (message.event == "joinGame") {
-    console.log(message);
-    renderWaitingRoom("wrapper", message.data);
+    const currentUser = JSON.parse(sessionStorage.getItem("user"));
+    
+    for (let player of message.data.players) {
+      if (currentUser.id === player.user.id) {
+        console.log(message.data);
+        renderWaitingRoom("wrapper", message.data);
+      }
+    }
     // waitingRoom(message.data);
   }
 })

@@ -15,6 +15,4 @@ startApp();
 //fixa films and series knapparna så att de sorterar filmer och serier
 //fixa profilbilder
 //för att faktiskt kunna visa alla poäng en spelare samlat så kanske man kan lägga till en nyckel som är totalPoints, lite jobb med det dock.
-//fråga chatgpt varför man ibland joinar ett game trots att man inte skrivit in koden
-//tror nästan jag får ändra hur leaderboarden ser ut
 //leaderboarden renderas om konstant

@@ -9,9 +9,16 @@ quizSocket.addEventListener("message", (event)=> {
     const message = JSON.parse(event.data);
 
     if (message.event == "startGame") {
-        console.log(message);
-        renderQuizpageContent("wrapper", message.mediaId);
-        updateCurrentGame(message.game);
+        const pin = parseInt(document.getElementById("pinCode").textContent);
+        if (pin === message.game.code) {
+            const currentUser = JSON.parse(sessionStorage.getItem("user"));
+            for (let player of message.game.players) {
+                if (currentUser.id === player.user.id) {
+                    renderQuizpageContent("wrapper", message.mediaId, "multiplayer");
+                    updateCurrentGame(message.game);
+                }
+            }
+        }
     }
 });
 

@@ -18,14 +18,19 @@ gameSocket.addEventListener("message", (event) => {
         //vet inte ens om den behöver returnera något men den måste uppdatera spelarobjektet kanske kan skicka tillbaka det och spara det i en variabel
         //som sedan skickas till leaderboarden?
     }
+
+    if (message.event === "blockPoints") {
+        //do something
+    }
 });
 
 gameSocket.addEventListener("close", (event) => {
     console.log("disconnected");
 })
 
-function renderQuizpageContent(parentId, mediaId) {
+function renderQuizpageContent(parentId, mediaId, mode = "singleplayer") {
     console.log(mediaId);
+    console.log(mode);
     const parent = document.getElementById(parentId);
     if (!parent) {
         console.error(`Parent element with id "${parentId}" not found.`);
@@ -117,25 +122,44 @@ function renderQuizpageContent(parentId, mediaId) {
     }
 
     function renderAnswers(parent, answers = [], correctAnswer) {
+
         const player = JSON.parse(sessionStorage.getItem("user"));
+        document.getElementById("DoublePoints").addEventListener("click", (event) => {
+            if (!document.getElementById("DoublePoints").classList.contains("used")) {
+                document.getElementById("DoublePoints").classList.add("double");
+            }
+        });
+
         answers.forEach(answerText => {
             const newElement = document.createElement("div");
             newElement.classList.add("answer");
-
+            
             const answer = document.createElement("p");
             answer.textContent = answerText;
-
+            
             newElement.addEventListener("click", () => {
                 const allAnswers = parent.querySelectorAll(".answer");
                 allAnswers.forEach(answerDiv => answerDiv.style.pointerEvents = "none");
+                
 
                 newElement.classList.add("selectedAnswer");
-                if (answer.textContent === correctAnswer) {
-                    points = points + 10;
+                if (answer.textContent === correctAnswer && document.getElementById("DoublePoints").classList.contains("double")) {
+                    document.getElementById("DoublePoints").classList.remove("double");
+                    document.getElementById("DoublePoints").classList.add("used");
+                    points = points + 20;
                     updatePoints(points, player);
 
-                    const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}})
-                    gameSocket.send(message);
+                    if (mode === "multiplayer") {
+                        const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}})
+                        gameSocket.send(message);
+                    }
+                } else if (answer.textContent === correctAnswer && !document.getElementById("DoublePoints").classList.contains("double")) {
+                    points = points + 10;
+                    updatePoints(points, player);
+                    if (mode === "multiplayer") {
+                        const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}})
+                        gameSocket.send(message);
+                    }
                 }
             });
 
@@ -209,3 +233,6 @@ function updateCurrentGame (game) {
     currentGame = game;
     console.log(currentGame);
 }
+
+
+//om man klickar på double points ska poängen vara värda dubbelt så mycket
