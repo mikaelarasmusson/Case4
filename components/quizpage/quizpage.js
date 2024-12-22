@@ -37,9 +37,10 @@ gameSocket.addEventListener("close", (event) => {
     console.log("disconnected");
 })
 
-function renderQuizpageContent(parentId, mediaId, mode = "singleplayer") {
+function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplayer") {
     console.log(mediaId);
     console.log(mode);
+    console.log(mediaType);
     const parent = document.getElementById(parentId);
     if (!parent) {
         console.error(`Parent element with id "${parentId}" not found.`);
@@ -57,7 +58,13 @@ function renderQuizpageContent(parentId, mediaId, mode = "singleplayer") {
     contentElement.id = "quizpageContent";
     quizpageWrapper.append(contentElement);
    
-    const allMedia = [...State.get("quizfilms"), ...State.get("quizseries")];
+    let allMedia = [];
+    if (mediaType === "series") {
+        allMedia = State.get("quizseries");
+    } else if (mediaType === "films") {
+        allMedia = State.get("quizfilms");
+    }
+    // const allMedia = [...State.get("quizfilms"), ...State.get("quizseries")];
     const selectedMedia = allMedia.find(media => media.id === mediaId);
 
     if (!selectedMedia) {

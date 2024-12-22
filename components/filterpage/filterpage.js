@@ -489,7 +489,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
         parent.appendChild(popup);
 
         document.getElementById("startQuizButton").addEventListener("click", () => {
-            renderQuizpageContent("wrapper", mediaId);
+            renderQuizpageContent("wrapper", mediaId, mediaType);
         });
 
         document.getElementById("closePopupButton").addEventListener("click", () => {
