@@ -1,14 +1,17 @@
 const quizSocket = new WebSocket("http://localhost:8000");
+console.log("waitingroompage is loaded");
 
 quizSocket.addEventListener("open", (event) => {
-
+    console.log("connected");
 }); 
 
 quizSocket.addEventListener("message", (event)=> {
     const message = JSON.parse(event.data);
 
     if (message.event == "startGame") {
-        renderQuizpageContent("wrapper", message.data.mediaId);
+        console.log(message);
+        renderQuizpageContent("wrapper", message.mediaId);
+        updateCurrentGame(message.game);
     }
 });
 

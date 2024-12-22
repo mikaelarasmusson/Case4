@@ -10,6 +10,11 @@ async function HTTPhandler (req) {
     const pathname = new URL(req.url).pathname;
 
     if (req.method === "GET") {
+
+        if (pathname === "/undefined") {
+            return new Response({ status: 400, body: "Undefined path is not allowed." });
+        }
+
         if (pathname === "/api/films") {
             return mediaHandler(req, pathname);
         }
@@ -136,9 +141,40 @@ async function handleWebsocket(request) {
         if (message.event == "startGame") {
             for (let game of activeGames) {
                 if (game.gameHost.username === message.data.user.username) {
-                    for (let id in connections) {
-                        connections[id].send(JSON.stringify(message));
+                    const returnMessage = {
+                        event: message.event,
+                        mediaId: message.data.mediaId,
+                        game: game
                     }
+                    for (let id in connections) {
+                        connections[id].send(JSON.stringify(returnMessage));
+                    }
+                }
+            }
+        }
+
+        if (message.event == "updatePoints") {
+            // console.log("inside updatePoints event");
+            // console.log(message.data);
+            const currentUser = message.data.user;
+
+            for (const game of activeGames) {
+                // console.log(game);
+                // console.log(message.data.game);
+                if (game.id === message.data.game.id) {
+                    const players = game.players;
+
+                    for (let player of players) {
+                        if (player.user.id === currentUser.id) {
+                            player.user.score = currentUser.score;
+
+                            const returnMessage = {event: message.event, data: game};
+                            for (const id in connections) {
+                                connections[id].send(JSON.stringify(returnMessage));
+                            }
+                        }
+                    }
+
                 }
             }
         }

@@ -4,35 +4,35 @@
     "username": "mikkan",
     "password": "lol123",
     "profileImg": "./images/profilepic.png",
-    "score": 17
+    "score": 0
   },
   {
     "id": 2,
     "username": "Hampus",
     "password": "test",
     "profileImg": "./images/profilepic.png",
-    "score": 18
+    "score": 0
   },
   {
     "id": 3,
     "username": "nyttnamn",
     "password": "nyttlösen",
     "profileImg": "./images/profilepic.png",
-    "score": 60
+    "score": 0
   },
   {
     "id": 4,
     "username": "testar",
     "password": "testar",
     "profileImg": "./images/profilepic.png",
-    "score": 34
+    "score": 0
   },
   {
     "id": 5,
     "username": "Hampus2",
     "password": "test2",
     "profileImg": "./images/profilepic.png",
-    "score": 90
+    "score": 0
   },
   {
     "id": 6,

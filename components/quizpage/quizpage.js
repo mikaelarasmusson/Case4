@@ -1,5 +1,32 @@
 let questionInterval; // إعلان المتغير بشكل عام
 
+let currentGame;
+let points = 0;
+const player = JSON.parse(sessionStorage.getItem("user"));
+if (player.score !== 0) {
+    player.score = 0;
+}
+
+const gameSocket = new WebSocket("http://localhost:8000");
+
+gameSocket.addEventListener("open", (event) => {
+    console.log("connected");
+});
+
+gameSocket.addEventListener("message", (event) => {
+    const message = JSON.parse(event.data);
+
+    if (message.event === "updatePoints") {
+        currentGame = message.data;
+        //vet inte ens om den behöver returnera något men den måste uppdatera spelarobjektet kanske kan skicka tillbaka det och spara det i en variabel
+        //som sedan skickas till leaderboarden?
+    }
+});
+
+gameSocket.addEventListener("close", (event) => {
+    console.log("disconnected");
+})
+
 function renderQuizpageContent(parentId, mediaId) {
     console.log(mediaId);
     const parent = document.getElementById(parentId);
@@ -105,6 +132,13 @@ function renderQuizpageContent(parentId, mediaId) {
                 allAnswers.forEach(answerDiv => answerDiv.style.pointerEvents = "none");
 
                 newElement.classList.add("selectedAnswer");
+                if (answer.textContent === correctAnswer) {
+                    points = points + 10;
+                    updatePoints(points, player);
+
+                    const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}})
+                    gameSocket.send(message);
+                }
             });
 
             newElement.append(answer);
@@ -167,4 +201,13 @@ function renderLeavequizPopup(parentId) {
         parent.removeChild(popup);
         parent.removeChild(background);
     });
+}
+
+function updatePoints (points, player) {
+    player.score = points;
+}
+
+function updateCurrentGame (game) {
+    currentGame = game;
+    console.log(currentGame);
 }
