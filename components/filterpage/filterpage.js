@@ -384,29 +384,48 @@ function renderFilterDropDownPopUp(parentId) {
             <a href="#" class="categoryLink">Sport</a>
             <a href="#" class="categoryLink">Thriller</a> 
         </div>   
-        `;
+    `;
 
-    categoriesDropdown.querySelector("#exitDropdown").addEventListener("click", () => {
-        categoriesDropdown.remove();
-    });
+    // Lägg till transition-egenskaper och startposition
+    categoriesDropdown.style.transform = "translateY(-100%)";
+    categoriesDropdown.style.opacity = "0";
+    categoriesDropdown.style.transition = "transform 0.6s ease, opacity 0.6s ease";
 
     parent.appendChild(categoriesDropdown);
 
-    const categoryLinks = document.querySelectorAll(".categoryLink");
+    // Fördröj popup-visning för att initiera transition
+    requestAnimationFrame(() => {
+        categoriesDropdown.style.transform = "translateY(0)";
+        categoriesDropdown.style.opacity = "1";
+    });
+
+    // Stäng popup med exit-knappen
+    categoriesDropdown.querySelector("#exitDropdown").addEventListener("click", () => closePopup());
+
+    // Stäng popup när en kategori väljs
+    const categoryLinks = categoriesDropdown.querySelectorAll(".categoryLink");
     categoryLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
             e.preventDefault();
-
-            categoriesDropdown.remove();
-
             const selectedCategory = link.textContent.trim();
-
-            updateCategoryText(selectedCategory);
-            filterAndRenderMediaByGenre(selectedCategory);
+            closePopup(() => {
+                updateCategoryText(selectedCategory);
+                filterAndRenderMediaByGenre(selectedCategory);
+            });
         });
     });
-    console.log(categoryLinks);
+
+    // Funktion för att stänga popupen
+    function closePopup(callback) {
+        categoriesDropdown.style.transform = "translateY(-100%)";
+        categoriesDropdown.style.opacity = "0";
+        setTimeout(() => {
+            categoriesDropdown.remove();
+            if (callback) callback();
+        }, 600); // Matcha transition-tiden
+    }
 }
+
 
 // Start quiz popup
 function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
