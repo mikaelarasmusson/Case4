@@ -111,3 +111,5 @@ function renderMyProfileContent (parentId) {
         render_login("wrapper");
     });
 }
+
+renderProfilePageContainer("wrapper");
