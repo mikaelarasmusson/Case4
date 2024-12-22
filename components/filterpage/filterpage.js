@@ -148,17 +148,6 @@ function renderFilterContents(parentId) {
     const buttonContainer = document.createElement("div");
     buttonContainer.id = "buttonContainerFilter";
 
-    const buttonNoFilter = document.createElement("button");
-    buttonNoFilter.id = "buttonNoFilter";
-    buttonNoFilter.classList.add("filterpageButton");
-    buttonNoFilter.innerHTML = `
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M15.5 2.01607L13.9839 0.5L8 6.48393L2.01607 0.5L0.5 2.01607L6.48393 8L0.5 13.9839L2.01607 15.5L8 9.51607L13.9839 15.5L15.5 13.9839L9.51607 8L15.5 2.01607Z" fill="white"/>
-        </svg>
-    `;
-    buttonNoFilter.style.display = "none";
-    buttonContainer.appendChild(buttonNoFilter);
-
     const buttonFilms = document.createElement("button");
     buttonFilms.id = "buttonFilms";
     buttonFilms.classList.add("filterpageButton");
@@ -181,39 +170,72 @@ function renderFilterContents(parentId) {
     `;
     buttonContainer.appendChild(buttonCategories);
 
-    buttonNoFilter.addEventListener("click", () => {
-        buttonFilms.style.display = "block";
-        buttonSeries.style.display = "block";
-        buttonFilms.style.backgroundColor = "";
-        buttonSeries.style.backgroundColor = "";
-        buttonCategories.style.backgroundColor = "";
-        buttonNoFilter.style.display = "none";
+    parent.appendChild(buttonContainer);
+
+    // Funktion för att visa noFilter-knappen
+    function showNoFilterButton() {
+        let buttonNoFilter = document.getElementById("buttonNoFilter");
+        if (!buttonNoFilter) {
+            buttonNoFilter = document.createElement("button");
+            buttonNoFilter.id = "buttonNoFilter";
+            buttonNoFilter.classList.add("filterpageButton");
+            buttonNoFilter.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M15.5 2.01607L13.9839 0.5L8 6.48393L2.01607 0.5L0.5 2.01607L6.48393 8L0.5 13.9839L2.01607 15.5L8 9.51607L13.9839 15.5L15.5 13.9839L9.51607 8L15.5 2.01607Z" fill="white"/>
+                </svg>
+            `;
+            buttonContainer.insertBefore(buttonNoFilter, buttonContainer.firstChild); // Placera först
+            buttonNoFilter.classList.add("active");
+
+            // Lägg till klick-hanterare för att gömma knappen
+            buttonNoFilter.addEventListener("click", () => {
+                hideNoFilterButton();
+                buttonFilms.classList.remove("hidden");
+                buttonSeries.classList.remove("hidden");
+                // Återställ bakgrundsfärger när noFilter tas bort
+                buttonFilms.style.backgroundColor = "";
+                buttonSeries.style.backgroundColor = "";
+                buttonCategories.style.backgroundColor = "";
+            });
+        }
+
+        buttonNoFilter.classList.add("active"); // Visa med animation
+    }
+
+    // Funktion för att gömma noFilter-knappen
+    function hideNoFilterButton() {
+        const buttonNoFilter = document.getElementById("buttonNoFilter");
+        if (buttonNoFilter) {
+            buttonNoFilter.classList.remove("active");
+            setTimeout(() => {
+                buttonNoFilter.remove();
+            }, 300); // Matcha transition-tiden
+        }
+    }
+
+    // Klick-event för Films
+    buttonFilms.addEventListener("click", () => {
+        buttonFilms.style.backgroundColor = "#6D6D6D"; // Sätt bakgrundsfärg på Films
+        buttonSeries.classList.add("hidden"); // Dölj Series
+        showNoFilterButton(); // Visa noFilter-knappen
     });
 
-    buttonFilms.addEventListener("click", () => {
-        buttonFilms.style.backgroundColor = "#6D6D6D";
-        buttonSeries.style.display = "none";
-        buttonNoFilter.style.display = "block";
-        buttonNoFilter.style.display = "flex";
-        buttonFilms.style.transition = "all 0.3s ease";
-    })
-
+    // Klick-event för Series
     buttonSeries.addEventListener("click", () => {
-        buttonSeries.style.backgroundColor = "#6D6D6D";
-        buttonFilms.style.display = "none";
-        buttonNoFilter.style.display = "block";
-        buttonNoFilter.style.display = "flex";
-    })
+        buttonSeries.style.backgroundColor = "#6D6D6D"; // Sätt bakgrundsfärg på Series
+        buttonFilms.classList.add("hidden"); // Dölj Films
+        showNoFilterButton(); // Visa noFilter-knappen
+    });
 
+    // Klick-event för Categories
     buttonCategories.addEventListener("click", () => {
-        buttonCategories.style.backgroundColor = "#6D6D6D";
-        buttonNoFilter.style.display = "block"; 
-        buttonNoFilter.style.display = "flex";
+        buttonCategories.style.backgroundColor = "#6D6D6D"; // Sätt bakgrundsfärg på Categories
+        showNoFilterButton(); 
         renderFilterDropDownPopUp(parentId);
     });
-
-    parent.appendChild(buttonContainer);
 }
+
+
 
 function renderFilmsandSeriesBoxesContainer(parentId) {
     const parent = document.getElementById(parentId);
@@ -442,7 +464,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
             </button>
             <div id="quizPopupContent">
                 <p id="quizPopupMainTitle">Quiz</p>
-                <p id="quizPopupMediaTitle">${media.title}</p>
+                <p id="quizPopupMediaTitle">${media.title} (${media.year})</p>
                 <p id="quizPopupQuestionCount">${matchingQuiz ? matchingQuiz.questions.length : 0} questions</p>
                 <button id="fetchGameButton">Fetch game PIN</button>
             </div>
@@ -477,7 +499,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
             </button>
             <div id="quizPopupContent">
                 <p id="quizPopupMainTitle">Quiz</p>
-                <p id="quizPopupMediaTitle">${media.title}</p>
+                <p id="quizPopupMediaTitle">${media.title} (${media.year})</p>
                 <p id="quizPopupQuestionCount">${matchingQuiz ? matchingQuiz.questions.length : 0} questions</p>
                 <button id="startQuizButton">Start</button>
             </div>

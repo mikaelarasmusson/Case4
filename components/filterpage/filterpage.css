@@ -96,8 +96,15 @@
 
         border-radius: 50px;
         border: 1px solid #6F7487;
-        background-color: #000;        
-        transition: all 0.3s ease;
+        background-color: #000;   
+        opacity: 0;
+        transform: scale(0.5); /* Börja liten */
+        transition: transform 0.3s ease, opacity 0.3s ease;    
+    }
+
+    #buttonNoFilter.active {
+        opacity: 1;
+        transform: scale(1); /* Väx till full storlek */
     }
 
     #filterContainer {
@@ -107,6 +114,7 @@
     #buttonContainerFilter {
         display: flex;
         padding: 0px;
+        position: relative;
         justify-content: flex-start;
         align-items: center;
         gap: 12px;
@@ -128,6 +136,14 @@
         border: 1px solid #6F7487;
         background: #000;
         color: #FFF;
+        transition: transform 0.3s ease, opacity 0.3s ease; /* Smidig rörelse och synlighet */
+    }
+
+    .hidden {
+        display: none;
+        transform: translateX(-50px); /* Flytta åt sidan */
+        opacity: 0; /* Gör osynlig */
+        pointer-events: none; /* Blockera interaktion */
     }
 
     #buttonCategories {
@@ -200,7 +216,7 @@
 
     .mediaTitle {
         margin: 12px 0px 0px 0px;
-        font-family: var(--paragraph_font);
+        font-family: var(--bold_font);
         font-size: 14px;
         line-height: 130%; /* 18.2px */
         letter-spacing: 0.017px;
@@ -257,7 +273,7 @@
         margin: 0px 0px 12px 0px;
 
         font-size: 26px;
-        font-family: var(--main_title_font);
+        font-family: var(--bold_font);
         line-height: 150%; /* 39px */
         letter-spacing: 0.031px;
     }
@@ -266,7 +282,7 @@
         margin: 0px 0px 4px 0px;
 
         font-size: 16px;
-        font-family: var(--paragraph_font);
+        font-family: var(--bold_font);
         line-height: 130%; /* 20.8px */
     }
 
