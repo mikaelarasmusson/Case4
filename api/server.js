@@ -179,6 +179,21 @@ async function handleWebsocket(request) {
             }
         }
 
+        if (message.event === "blockUser") {
+            for (const game of activeGames) {
+                for (const player of game.players) {
+                    if (message.data === player.user.username) {
+                        const returnMessage = {event: message.event, data: player.user};
+
+                        for (const id in connections) {
+                            connections[id].send(JSON.stringify(returnMessage));
+                        }
+                    }
+                }
+            }
+            //check if name exists in the game and return the blocked user then check on the client if its the logged in user then block or subtract points accordingly
+        }
+
         //för att inte skicka till sig själv ifall det behövs
         // for (let id in connections) {
         //     console.log(id);
