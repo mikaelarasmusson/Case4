@@ -201,7 +201,7 @@
     }
 
     #filmsandSeriesBoxesContainer {
-        margin-bottom: 20px;
+        margin-bottom: 100px;
         display: grid;
         grid-template-columns: repeat(3, 120px);
         grid-template-rows: repeat(3, auto);
