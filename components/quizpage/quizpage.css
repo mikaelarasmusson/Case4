@@ -15,13 +15,14 @@
     }
 
     #quizpageContent{
-        margin-top: 118px;
+        margin-top: 150px;
     }
 
     #movie_img{
     width: 390px;
     height: 238px;
     border-radius: 5px;
+    object-fit: contain;
     }
 
     #superPower,
