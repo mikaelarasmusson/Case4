@@ -5,7 +5,7 @@
     "password": "lol123",
     "profileImg": "./images/profilepic.png",
     "score": 0,
-    "totalScore": 100
+    "totalScore": 210
   },
   {
     "id": 2,
@@ -125,6 +125,6 @@
     "password": "Rabarber",
     "profileImg": "./images/profilepic.png",
     "score": 0,
-    "totalScore": 0
+    "totalScore": 30
   }
 ]
