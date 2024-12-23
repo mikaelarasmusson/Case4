@@ -56,11 +56,15 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
     quizpageWrapper.append(contentElement);
    
     let allMedia = [];
+    let media = [];
     if (mediaType === "series") {
         allMedia = State.get("quizseries");
+        media = State.get("series");
     } else if (mediaType === "films") {
         allMedia = State.get("quizfilms");
+        media = State.get("films");
     }
+
     // const allMedia = [...State.get("quizfilms"), ...State.get("quizseries")];
     const selectedMedia = allMedia.find(media => media.id === mediaId);
 
@@ -69,12 +73,19 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         return;
     }
 
+    let chosenMedia;
+    for (let i = 0; i < media.length; i++) {
+        if (selectedMedia.id === media[i].id) {
+            chosenMedia = media[i];
+        }
+    }
+
     contentElement.innerHTML = `
         <div id="movie_name">    
             <h1 class="quizpageTitle">${selectedMedia.title}</h1>
         </div>
         <div id="quiz_content">
-            <img id="movie_img" src="${selectedMedia.image}">
+            <img id="movie_img" src="${chosenMedia.image}">
             <div id="superPowerContainer">
                 <div id="superPower">
                     <p>&#129668;</p>
