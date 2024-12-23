@@ -110,5 +110,13 @@
     "profileImg": "./images/profilepic.png",
     "score": 0,
     "totalScore": 0
+  },
+  {
+    "id": 15,
+    "username": "olivia",
+    "password": "123",
+    "profileImg": "./images/profilepic.png",
+    "score": 0,
+    "totalScore": 40
   }
 ]
