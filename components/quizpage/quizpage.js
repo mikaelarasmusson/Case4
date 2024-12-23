@@ -108,8 +108,6 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         renderBlockPopup("wrapper", currentGame.players);
     })
 
-
-
     let currentQuestionIndex = 0;
 
     function renderNextQuestion() {
@@ -129,6 +127,10 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         resetAndStartProgressBar();
         currentQuestionIndex++;
 
+        // if (blockUsed) {
+        //     blockFriend.style.backgroundColor = "rgb(103, 103, 103)";
+        //     blockFriend.style.pointerEvents = "none";
+        // }
 
     }
 
@@ -183,7 +185,11 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
                     }
                 }
             });
-
+            
+            if (document.getElementById("DoublePoints").classList.contains("used")) {
+                document.getElementById("DoublePoints").style.backgroundColor = "rgb(103, 103, 103)";
+            }
+            
             newElement.append(answer);
             parent.append(newElement);
         });
@@ -255,9 +261,6 @@ function updateCurrentGame (game) {
     console.log(currentGame);
 }
 
-
-//om man klickar på double points ska poängen vara värda dubbelt så mycket
-
 function renderBlockPopup(parentId,userData){
     const parent = document.getElementById(parentId);
 
@@ -289,7 +292,12 @@ function renderBlockPopup(parentId,userData){
         if (!blockUsed) {
             const message = JSON.stringify({event: "blockUser", data: name});
             gameSocket.send(message);
+
+            document.getElementById("Stop").style.backgroundColor = "rgb(103, 103, 103)";
+            document.getElementById("Stop").style.pointerEvents = "none";
             blockUsed = true;
+            parent.removeChild(popup);
+            parent.removeChild(background);
         }
     })
 

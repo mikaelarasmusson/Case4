@@ -10,5 +10,3 @@ async function startApp() {
 startApp();
 
 //TODO:
-//bättre feedback på om man blockat någon eller använt sin x2 powerup
-//fixa så att totalScore uppdateras och inte bara byts ut
