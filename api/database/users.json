@@ -126,5 +126,13 @@
     "profileImg": "./images/profilepic.png",
     "score": 0,
     "totalScore": 30
+  },
+  {
+    "id": 17,
+    "username": "quizapan",
+    "password": "1234",
+    "profileImg": "./images/profilepic.png",
+    "score": 0,
+    "totalScore": 0
   }
 ]
