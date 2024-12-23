@@ -9,14 +9,12 @@ export async function editProfileHandler(req) {
     };
 
     const allUsers = await func.getFile("./database/users.json");
-    console.log(allUsers);
 
     if (!allUsers) {
         return func.sendResponse("Internal server error", 500);
     }
 
     const currentUser = await req.json();
-    console.log(currentUser);
     const currentUserEmpty = func.checkBody(currentUser);
 
     if (currentUserEmpty) {

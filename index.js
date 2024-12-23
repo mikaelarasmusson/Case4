@@ -10,6 +10,5 @@ async function startApp() {
 startApp();
 
 //TODO:
-//se till att rätt quiz startas beroende på om det är serie eller film
-//fixa profilbilder
-//för att faktiskt kunna visa alla poäng en spelare samlat så kanske man kan lägga till en nyckel som är totalPoints, lite jobb med det dock.
+//bättre feedback på om man blockat någon eller använt sin x2 powerup
+//fixa så att totalScore uppdateras och inte bara byts ut

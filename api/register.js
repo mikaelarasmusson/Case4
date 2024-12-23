@@ -63,8 +63,9 @@ export async function registerHandler(req) {
         id: newId,
         username: createdUser.username,
         password: createdUser.password,
-        profileImg: "",
-        score: 0 
+        profileImg: "./images/profilepic.png",
+        score: 0,
+        totalScore: 0
     }
 
     allUsers.push(newUser);

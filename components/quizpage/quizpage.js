@@ -116,7 +116,7 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         blockedUsers.clear();
         if (currentQuestionIndex >= selectedMedia.questions.length) {
             clearInterval(questionInterval);
-            renderLeaderboardpageContainer(parentId, currentGame);
+            renderLeaderboardpageContainer(parentId, currentGame, points);
             return;
         }
 

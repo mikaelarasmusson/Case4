@@ -173,7 +173,7 @@ function render_create_acc(parent) {
             let newUser = await response.json();
             sessionStorage.setItem("user", JSON.stringify(newUser));
             console.log(newUser);
-            renderLandingpageContainer("wrapper");
+            renderLandingpageWrapper("wrapper");
         } else {
             console.log("error");
         }
