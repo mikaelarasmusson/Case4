@@ -9,3 +9,5 @@ async function startApp() {
 
 startApp();
 
+//fixa konstig padding
+//länka bilder
