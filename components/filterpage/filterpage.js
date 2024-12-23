@@ -12,8 +12,6 @@ socket.addEventListener("message", (event) => {
 
     const message = JSON.parse(event.data);
     if (message.event == "createdGame") {
-        // waitingRoom(message.data);
-        console.log(message.data);
         renderWaitingRoom("wrapper", message.data);
     }
 });
@@ -25,7 +23,6 @@ socket.addEventListener("close", (event) => {
 //Container for filterpage
 function renderFilterpageContainer(parentId) {
     // Get the parent element
-    console.log(parentId);
     const parent = document.getElementById(parentId);
 
     parent.innerHTML = "";
@@ -119,7 +116,7 @@ function renderSearchbar(parentId) {
         const search = searchbar.value;
 
         const foundMedia = searchTitle(event, search, media);
-        console.log(foundMedia);
+
         let searchParent = document.getElementById("filmsandSeriesBoxesContainer");
         renderFilmsandSeriesBoxes(searchParent, foundMedia);
     })
@@ -320,7 +317,6 @@ function filterFilmsAndSeriesBoxes (mediaType, quizData) {
     const container = document.getElementById("filmsandSeriesBoxesContainer");
     container.innerHTML = "";
 
-    console.log(mediaType);
     for (const media of mediaType) {
         const mediaContent = document.createElement("div");
         mediaContent.id = media.id;
@@ -364,7 +360,6 @@ function filterAndRenderMediaByGenre(genre) {
     const filteredMedia = allMedia.filter((media) => {
         return media.genre && media.genre.includes(genre);
     });
-    console.log(filteredMedia);
     
     const container = document.getElementById("filmsandSeriesBoxesContainer");
     container.innerHTML = ""; 
@@ -501,8 +496,6 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
             socket.send(JSON.stringify(message));
             sessionStorage.setItem("mediaId", mediaId);
             sessionStorage.setItem("mediaType", mediaType);
-            console.log(isMultiPlayer);
-            // renderWaitingRoom(parentId, userData);
         })
 
         document.getElementById("closePopupButton").addEventListener("click", () => {

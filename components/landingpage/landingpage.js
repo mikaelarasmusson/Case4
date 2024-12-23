@@ -15,7 +15,6 @@ joinGameSocket.addEventListener("message", (event) => {
 
     for (let player of message.data.players) {
       if (currentUser.id === player.user.id) {
-        console.log(message.data);
         renderWaitingRoom("wrapper", message.data);
       }
     }
@@ -156,7 +155,6 @@ function renderPopUpJoinParty(parentId) {
     const inputCode = parseInt(inputCodeString);
     
     const user = sessionStorage.getItem("user");
-    console.log(user);
     const json = JSON.parse(user);
 
     const message = {event: "joinGame", data: {joinGameCode: inputCode, user: json}}

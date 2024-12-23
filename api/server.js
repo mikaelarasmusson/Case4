@@ -67,9 +67,7 @@ async function HTTPhandler (req) {
 let connections = {};
 let connectionId = 1;
 
-// let gameCodes = [];
 let activeGames = [];
-//ett ID för spelet och alla spelar
 
 async function handleWebsocket(request) {
     const {socket, response} = Deno.upgradeWebSocket(request);
@@ -111,11 +109,9 @@ async function handleWebsocket(request) {
                 gameHost: gameHost,
                 players: [{connectionId: myId, user: gameHost}]
             }
-            // console.log(gameCodes);
             activeGames.push(game);
             const returnMessage = {event: message.event, data: game}
             socket.send(JSON.stringify(returnMessage))
-            // socket.send(JSON.stringify(message));
         }
 
         if (message.event == "joinGame") {
@@ -155,13 +151,9 @@ async function handleWebsocket(request) {
         }
 
         if (message.event == "updatePoints") {
-            // console.log("inside updatePoints event");
-            // console.log(message.data);
             const currentUser = message.data.user;
 
             for (const game of activeGames) {
-                // console.log(game);
-                // console.log(message.data.game);
                 if (game.id === message.data.game.id) {
                     const players = game.players;
 
@@ -192,18 +184,7 @@ async function handleWebsocket(request) {
                     }
                 }
             }
-            //check if name exists in the game and return the blocked user then check on the client if its the logged in user then block or subtract points accordingly
         }
-
-        //för att inte skicka till sig själv ifall det behövs
-        // for (let id in connections) {
-        //     console.log(id);
-        //     if (id != myId) {
-        //         const connection = connections[id];
-        //         connection.send(JSON.stringify(message))
-        //     }
-        // }
-
     })
 
     socket.addEventListener("close", (event )=> {

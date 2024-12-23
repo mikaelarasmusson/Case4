@@ -65,14 +65,3 @@ export async function loginHandler(req){
         return new Response ("Only POST is allowed", {status: 405});
     }
 }
-
-// fetch("http://localhost:8000", {
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify({ username: "mikkan", password: "lol123" })
-// })
-//   .then(response => response.text())
-//   .then(console.log)
-//   .catch(console.error);
-
-// Deno.serve(handler);

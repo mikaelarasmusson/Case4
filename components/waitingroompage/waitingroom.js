@@ -13,7 +13,6 @@ quizSocket.addEventListener("message", (event)=> {
             const currentUser = JSON.parse(sessionStorage.getItem("user"));
             for (let player of message.game.players) {
                 if (currentUser.id === player.user.id) {
-                    console.log(message);
                     renderQuizpageContent("wrapper", message.mediaId, message.mediaType, "multiplayer");
                     updateCurrentGame(message.game);
                 }
@@ -29,7 +28,6 @@ quizSocket.addEventListener("close", (event) => {
 
 function renderWaitingRoom(parentId, userData){
 
-    console.log(userData);
     const parent = document.getElementById(parentId);
     parent.innerHTML = "";
 
@@ -80,7 +78,6 @@ function renderJoinedUser (parentId, userData){
     joinedUsersContainer.appendChild(joinedUsersList);
 
     for (let user of userData.players) {
-        console.log(user)
         const joinedUsersBox = document.createElement("div");
         joinedUsersBox.className = "joinedUsersBox";
         joinedUsersList.appendChild(joinedUsersBox);
@@ -123,8 +120,6 @@ function renderWaitingRoomFooter(parentId, gameHost){
     document.getElementById("startGame").addEventListener("click",() =>{
         
         const currentUser = JSON.parse(sessionStorage.getItem("user"));
-        console.log(gameHost.gameHost.username);
-        console.log(currentUser.username);
         const quizToStart = parseInt(sessionStorage.getItem("mediaId"));
         const mediaType = sessionStorage.getItem("mediaType");
         const data = {
@@ -132,11 +127,8 @@ function renderWaitingRoomFooter(parentId, gameHost){
             mediaType: mediaType,
             user: currentUser
         }
-        // skicka startgame till alla och skicka med rätt film/serie id
         const message = {event: "startGame", data: data}
         quizSocket.send(JSON.stringify(message));
-        // renderQuizpageContent("wrapper", mediaInt);
-        //nytt event startGame så att quizzet startas för alla samtidigt. Lägg till websocket för det bara hosten kan starta.
     });
 }
 

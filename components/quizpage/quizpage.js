@@ -17,13 +17,11 @@ gameSocket.addEventListener("message", (event) => {
 
     if (message.event === "updatePoints") {
         currentGame = message.data;
-        console.log(currentGame);
     }
 
     if (message.event === "blockUser") {
         const currentUser = JSON.parse(sessionStorage.getItem("user"));
         if (currentUser.id === message.data.id) {
-            console.log(currentUser);
             blockedUsers.add(currentUser);
             blocked(blockedUsers, currentUser);
         }
@@ -35,9 +33,6 @@ gameSocket.addEventListener("close", (event) => {
 })
 
 function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplayer") {
-    console.log(mediaId);
-    console.log(mode);
-    console.log(mediaType);
     const parent = document.getElementById(parentId);
     if (!parent) {
         console.error(`Parent element with id "${parentId}" not found.`);
@@ -269,7 +264,6 @@ function updatePoints (points, player) {
 
 function updateCurrentGame (game) {
     currentGame = game;
-    console.log(currentGame);
 }
 
 function renderBlockPopup(parentId,userData){
@@ -399,18 +393,6 @@ function renderSearchbarquizpage(parentId) {
     Container.appendChild(searchBlockContainer);
 
     parent.appendChild(Container);
-
-    // searchbar.addEventListener("keyup", function (event) {
-
-    //     const media = [...State.get("users")];
-    //     const search = searchbar.value;
-
-    //     const foundMedia = searchTitle(event, search, media);
-    //     console.log(foundMedia);
-    //     // renderSearchedMedia(foundMedia);
-    //     let searchParent = document.getElementById("filmsandSeriesBoxesContainer");
-    //     renderFilmsandSeriesBoxes(searchParent, foundMedia);
-    // })
 } 
 
 function blocked (blockedUsers, currentUser) {

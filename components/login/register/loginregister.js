@@ -140,7 +140,6 @@ function render_create_acc(parent) {
         const repeatPassword = repeatPasswordInput.value;
 
         if (password !== repeatPassword) {
-            console.log("passwords must match");
 
             repeatPasswordError.textContent = "Passwords must match";
             repeatPasswordError.style.display = "block";
@@ -172,7 +171,6 @@ function render_create_acc(parent) {
         if (response.ok) {
             let newUser = await response.json();
             sessionStorage.setItem("user", JSON.stringify(newUser));
-            console.log(newUser);
             renderLandingpageWrapper("wrapper");
         } else {
             console.log("error");
