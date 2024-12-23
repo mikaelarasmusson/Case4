@@ -179,8 +179,8 @@
         border-radius: 50px;
         border: 1px solid #6F7487;
         background: #161616;
-        color: #FF0000;
-        font-family: var(--paragraph_font);
+        color: #FFF;
+        font-family: var(--bold_font);
         font-size: 16px;
     }
 

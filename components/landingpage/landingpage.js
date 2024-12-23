@@ -19,7 +19,6 @@ joinGameSocket.addEventListener("message", (event) => {
         renderWaitingRoom("wrapper", message.data);
       }
     }
-    // waitingRoom(message.data);
   }
 })
 
@@ -27,22 +26,19 @@ joinGameSocket.addEventListener("close", (event) => {
   console.log("disconnected");
 })
 
+// Landingpage wrapper
 function renderLandingpageWrapper(parentId) {
-  // Get the parent element
   const parent = document.getElementById(parentId);
 
-  // Clear the parent element"s content
   parent.innerHTML = "";
 
-  //Create a second wrapper
   const landingpageWrapper = document.createElement("div");
   landingpageWrapper.id = "landingpageWrapper";
   parent.append(landingpageWrapper);
 
-  // Render the landing page content inside the container
   renderLandingpageContainer(landingpageWrapper.id);
 }
-
+// Container for landingpage
 function renderLandingpageContainer(parentId) {
   const parent = document.getElementById(parentId);
 
@@ -54,7 +50,7 @@ function renderLandingpageContainer(parentId) {
   renderLandingpageContent(container.id);
 }
 
-// Skapa en egen funktion för profilbilden, poäng och stjärnan
+// En funktion för profilbilden, poäng och stjärnan
 function renderProfileLandingpage(parentId) {
   const parent = document.getElementById(parentId);
 
@@ -86,16 +82,14 @@ function renderProfileLandingpage(parentId) {
   });
 }
 
+// Content for landingpage
 function renderLandingpageContent(parentId) {
-  // Get the parent element
   const parent = document.getElementById(parentId);
 
-  // Create a new content element
   const contentElement = document.createElement("div");
   contentElement.id = "landingpageContent";
   contentElement.classList.add("landingpage");
 
-  // Set up the content element"s HTML
   const username = State.get("users");
   const user = JSON.parse(sessionStorage.getItem("user"));
 
@@ -110,7 +104,6 @@ function renderLandingpageContent(parentId) {
       <button id="buttonJoinParty" class="landingpageButton">Join Party</button>
     </div>  
   `;
-  // Append the content element to the parent element
   parent.append(contentElement);
 
   document.querySelector("#buttonSinglePlayer").addEventListener("click", () => {
@@ -128,6 +121,7 @@ function renderLandingpageContent(parentId) {
   });
 }
 
+// Pop-up for joining party
 function renderPopUpJoinParty(parentId) {
   const parent = document.getElementById(parentId);
 
