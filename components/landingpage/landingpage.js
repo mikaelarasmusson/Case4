@@ -99,7 +99,7 @@ function renderLandingpageContent(parentId) {
     </div>
     <div id="buttonContainer">
       <button id="buttonSinglePlayer" class="landingpageButton">Single-Player</button>
-      <button id="buttonMultiPlayer" class="landingpageButton">Multiplayer</button>
+      <button id="buttonHostParty" class="landingpageButton">Host Party</button>
       <button id="buttonJoinParty" class="landingpageButton">Join Party</button>
     </div>  
   `;
@@ -110,7 +110,7 @@ function renderLandingpageContent(parentId) {
       renderFilterpageContainer("wrapper");
     });
 
-  document.querySelector("#buttonMultiPlayer").addEventListener("click", () => {
+  document.querySelector("#buttonHostParty").addEventListener("click", () => {
     localStorage.setItem("gameMode", "multiplayer");
     renderFilterpageContainer("wrapper");
   });
