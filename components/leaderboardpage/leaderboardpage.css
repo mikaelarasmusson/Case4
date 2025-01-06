@@ -105,6 +105,10 @@
         font-family: OpensansRegular;
     }
 
+    .userPoints {
+        font-family: OpensansSemiBold;
+    }
+
     .userPointsLeaderboard{
         font-family: OpensansSemiBold;
     }
@@ -130,6 +134,10 @@
         justify-content: center;
         align-items: center;
         gap: 24px;
+    }
+
+    .the_resttop h2 {
+        font-family: var(--bold_font);
     }
 
     .profilePic_users {

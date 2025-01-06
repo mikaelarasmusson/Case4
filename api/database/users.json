@@ -5,7 +5,7 @@
     "password": "lol123",
     "profileImg": "./images/profilepic.png",
     "score": 0,
-    "totalScore": 230
+    "totalScore": 210
   },
   {
     "id": 2,
@@ -107,6 +107,30 @@
     "id": 14,
     "username": "score2",
     "password": "score2",
+    "profileImg": "./images/profilepic.png",
+    "score": 0,
+    "totalScore": 0
+  },
+  {
+    "id": 15,
+    "username": "olivia",
+    "password": "123",
+    "profileImg": "./images/profilepic.png",
+    "score": 0,
+    "totalScore": 40
+  },
+  {
+    "id": 16,
+    "username": "grillbritt",
+    "password": "Rabarber",
+    "profileImg": "./images/profilepic.png",
+    "score": 0,
+    "totalScore": 30
+  },
+  {
+    "id": 17,
+    "username": "quizapan",
+    "password": "1234",
     "profileImg": "./images/profilepic.png",
     "score": 0,
     "totalScore": 0

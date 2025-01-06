@@ -98,8 +98,8 @@ function renderLandingpageContent(parentId) {
       <p class="playText">Welcome back ${user.username}, how would you like to play?</p>
     </div>
     <div id="buttonContainer">
-      <button id="buttonSinglePlayer" class="landingpageButton">Single Player</button>
-      <button id="buttonMultiPlayer" class="landingpageButton">Multi Player</button>
+      <button id="buttonSinglePlayer" class="landingpageButton">Single-Player</button>
+      <button id="buttonHostParty" class="landingpageButton">Host Party</button>
       <button id="buttonJoinParty" class="landingpageButton">Join Party</button>
     </div>  
   `;
@@ -110,7 +110,7 @@ function renderLandingpageContent(parentId) {
       renderFilterpageContainer("wrapper");
     });
 
-  document.querySelector("#buttonMultiPlayer").addEventListener("click", () => {
+  document.querySelector("#buttonHostParty").addEventListener("click", () => {
     localStorage.setItem("gameMode", "multiplayer");
     renderFilterpageContainer("wrapper");
   });
@@ -159,8 +159,6 @@ function renderPopUpJoinParty(parentId) {
 
     const message = {event: "joinGame", data: {joinGameCode: inputCode, user: json}}
     joinGameSocket.send(JSON.stringify(message));
-    //waiting room funktionen
-    //renderWaitingRoom("wrapper", State.get("users"));
   })
 
   // joinPartyPopUp.querySelector("#joinPartyButton").addEventListener("click", () => {

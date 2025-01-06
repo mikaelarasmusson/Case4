@@ -211,6 +211,9 @@ function renderFilterContents(parentId) {
         const buttonNoFilter = document.getElementById("buttonNoFilter");
         if (buttonNoFilter) {
             buttonNoFilter.classList.remove("active");
+
+            updateCategoryText("Categories");
+
             setTimeout(() => {
                 buttonNoFilter.remove();
             }, 300);
@@ -481,7 +484,7 @@ function renderStartQuizPopup(parentId, mediaId, mediaType, isMultiPlayer) {
                 <p id="quizPopupMainTitle">Quiz</p>
                 <p id="quizPopupMediaTitle">${media.title} (${media.year})</p>
                 <p id="quizPopupQuestionCount">${matchingQuiz ? matchingQuiz.questions.length : 0} questions</p>
-                <button id="fetchGameButton">Fetch game PIN</button>
+                <button id="fetchGameButton">Create Game PIN</button>
             </div>
         `;
 
