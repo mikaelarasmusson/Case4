@@ -355,6 +355,13 @@ function renderPopupUserData(parentId, userData){
     
     const parent = document.getElementById(parentId);
 
+    const currentUser = JSON.parse(sessionStorage.getItem("user"));
+    for (let i = 0; i < userData.length; i++) {
+        if (userData[i].user.id === currentUser.id) {
+            userData.splice(i, 1);
+        }
+    }
+    
     if (!Array.isArray(userData)) {
         console.error("Invalid userData. Expected an array.");
         return;
