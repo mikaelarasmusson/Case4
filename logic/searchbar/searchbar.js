@@ -14,12 +14,3 @@ function searchTitle (event, search, media) {
     }
     return foundTitles;
 }
-
-
-function basicSearch(array, search) {
-
-    for (let i = 0; i < array.length; i++) {
-        let currentMedia = array[i];
-        
-    }
-}

@@ -226,7 +226,6 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
 }
 
 function renderLeavequizPopup(parentId) {
-    console.log(currentGame);
     const parent = document.getElementById(parentId);
     if (!parent) return;
 

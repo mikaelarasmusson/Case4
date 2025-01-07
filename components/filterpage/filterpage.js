@@ -52,7 +52,6 @@ function renderProfileWithBackArrow(parentId) {
 
     let userInfo = State.get("users");
     const user = JSON.parse(sessionStorage.getItem("user"));
-    console.log(user);
     
     profileContent.innerHTML = `
       <button id="backArrow">
