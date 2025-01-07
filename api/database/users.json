@@ -5,15 +5,15 @@
     "password": "lol123",
     "profileImg": "./images/profilepic.png",
     "score": 0,
-    "totalScore": 210
+    "totalScore": 420
   },
   {
     "id": 2,
     "username": "Hampus",
     "password": "test",
     "profileImg": "./images/profilepic.png",
-    "score": 0,
-    "totalScore": 330
+    "score": 40,
+    "totalScore": 2530
   },
   {
     "id": 3,

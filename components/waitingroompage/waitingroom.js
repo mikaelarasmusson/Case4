@@ -11,10 +11,12 @@ quizSocket.addEventListener("message", (event)=> {
         const pin = parseInt(document.getElementById("pinCode").textContent);
         if (pin === message.game.code) {
             const currentUser = JSON.parse(sessionStorage.getItem("user"));
-            for (let player of message.game.players) {
+            currentUser.score = 0;
+            for (let player of message.game.players) {  
                 if (currentUser.id === player.user.id) {
                     renderQuizpageContent("wrapper", message.mediaId, message.mediaType, "multiplayer");
                     updateCurrentGame(message.game);
+                    console.log(message.game);
                 }
             }
         }

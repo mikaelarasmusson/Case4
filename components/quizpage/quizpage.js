@@ -120,7 +120,11 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         blockedUsers.clear();
         if (currentQuestionIndex >= selectedMedia.questions.length) {
             clearInterval(questionInterval);
+            console.log(currentGame);
             renderLeaderboardpageContainer(parentId, currentGame, points);
+            console.log(points);
+            points = 0;
+            console.log(points);
             return;
         }
 
@@ -160,6 +164,7 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         });
 
         answers.forEach(answerText => {
+
             const newElement = document.createElement("div");
             newElement.classList.add("answer");
             
@@ -170,7 +175,6 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
                 const allAnswers = parent.querySelectorAll(".answer");
                 allAnswers.forEach(answerDiv => answerDiv.style.pointerEvents = "none");
                 
-
                 newElement.classList.add("selectedAnswer");
                 if (answer.textContent === correctAnswer && document.getElementById("DoublePoints").classList.contains("double")) {
                     document.getElementById("DoublePoints").classList.remove("double");
@@ -179,14 +183,14 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
                     updatePoints(points, player);
 
                     if (mode === "multiplayer") {
-                        const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}})
+                        const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}});
                         gameSocket.send(message);
                     }
                 } else if (answer.textContent === correctAnswer && !document.getElementById("DoublePoints").classList.contains("double")) {
                     points = points + 10;
                     updatePoints(points, player);
                     if (mode === "multiplayer") {
-                        const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}})
+                        const message = JSON.stringify({event: "updatePoints", data: {user: player, game: currentGame}});
                         gameSocket.send(message);
                     }
                 }

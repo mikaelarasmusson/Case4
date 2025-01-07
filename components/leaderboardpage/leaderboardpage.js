@@ -1,4 +1,5 @@
 function renderLeaderboardpageContainer(parentId, game, singleplayerPoints) {
+    console.log(game);
     // Get the parent element
     const parent = document.getElementById(parentId);
 
@@ -37,6 +38,7 @@ function renderLeaderboardContent(parentId){
 
 function renderTopLeaderboard(parentId, game, singleplayerPoints){
 
+    console.log(game);
     // const players = game.players;
     const onlyPlayers = [];
     let players;
@@ -122,7 +124,10 @@ function renderTopLeaderboard(parentId, game, singleplayerPoints){
     const currentUser = JSON.parse(sessionStorage.getItem("user"));
     for (let user of sortedUsers) {
         if (user.id === currentUser.id) {
+            console.log(user);
             updateScore(user.score);
+            user.score = 0;
+            console.log(user);
         }
     }
 

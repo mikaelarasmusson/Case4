@@ -94,6 +94,10 @@ async function handleWebsocket(request) {
             let gameId = 0;
             if (activeGames.length != 0) {
                 for (let game of activeGames) {
+                    for (let player of game.players) {
+                        console.log(player);
+                        player.score = 0;
+                    }
                     if (gameId < game.id) {
                         gameId = game.id;
                     }
@@ -136,6 +140,10 @@ async function handleWebsocket(request) {
 
         if (message.event == "startGame") {
             for (let game of activeGames) {
+                console.log(game.gameHost);
+                for (let player of game.players) {
+                    console.log(player);
+                }
                 if (game.gameHost.username === message.data.user.username) {
                     const returnMessage = {
                         event: message.event,
