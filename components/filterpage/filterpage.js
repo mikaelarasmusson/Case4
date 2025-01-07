@@ -122,6 +122,8 @@ function renderSearchbar(parentId) {
     })
 } 
 
+let currentFilterType = null; // "films", "series", eller null
+
 // Filter Container
 function renderFilterContainer (parentId) {
     const parent = document.getElementById(parentId);
@@ -213,6 +215,7 @@ function renderFilterContents(parentId) {
             buttonNoFilter.classList.remove("active");
 
             updateCategoryText("Categories");
+            currentFilterType = null; // Återställ filtertypen
 
             setTimeout(() => {
                 buttonNoFilter.remove();
@@ -221,26 +224,38 @@ function renderFilterContents(parentId) {
     }
 
     buttonFilms.addEventListener("click", () => {
+        currentFilterType = "films"; // Uppdatera filtertypen
         buttonFilms.style.backgroundColor = "#6D6D6D"; 
-        buttonSeries.classList.add("hidden"); 
-        showNoFilterButton(); 
+        buttonSeries.classList.add("hidden");
+        showNoFilterButton();
+    
+        const selectedCategory = document.getElementById("buttonCategories").querySelector("p").textContent.trim();
 
-        // Filtrera och rendera endast filmer
-        const films = State.get("films"); // Hämtar filmer från State
-        const quizFilms = State.get("quizfilms");
-        filterFilmsAndSeriesBoxes(films, quizFilms); // Använder befintlig filterfunktion
+        if (selectedCategory !== "Categories") {
+            filterAndRenderMediaByGenre(selectedCategory); // Filtrera på kategori och filmer
+        } else {
+            const films = State.get("films");
+            const quizFilms = State.get("quizfilms");
+            filterFilmsAndSeriesBoxes(films, quizFilms); // Filtrera endast på filmer
+        }
     });
-
+    
     buttonSeries.addEventListener("click", () => {
+        currentFilterType = "series"; // Uppdatera filtertypen
         buttonSeries.style.backgroundColor = "#6D6D6D"; 
-        buttonFilms.classList.add("hidden"); 
-        showNoFilterButton(); 
-
-        // Filtrera och rendera endast serier
-        const series = State.get("series"); // Hämtar serier från State
-        const quizSeries = State.get("quizseries");
-        filterFilmsAndSeriesBoxes(series, quizSeries); // Använder befintlig filterfunktion
-    });
+        buttonFilms.classList.add("hidden");
+        showNoFilterButton();
+    
+        const selectedCategory = document.getElementById("buttonCategories").querySelector("p").textContent.trim();
+        
+        if (selectedCategory !== "Categories") {
+            filterAndRenderMediaByGenre(selectedCategory); // Filtrera på kategori och serier
+        } else {
+            const series = State.get("series");
+            const quizSeries = State.get("quizseries");
+            filterFilmsAndSeriesBoxes(series, quizSeries); // Filtrera endast på serier
+        }
+    });    
 
     buttonCategories.addEventListener("click", () => {
         buttonCategories.style.backgroundColor = "#6D6D6D"; 
@@ -360,15 +375,20 @@ function filterFilmsAndSeriesBoxes (mediaType, quizData) {
 // Filter by genre
 function filterAndRenderMediaByGenre(genre) {
     const allMedia = [...State.get("films"), ...State.get("series")];
+
+    // Filtrera på genre och aktuell filtertyp
     const filteredMedia = allMedia.filter((media) => {
-        return media.genre && media.genre.includes(genre);
+        const matchesGenre = media.genre && media.genre.includes(genre);
+        const matchesType = !currentFilterType || media.type === currentFilterType;
+        return matchesGenre && matchesType;
     });
-    
+
     const container = document.getElementById("filmsandSeriesBoxesContainer");
     container.innerHTML = ""; 
 
     renderFilmsandSeriesBoxes(container, filteredMedia);
 }
+
 
 // Filter popup
 function renderFilterDropDownPopUp(parentId) {

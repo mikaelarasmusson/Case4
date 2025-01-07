@@ -134,5 +134,13 @@
     "profileImg": "./images/profilepic.png",
     "score": 0,
     "totalScore": 0
+  },
+  {
+    "id": 18,
+    "username": "ulla",
+    "password": "ulla11",
+    "profileImg": "./images/profilepic.png",
+    "score": 0,
+    "totalScore": 20
   }
 ]
