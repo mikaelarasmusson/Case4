@@ -14,8 +14,10 @@ quizSocket.addEventListener("message", (event)=> {
             currentUser.score = 0;
             for (let player of message.game.players) {  
                 if (currentUser.id === player.user.id) {
-                    renderQuizpageContent("wrapper", message.mediaId, message.mediaType, "multiplayer");
-                    updateCurrentGame(message.game);
+                    setTimeout(() => {
+                        renderQuizpageContent("wrapper", message.mediaId, message.mediaType, "multiplayer");
+                        updateCurrentGame(message.game);
+                    }, 500)
                 }
             }
         }
@@ -25,7 +27,6 @@ quizSocket.addEventListener("message", (event)=> {
 quizSocket.addEventListener("close", (event) => {
     console.log("disconneted");
 });
-
 
 function renderWaitingRoom(parentId, userData){
 

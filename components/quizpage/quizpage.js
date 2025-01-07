@@ -180,6 +180,7 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
                 if (answer.textContent === correctAnswer && document.getElementById("DoublePoints").classList.contains("double")) {
                     document.getElementById("DoublePoints").classList.remove("double");
                     document.getElementById("DoublePoints").classList.add("used");
+                    document.getElementById("DoublePoints").style.backgroundColor = "rgb(103, 103, 103)";
                     points = points + 20;
                     updatePoints(points, player);
 
@@ -435,8 +436,8 @@ function blocked (blockedUsers, currentUser) {
             const answers = answersBox.querySelectorAll(".answer");
         
             answers.forEach((answer) => {
-                answer.style.pointerEvents = "none"; // Disable clicking
-                answer.style.opacity = "0.5"; // Visually indicate the block
+                answer.style.pointerEvents = "none";
+                answer.style.opacity = "0.5"; 
             });
         }
     }
