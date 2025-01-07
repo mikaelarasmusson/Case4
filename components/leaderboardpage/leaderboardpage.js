@@ -49,9 +49,7 @@ function renderTopLeaderboard(parentId, game, singleplayerPoints){
         }
     }
 
-    const allUsers = [...State.get("users")];
-
-    const sortedUsers = onlyPlayers.sort((a, b) => b.score - a.score);
+    let sortedUsers = onlyPlayers.sort((a, b) => b.score - a.score);
 
     const parent = document.getElementById(parentId);
 
@@ -130,7 +128,7 @@ function renderTopLeaderboard(parentId, game, singleplayerPoints){
             console.log(user);
         }
     }
-
+    sortedUsers = [];
 
 }
 async function updateScore (newScore) {
