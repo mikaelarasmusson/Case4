@@ -8,5 +8,4 @@ async function startApp() {
 startApp();
 
 //todo
-//fixa så att man inte kan blocka sig själv
 //fixa så att x2 powerupen ändrar färg direkt. 

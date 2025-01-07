@@ -16,7 +16,6 @@ quizSocket.addEventListener("message", (event)=> {
                 if (currentUser.id === player.user.id) {
                     renderQuizpageContent("wrapper", message.mediaId, message.mediaType, "multiplayer");
                     updateCurrentGame(message.game);
-                    console.log(message.game);
                 }
             }
         }

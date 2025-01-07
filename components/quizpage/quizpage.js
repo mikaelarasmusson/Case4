@@ -1,4 +1,5 @@
 let questionInterval;
+let progressBarInterval;
 
 let currentGame;
 let points = 0;
@@ -110,7 +111,8 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
 
     superPower.addEventListener("click", () => {
         const isShown = superPowerMenu.classList.toggle("show");
-        superPower.style.backgroundColor = isShown ? "#676767" : "#E50913";
+        //old color 6D6D6D
+        superPower.style.backgroundColor = isShown ? "#B10A12" : "#E50913";
         superPowerMenu.style.visibility = isShown ? "visible" : "hidden";
     });
 
@@ -124,9 +126,11 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         blockedUsers.clear();
         if (currentQuestionIndex >= selectedMedia.questions.length) {
             clearInterval(questionInterval);
-            renderLeaderboardpageContainer(parentId, currentGame, points);
-            points = 0;
             //potential bug
+            clearInterval(progressBarInterval);
+            renderLeaderboardpageContainer(parentId, currentGame, points);
+  
+            points = 0;
             updateCurrentGame(null);
             return;
         }
@@ -139,12 +143,6 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         
         resetAndStartProgressBar();
         currentQuestionIndex++;
-
-        // if (blockUsed) {
-        //     blockFriend.style.backgroundColor = "rgb(103, 103, 103)";
-        //     blockFriend.style.pointerEvents = "none";
-        // }
-
     }
 
     function renderQuestion(question) {
@@ -216,7 +214,10 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         setTimeout(() => {
             progressBar.style.transition = "width 15s linear";
             progressBar.style.width = "100%";
-        }, 10);
+        }, 50);
+
+        //potential bug
+        clearInterval(progressBarInterval);
     }
 
     renderNextQuestion();
@@ -355,13 +356,14 @@ function renderPopupUserData(parentId, userData){
     
     const parent = document.getElementById(parentId);
 
+    let userDataCopy = userData.slice();
     const currentUser = JSON.parse(sessionStorage.getItem("user"));
-    for (let i = 0; i < userData.length; i++) {
-        if (userData[i].user.id === currentUser.id) {
-            userData.splice(i, 1);
+    for (let i = 0; i < userDataCopy.length; i++) {
+        if (userDataCopy[i].user.id === currentUser.id) {
+            userDataCopy.splice(i, 1);
         }
     }
-    
+
     if (!Array.isArray(userData)) {
         console.error("Invalid userData. Expected an array.");
         return;
@@ -371,7 +373,7 @@ function renderPopupUserData(parentId, userData){
     UsersListContainer.id = "UsersListContainer";
     parent.appendChild(UsersListContainer);
 
-    userData.forEach((user) => {
+    userDataCopy.forEach((user) => {
         const blockUsersBox = document.createElement("div");
         blockUsersBox.className = "blockUsersBox";
         blockUsersBox.setAttribute("dataUserId", user.id);

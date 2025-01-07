@@ -128,8 +128,6 @@ function renderTopLeaderboard(parentId, game, singleplayerPoints){
             console.log(user);
         }
     }
-    sortedUsers = [];
-
 }
 async function updateScore (newScore) {
     const currentUser = JSON.parse(sessionStorage.getItem("user"));
