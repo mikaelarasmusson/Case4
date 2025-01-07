@@ -99,6 +99,10 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         </div>
     `;
 
+    if (mode === "singleplayer") {
+        document.getElementById("superPowerContainer").style.visibility = "hidden";
+    }
+
     const superPower = document.getElementById("superPower");
     const superPowerMenu = document.getElementById("superPowerMenu");
 
