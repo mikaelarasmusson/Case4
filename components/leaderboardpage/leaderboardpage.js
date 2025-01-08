@@ -37,7 +37,6 @@ function renderLeaderboardContent(parentId){
 
 function renderTopLeaderboard(parentId, game, singleplayerPoints){
 
-    // const players = game.players;
     const onlyPlayers = [];
     let players;
     if (game) {
