@@ -323,6 +323,10 @@ function renderFilmsandSeriesBoxes(parentDom, mediaList = null) {
             const mediaType = isFilm ? "films" : isSeries ? "series" : null;
             const gameMode = localStorage.getItem("gameMode");
             const isMultiPlayer = gameMode === "multiplayer";
+            const quizPopup = document.getElementById("quizPopup");
+            if (quizPopup) {
+                quizPopup.remove();
+            }
             renderStartQuizPopup(parentDom.id, media.id, mediaType, isMultiPlayer);
         });
     }
