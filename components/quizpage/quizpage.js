@@ -61,7 +61,6 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         media = State.get("films");
     }
 
-    // const allMedia = [...State.get("quizfilms"), ...State.get("quizseries")];
     const selectedMedia = allMedia.find(media => media.id === mediaId);
 
     if (!selectedMedia) {
@@ -217,7 +216,6 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
             progressBar.style.width = "100%";
         }, 50);
 
-        //potential bug
         clearInterval(progressBarInterval);
     }
 
@@ -312,6 +310,7 @@ function renderBlockPopup(parentId,userData){
 
     renderSearchbarquizpage("blockContent");
     renderPopupUserData("blockContent", userData);
+    attachUserBoxEventListeners();
 
     document.querySelector("#blockContent").innerHTML += `<button id = "blockButton"> Block </button>`;
 
@@ -349,7 +348,21 @@ function renderBlockPopup(parentId,userData){
             box.style.pointerEvents = "none";
         });
     });
+}
 
+function attachUserBoxEventListeners() {
+    document.getElementById("UsersListContainer").addEventListener("click", (event) => {
+        const box = event.target.closest(".blockUsersBox");
+        if (box) {
+            document.querySelectorAll(".blockUsersBox.blockThisUser").forEach((activeBox) => {
+                activeBox.classList.remove("blockThisUser");
+                activeBox.style.pointerEvents = "auto";
+            });
+    
+            box.classList.add("blockThisUser");
+            box.style.pointerEvents = "none";
+        }
+    });
 }
 
 function renderPopupUserData(parentId, userData){
@@ -369,11 +382,17 @@ function renderPopupUserData(parentId, userData){
         return;
     }
 
-    const UsersListContainer = document.createElement("div");
-    UsersListContainer.id = "UsersListContainer";
-    parent.appendChild(UsersListContainer);
+    let UsersListContainer = document.getElementById("UsersListContainer");
+    if (!UsersListContainer) {
+        UsersListContainer = document.createElement("div");
+        UsersListContainer.id = "UsersListContainer";
+        parent.appendChild(UsersListContainer);
+    }
+
+    UsersListContainer.innerHTML = "";
 
     userDataCopy.forEach((user) => {
+        attachUserBoxEventListeners();
         const blockUsersBox = document.createElement("div");
         blockUsersBox.className = "blockUsersBox";
         blockUsersBox.setAttribute("dataUserId", user.id);
@@ -426,6 +445,16 @@ function renderSearchbarquizpage(parentId) {
     Container.appendChild(searchBlockContainer);
 
     parent.appendChild(Container);
+
+    parent.addEventListener("keyup", function (event) {
+        if (event.target && event.target.id === "searchBarBlock") {
+            const players = currentGame.players;
+            const search = event.target.value;
+
+            const foundUsers = searchUser(search, players);
+            renderPopupUserData("blockContent", foundUsers);
+        }
+    })
 } 
 
 function blocked (blockedUsers, currentUser) {

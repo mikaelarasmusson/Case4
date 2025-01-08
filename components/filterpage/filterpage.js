@@ -115,8 +115,8 @@ function renderSearchbar(parentId) {
         const media = [...State.get("films"), ...State.get("series")];
         const search = searchbar.value;
 
-        const foundMedia = searchTitle(event, search, media);
-
+        const foundMedia = searchTitle(search, media);
+        //ta bort event
         let searchParent = document.getElementById("filmsandSeriesBoxesContainer");
         renderFilmsandSeriesBoxes(searchParent, foundMedia);
     })

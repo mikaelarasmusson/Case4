@@ -75,20 +75,3 @@ export async function registerHandler(req) {
 
     return new Response(JSON.stringify(correctUser), options)
 }
-
-// [
-//     {
-//       "id": 1,
-//       "username": "mikkan",
-//       "password": "lol123",
-//       "profileImg": "",
-//       "score": 17
-//     },
-//     {
-//       "id": 2,
-//       "username": "Hampus",
-//       "password": "test",
-//       "profileImg": "",
-//       "score": 18
-//     }
-// ]

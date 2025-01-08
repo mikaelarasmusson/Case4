@@ -52,10 +52,6 @@ async function HTTPhandler (req) {
         }
     }
 
-    if (req.method === "DELETE") {
-        //do something
-    }
-
     if (pathname.startsWith("/")) {
         return await serveDir(req, {
             fsRoot: "../",
@@ -88,9 +84,6 @@ async function handleWebsocket(request) {
             const hostCode = message.data.newGameCode;
             const gameHost = message.data.host;
 
-
-            //add a key for every players connection id in order to make the block powerup work also add the host to the playerlist
-            //add an id to every game so that they are identifiable and easy to find
             let gameId = 0;
             if (activeGames.length != 0) {
                 for (let game of activeGames) {
@@ -123,8 +116,6 @@ async function handleWebsocket(request) {
                         connectionId: myId,
                         user: message.data.user
                     }
-                    // game.players.user = message.data.user;
-                    // game.players.connectionId = myId;
                     game.players.push(data);
                     const returnMessage = {event: message.event, data: game}
                     for (let id in connections) {
