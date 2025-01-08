@@ -6,9 +6,6 @@ socket.addEventListener("open", (event) => {
 });
 
 socket.addEventListener("message", (event) => {
-    //do something
-
-    //messages: "createdGame", "joinGame", "startGame"
 
     const message = JSON.parse(event.data);
     if (message.event == "createdGame") {
