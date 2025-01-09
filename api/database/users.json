@@ -142,5 +142,13 @@
     "profileImg": "./images/profilepic.png",
     "score": 0,
     "totalScore": 20
+  },
+  {
+    "id": 19,
+    "username": "filmälskare",
+    "password": "film",
+    "profileImg": "./images/profilepic.png",
+    "score": 0,
+    "totalScore": 0
   }
 ]
