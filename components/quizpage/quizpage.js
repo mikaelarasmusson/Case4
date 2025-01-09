@@ -103,6 +103,9 @@ function renderQuizpageContent(parentId, mediaId, mediaType, mode = "singleplaye
         document.getElementById("superPowerContainer").style.visibility = "hidden";
     }
 
+    //make the user unable to enter their profile during a quiz
+    document.getElementById("profilePic").style.pointerEvents = "none";
+
     const superPower = document.getElementById("superPower");
     const superPowerMenu = document.getElementById("superPowerMenu");
 
